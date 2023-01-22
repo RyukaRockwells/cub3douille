@@ -6,7 +6,7 @@
 #    By: nchow-yu <nchow-yu@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/21 00:48:03 by nicole            #+#    #+#              #
-#    Updated: 2023/01/22 16:21:38 by nchow-yu         ###   ########.fr        #
+#    Updated: 2023/01/22 18:57:17 by nchow-yu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,10 +15,11 @@ LIBFT	=	srcs/libft/libft.a
 GNL		=	$(addprefix srcs/get_next_line/, get_next_line.c get_next_line_utils.c)
 ERROR	=	$(addprefix srcs/error/, ft_error.c)
 C_FILE	=	$(addprefix srcs/parser/check_get_file/, check_file.c get_file.c)
-C_MAP	=	$(addprefix srcs/parser/check_get_map/, get_map.c)
+C_MAP	=	$(addprefix srcs/parser/check_get_map/, check_map.c get_map.c)
+C_PARAMS	=	$(addprefix srcs/parser/check_get_params/, get_params.c)
 FREE	=	$(addprefix srcs/all_free/, all_free.c)
-UTILS	=	$(addprefix srcs/utils/, ft_strcmp.c ft_strcpy.c)
-SRCS	=	srcs/main.c ${GNL} ${ERROR} ${C_FILE} ${C_MAP} ${FREE} ${UTILS}
+UTILS	=	$(addprefix srcs/utils/, ft_strcmp.c ft_strcpy.c ft_is_space.c)
+SRCS	=	srcs/main.c ${GNL} ${ERROR} ${C_FILE} ${C_MAP} ${C_PARAMS} ${FREE} ${UTILS}
 OBJS	=	${SRCS:.c=.o}
 CC		=	clang
 CFLAGS	=	-Wall -Werror -Wextra -g3 #-fsanitize=address
@@ -26,7 +27,7 @@ HEADER	=	includes/cub3d.h
 NAME	=	cub3d
 
 %.o:	%.c
-	${CC} ${CFLAGS} -g3 -I/usr/include -Imlx_linux -O3 -c $< -o ${<:.c=.o}
+	${CC} ${CFLAGS} -g3 -I/usr/include -Imlx_linux -c $< -o ${<:.c=.o}
 
 all:	${OBJS} ${NAME}
 
