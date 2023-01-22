@@ -6,7 +6,7 @@
 #    By: nchow-yu <nchow-yu@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/21 00:48:03 by nicole            #+#    #+#              #
-#    Updated: 2023/01/22 13:55:47 by nchow-yu         ###   ########.fr        #
+#    Updated: 2023/01/22 16:21:38 by nchow-yu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,13 +20,13 @@ FREE	=	$(addprefix srcs/all_free/, all_free.c)
 UTILS	=	$(addprefix srcs/utils/, ft_strcmp.c ft_strcpy.c)
 SRCS	=	srcs/main.c ${GNL} ${ERROR} ${C_FILE} ${C_MAP} ${FREE} ${UTILS}
 OBJS	=	${SRCS:.c=.o}
-CC		=	gcc
-CFLAGS	=	-Wall -Werror -Wextra -g3 -fsanitize=address
+CC		=	clang
+CFLAGS	=	-Wall -Werror -Wextra -g3 #-fsanitize=address
 HEADER	=	includes/cub3d.h
 NAME	=	cub3d
 
 %.o:	%.c
-	${CC} -g3 -I/usr/include -Imlx_linux -O3 -c $< -o ${<:.c=.o}
+	${CC} ${CFLAGS} -g3 -I/usr/include -Imlx_linux -O3 -c $< -o ${<:.c=.o}
 
 all:	${OBJS} ${NAME}
 

@@ -6,7 +6,7 @@
 /*   By: nchow-yu <nchow-yu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 22:51:21 by nicole            #+#    #+#             */
-/*   Updated: 2023/01/22 14:22:42 by nchow-yu         ###   ########.fr       */
+/*   Updated: 2023/01/22 16:21:18 by nchow-yu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ static int	get_nb_line_map(char **file)
 	return (nb);
 }
 
-void	get_map(t_data *data)
+char	**get_map(t_data *data)
 {
 	int		i;
 	int		j;
@@ -70,7 +70,7 @@ void	get_map(t_data *data)
 	nb_line_map = get_nb_line_map(data->file);
 	if (nb_line_map <= 3)
 		map_error(data);
-	map = malloc(sizeof(char *) + (nb_line_map + 1));
+	map = malloc(sizeof(char *) * (nb_line_map + 1));
 	if (map == NULL)
 		exit(EXIT_FAILURE);
 	while (j < nb_line_map)
@@ -81,5 +81,6 @@ void	get_map(t_data *data)
 		map[j] = ft_strcpy(map[j], data->file[i++]);
 		j++;
 	}
-	ft_free_str(map);
+	map[j] = NULL;
+	return (map);
 }

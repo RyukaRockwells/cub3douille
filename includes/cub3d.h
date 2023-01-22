@@ -6,7 +6,7 @@
 /*   By: nchow-yu <nchow-yu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 00:55:10 by nicole            #+#    #+#             */
-/*   Updated: 2023/01/22 13:20:43 by nchow-yu         ###   ########.fr       */
+/*   Updated: 2023/01/22 16:14:26 by nchow-yu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,6 @@ int		check_file(char *file);
 char	**get_file(char *file);
 
 //check_get_map/get_map.c
-void	get_map(t_data *data);
+char	**get_map(t_data *data);
 
 #endif
