@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nchow-yu <nchow-yu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sanauth <sanauth@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 00:55:10 by nicole            #+#    #+#             */
-/*   Updated: 2023/01/22 16:14:26 by nchow-yu         ###   ########.fr       */
+/*   Updated: 2023/01/22 17:56:35 by sanauth          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ typedef struct s_data
 {
 	char	**file;
 	char	**map;
+	int		nb_line;
 }	t_data;
 
 //utils/ft_strcmp.c
@@ -53,5 +54,7 @@ char	**get_file(char *file);
 
 //check_get_map/get_map.c
 char	**get_map(t_data *data);
-
+void	check_in_map(t_data *data);
+int		ft_check_char(t_data *data, int i);
+void	print_map(t_data *data);
 #endif
