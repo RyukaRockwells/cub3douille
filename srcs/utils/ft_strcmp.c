@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nicole <nicole@student.42.fr>              +#+  +:+       +#+        */
+/*   By: nchow-yu <nchow-yu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 15:40:14 by nicole            #+#    #+#             */
-/*   Updated: 2023/01/21 20:46:17 by nicole           ###   ########.fr       */
+/*   Updated: 2023/01/23 11:01:28 by nchow-yu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,4 +23,3 @@ int	ft_strcmp(const char *s1, const char *s2)
 	}
 	return (*(unsigned char *)s1 - *(unsigned char *)s2);
 }
-

@@ -6,13 +6,13 @@
 /*   By: nchow-yu <nchow-yu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/22 17:18:04 by nchow-yu          #+#    #+#             */
-/*   Updated: 2023/01/22 18:59:03 by nchow-yu         ###   ########.fr       */
+/*   Updated: 2023/01/23 10:41:45 by nchow-yu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/cub3d.h"
 
-static void	get_str_params(char *str)
+static char	*get_str_params(char *str)
 {
 	int		i;
 	int		start;
@@ -21,24 +21,47 @@ static void	get_str_params(char *str)
 
 	i = 0;
 	len = 0;
-	fprintf(stderr, "str = |%s|", str);
 	while (ft_is_space(str[i]) == 1)
 		i++;
 	if (str[i] == '1')
 	{
 		fprintf(stderr, "Error\n");
-		return ;
+		return (NULL);
 	}
 	start = i;
 	while (str[i] != '\0')
 	{
-		if (ft_is_space(str[i]) == 0)
-			len++;
+		if (ft_is_space(str[i]) == 1)
+			break ;
+		len++;
 		i++;
 	}
 	params = ft_substr(str + start, 0, len);
-	fprintf(stderr, "str = |%s|\n", params);
-	free(params);
+	return (params);
+}
+
+static void	get_wall_params(t_data *data, int i, int j)
+{
+	if (data->file[i][j] == 'N' && data->file[i][j + 1] == 'O')
+	{
+		j += 2;
+		data->params.north = get_str_params(data->file[i] + j);
+	}
+	else if (data->file[i][j] == 'S' && data->file[i][j + 1] == 'O')
+	{
+		j += 2;
+		data->params.south = get_str_params(data->file[i] + j);
+	}
+	else if (data->file[i][j] == 'W' && data->file[i][j + 1] == 'E')
+	{
+		j += 2;
+		data->params.west = get_str_params(data->file[i] + j);
+	}
+	else if (data->file[i][j] == 'E' && data->file[i][j + 1] == 'A')
+	{
+		j += 2;
+		data->params.east = get_str_params(data->file[i] + j);
+	}
 }
 
 void	get_params(t_data *data)
@@ -50,14 +73,17 @@ void	get_params(t_data *data)
 	while (data->file[i] != NULL)
 	{
 		j = 0;
-		if (data->file[i][j] == 'N' && data->file[i][j + 1] == 'O')
-		{
-			j += 2;
-			get_str_params(data->file[i] + j);
-			while (ft_is_space(data->file[i][j]) == 1)
-				j++;
-			data->params.north = ft_substr(data->file[i], j, ft_strlen(data->file[i] + j));
-		}
+		while (ft_is_space(data->file[i][j]) == 1)
+			j++;
+		if ((data->file[i][j] == 'N' && data->file[i][j + 1] == 'O')
+			|| (data->file[i][j] == 'S' && data->file[i][j + 1] == 'O')
+			|| (data->file[i][j] == 'W' && data->file[i][j + 1] == 'E')
+			|| (data->file[i][j] == 'E' && data->file[i][j + 1] == 'A'))
+			get_wall_params(data, i, j);
+		else if (data->file[i][j] == 'F' && data->file[i][j + 1] == ' ')
+			data->params.floor = get_str_params(data->file[i] + (j + 1));
+		else if (data->file[i][j] == 'C' && data->file[i][j + 1] == ' ')
+			data->params.ceiling = get_str_params(data->file[i] + (j + 1));
 		i++;
 	}
 }

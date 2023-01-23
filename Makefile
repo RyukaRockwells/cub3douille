@@ -6,20 +6,21 @@
 #    By: nchow-yu <nchow-yu@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/21 00:48:03 by nicole            #+#    #+#              #
-#    Updated: 2023/01/22 18:57:17 by nchow-yu         ###   ########.fr        #
+#    Updated: 2023/01/23 10:46:15 by nchow-yu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # PRINTF	=	ft_printf/libftprintf.a
 LIBFT	=	srcs/libft/libft.a
 GNL		=	$(addprefix srcs/get_next_line/, get_next_line.c get_next_line_utils.c)
-ERROR	=	$(addprefix srcs/error/, ft_error.c)
+ERROR	=	$(addprefix srcs/error/, ft_error.c ft_error_utils.c)
 C_FILE	=	$(addprefix srcs/parser/check_get_file/, check_file.c get_file.c)
 C_MAP	=	$(addprefix srcs/parser/check_get_map/, check_map.c get_map.c)
-C_PARAMS	=	$(addprefix srcs/parser/check_get_params/, get_params.c)
+C_PARAMS	=	$(addprefix srcs/parser/check_get_params/, check_params.c get_params.c)
 FREE	=	$(addprefix srcs/all_free/, all_free.c)
 UTILS	=	$(addprefix srcs/utils/, ft_strcmp.c ft_strcpy.c ft_is_space.c)
-SRCS	=	srcs/main.c ${GNL} ${ERROR} ${C_FILE} ${C_MAP} ${C_PARAMS} ${FREE} ${UTILS}
+PARSER	= 	$(addprefix srcs/parser/, init.c) ${C_FILE} ${C_MAP} ${C_PARAMS} 
+SRCS	=	srcs/main.c ${GNL} ${ERROR} ${FREE} ${UTILS} ${PARSER}
 OBJS	=	${SRCS:.c=.o}
 CC		=	clang
 CFLAGS	=	-Wall -Werror -Wextra -g3 #-fsanitize=address
