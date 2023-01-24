@@ -1,32 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcpy.c                                        :+:      :+:    :+:   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nchow-yu <nchow-yu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/22 13:20:02 by nchow-yu          #+#    #+#             */
-/*   Updated: 2023/01/24 14:51:14 by nchow-yu         ###   ########.fr       */
+/*   Created: 2021/11/23 17:11:16 by nchow-yu          #+#    #+#             */
+/*   Updated: 2021/11/26 16:12:46 by nchow-yu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/cub3d.h"
+#include "libft.h"
 
-char	*ft_strcpy(t_data *data, char *dest, char *str)
+size_t	ft_strlcat(char *dst, const char *src, size_t size)
 {
-	int	i;
+	size_t	i;
+	size_t	j;
 
 	i = 0;
-	while (str[i] != '\0')
+	j = 0;
+	while (dst[i] != 0 && i < size && size != 0)
+		i++;
+	while (src[j] != 0 && i < size - 1 && size != 0)
 	{
-		if (str[i] == '\n')
-			break ;
-		else
-			dest[i] = str[i];
+		dst[i] = src[j];
+		dst[i + 1] = 0;
+		i++;
+		j++;
+	}
+	while (src[j] != 0)
+	{
+		j++;
 		i++;
 	}
-	while (i < data->max_len - 1)
-		dest[i++] = ' ';
-	dest[i] = '\0';
-	return (dest);
+	return (i);
 }

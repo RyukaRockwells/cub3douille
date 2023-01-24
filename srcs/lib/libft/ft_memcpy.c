@@ -1,32 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcpy.c                                        :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nchow-yu <nchow-yu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/22 13:20:02 by nchow-yu          #+#    #+#             */
-/*   Updated: 2023/01/24 14:51:14 by nchow-yu         ###   ########.fr       */
+/*   Created: 2021/11/23 11:37:36 by nchow-yu          #+#    #+#             */
+/*   Updated: 2021/12/06 15:24:29 by nchow-yu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/cub3d.h"
+#include "libft.h"
 
-char	*ft_strcpy(t_data *data, char *dest, char *str)
+void	*ft_memcpy(void *dest, const void *src, size_t n)
 {
-	int	i;
+	size_t		i;
 
 	i = 0;
-	while (str[i] != '\0')
+	if (!(dest == NULL && src == NULL))
 	{
-		if (str[i] == '\n')
-			break ;
-		else
-			dest[i] = str[i];
-		i++;
+		while (i < n)
+		{
+			*((char *)dest + i) = *((char *)src + i);
+			i++;
+		}
 	}
-	while (i < data->max_len - 1)
-		dest[i++] = ' ';
-	dest[i] = '\0';
 	return (dest);
 }

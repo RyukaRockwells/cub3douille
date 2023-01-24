@@ -1,32 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcpy.c                                        :+:      :+:    :+:   */
+/*   close.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nchow-yu <nchow-yu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/22 13:20:02 by nchow-yu          #+#    #+#             */
-/*   Updated: 2023/01/24 14:51:14 by nchow-yu         ###   ########.fr       */
+/*   Created: 2023/01/24 12:27:52 by nchow-yu          #+#    #+#             */
+/*   Updated: 2023/01/24 12:34:24 by nchow-yu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-char	*ft_strcpy(t_data *data, char *dest, char *str)
+void	ft_close(t_data *data)
 {
-	int	i;
-
-	i = 0;
-	while (str[i] != '\0')
-	{
-		if (str[i] == '\n')
-			break ;
-		else
-			dest[i] = str[i];
-		i++;
-	}
-	while (i < data->max_len - 1)
-		dest[i++] = ' ';
-	dest[i] = '\0';
-	return (dest);
+	ft_free_str(data->map);
+	ft_free_all_params(data);
+	mlx_clear_window(data->mlx, data->win);
+	mlx_destroy_window(data->mlx, data->win);
+	mlx_destroy_display(data->mlx);
+	free(data->mlx);
+	data->mlx = NULL;
+	ft_free_str(data->file);
+	exit(EXIT_SUCCESS);
 }

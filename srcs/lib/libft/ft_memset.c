@@ -1,23 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init.c                                             :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nchow-yu <nchow-yu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/23 10:43:09 by nchow-yu          #+#    #+#             */
-/*   Updated: 2023/01/23 10:44:23 by nchow-yu         ###   ########.fr       */
+/*   Created: 2021/11/22 18:33:12 by nchow-yu          #+#    #+#             */
+/*   Updated: 2021/11/26 16:12:31 by nchow-yu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/cub3d.h"
+#include "libft.h"
 
-void	init_struct(t_data *data)
+void	*ft_memset(void *s, int c, size_t n)
 {
-	data->params.north = NULL;
-	data->params.south = NULL;
-	data->params.west = NULL;
-	data->params.east = NULL;
-	data->params.floor = NULL;
-	data->params.ceiling = NULL;
+	size_t	i;
+	char	*str;
+
+	i = 0;
+	str = s;
+	while (i < n)
+	{
+		str[i] = c;
+		i++;
+	}
+	return (str);
 }

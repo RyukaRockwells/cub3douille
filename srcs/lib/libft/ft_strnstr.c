@@ -1,32 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcpy.c                                        :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nchow-yu <nchow-yu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/22 13:20:02 by nchow-yu          #+#    #+#             */
-/*   Updated: 2023/01/24 14:51:14 by nchow-yu         ###   ########.fr       */
+/*   Created: 2021/11/24 15:08:30 by nchow-yu          #+#    #+#             */
+/*   Updated: 2021/11/26 18:13:34 by nchow-yu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/cub3d.h"
+#include "libft.h"
 
-char	*ft_strcpy(t_data *data, char *dest, char *str)
+char	*ft_strnstr(const char *big, const char *little, size_t len)
 {
-	int	i;
+	size_t	i;
+	size_t	letter;
 
 	i = 0;
-	while (str[i] != '\0')
+	if (little[0] == '\0' || little == NULL)
+		return ((char *)big);
+	while (big[i] != '\0' && i < len)
 	{
-		if (str[i] == '\n')
-			break ;
-		else
-			dest[i] = str[i];
+		letter = 0;
+		while (little[letter] == big[i + letter] && i + letter < len)
+		{
+			if (little[letter + 1] == '\0')
+				return ((char *)big + i);
+			letter++;
+		}
 		i++;
 	}
-	while (i < data->max_len - 1)
-		dest[i++] = ' ';
-	dest[i] = '\0';
-	return (dest);
+	return (NULL);
 }

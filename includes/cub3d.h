@@ -6,45 +6,34 @@
 /*   By: nchow-yu <nchow-yu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 00:55:10 by nicole            #+#    #+#             */
-/*   Updated: 2023/01/23 10:44:49 by nchow-yu         ###   ########.fr       */
+/*   Updated: 2023/01/24 14:18:56 by nchow-yu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
 # define CUB3D_H
 
+# define WIDTH 640
+# define HEIGTH 480
+
 # include <unistd.h>
 # include <stdlib.h>
 # include <errno.h>
 # include <fcntl.h>
-# include "../srcs/libft/libft.h"
-# include "../srcs/get_next_line/get_next_line.h"
+# include "struct.h"
+# include "../mlx_linux/mlx.h"
+# include "../srcs/lib/libft/libft.h"
+# include "../srcs/lib/get_next_line/get_next_line.h"
 
-typedef struct s_data	t_data;
-typedef struct s_params	t_params;
-
-typedef struct s_params
-{
-	char	*north;
-	char	*south;
-	char	*west;
-	char	*east;
-	char	*floor;
-	char	*ceiling;
-}	t_params;
-
-typedef struct s_data
-{
-	char		**file;
-	char		**map;
-	t_params	params;
-}	t_data;
+//init.c
+void	init_struct(t_data *data);
+void	init_window(t_data *data);
 
 //utils/ft_strcmp.c
 int		ft_strcmp(const char *s1, const char *s2);
 
 //utils/ft_strcpy.c
-char	*ft_strcpy(char *dest, char *str);
+char	*ft_strcpy(t_data *data, char *dest, char *str);
 
 //utils/ft_is_space.c
 int		ft_is_space(char c);
@@ -65,6 +54,9 @@ void	error_xpm(char *path);
 void	error_rgb(void);
 void	error_missing_params(t_data *data);
 
+//mlx_ft/close.c
+void	ft_close(t_data *win);
+
 //**********//
 //**PARSER**//
 //**********//
@@ -81,9 +73,9 @@ char	**get_map(t_data *data);
 void	get_params(t_data *data);
 
 //check_get_params/check_params.c
-int	check_params(t_data *data);
+void	check_params(t_data *data);
 
-//init.c
-void	init_struct(t_data *data);
+//parser.c
+void	ft_parsing(t_data *data, int nb, char **argv);
 
 #endif

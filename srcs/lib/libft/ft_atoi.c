@@ -1,32 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcpy.c                                        :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nchow-yu <nchow-yu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/22 13:20:02 by nchow-yu          #+#    #+#             */
-/*   Updated: 2023/01/24 14:51:14 by nchow-yu         ###   ########.fr       */
+/*   Created: 2021/11/24 17:16:29 by nchow-yu          #+#    #+#             */
+/*   Updated: 2021/12/15 18:43:10 by nchow-yu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/cub3d.h"
+#include "libft.h"
 
-char	*ft_strcpy(t_data *data, char *dest, char *str)
+int	ft_atoi(const char *nptr)
 {
+	int	nb;
+	int	neg;
 	int	i;
 
+	nb = 0;
+	neg = 1;
 	i = 0;
-	while (str[i] != '\0')
+	while ((nptr[i] >= 7 && nptr[i] <= 13) || nptr[i] == 32)
+		i++;
+	if (nptr[i] == '-' || nptr[i] == '+')
 	{
-		if (str[i] == '\n')
-			break ;
-		else
-			dest[i] = str[i];
+		if (nptr[i] == '-')
+			neg *= -1;
 		i++;
 	}
-	while (i < data->max_len - 1)
-		dest[i++] = ' ';
-	dest[i] = '\0';
-	return (dest);
+	while (nptr[i] >= '0' && nptr[i] <= '9')
+	{
+		nb = nb * 10 + (nptr[i] - 48);
+		i++;
+	}
+	return (nb * neg);
 }

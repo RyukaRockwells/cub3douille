@@ -1,32 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcpy.c                                        :+:      :+:    :+:   */
+/*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nchow-yu <nchow-yu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/22 13:20:02 by nchow-yu          #+#    #+#             */
-/*   Updated: 2023/01/24 14:51:14 by nchow-yu         ###   ########.fr       */
+/*   Created: 2021/12/09 16:21:35 by nchow-yu          #+#    #+#             */
+/*   Updated: 2021/12/15 18:41:32 by nchow-yu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/cub3d.h"
+#include "libft.h"
 
-char	*ft_strcpy(t_data *data, char *dest, char *str)
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	int	i;
+	t_list	*new_lst;
+	t_list	*new_elmt;
 
-	i = 0;
-	while (str[i] != '\0')
+	new_lst = NULL;
+	while (lst != NULL)
 	{
-		if (str[i] == '\n')
-			break ;
-		else
-			dest[i] = str[i];
-		i++;
+		new_elmt = ft_lstnew(f(lst->content));
+		if (new_elmt == NULL)
+		{
+			ft_lstclear(&new_lst, del);
+			return (NULL);
+		}
+		ft_lstadd_back(&new_lst, new_elmt);
+		lst = lst->next;
 	}
-	while (i < data->max_len - 1)
-		dest[i++] = ' ';
-	dest[i] = '\0';
-	return (dest);
+	return (new_lst);
 }

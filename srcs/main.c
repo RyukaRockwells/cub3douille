@@ -6,33 +6,37 @@
 /*   By: nchow-yu <nchow-yu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 00:53:40 by nicole            #+#    #+#             */
-/*   Updated: 2023/01/23 10:47:48 by nchow-yu         ###   ########.fr       */
+/*   Updated: 2023/01/24 14:50:54 by nchow-yu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
+
+static int	ft_close_cursor(t_data *data)
+{
+	ft_close(data);
+	return (1);
+}
+
+static int	ft_key_close(int key, t_data *data)
+{
+	if (key == 65307)
+		ft_close(data);
+	return (1);
+}
 
 int	main(int nb, char **argv)
 {
 	t_data	data;
 	int		i;
 
-	if (nb != 2)
-		nb_arg_error();
-	else if (check_file(argv[1]) == 1)
-		file_error();
-	init_struct(&data);
-	data.file = get_file(argv[1]);
-	if (data.file[0] == NULL)
-		file_invalid(&data);
-	data.map = get_map(&data);
-	get_params(&data);
-	if (check_params(&data) == 0)
-		fprintf(stderr, "cool\n");
 	i = 0;
+	data.max_len = 0;
+	ft_parsing(&data, nb, argv);
 	while (data.map[i] != NULL)
-		ft_putstr_fd(data.map[i++], 1);
-	ft_free_str(data.file);
-	ft_free_str(data.map);
-	ft_free_all_params(&data);
+		fprintf(stderr, "|%s|\n", data.map[i++]);
+	init_window(&data);
+	mlx_key_hook(data.win, ft_key_close, &data);
+	mlx_hook(data.win, 17, 0, ft_close_cursor, &data);
+	mlx_loop(data.mlx);
 }

@@ -1,32 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcpy.c                                        :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nchow-yu <nchow-yu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/22 13:20:02 by nchow-yu          #+#    #+#             */
-/*   Updated: 2023/01/24 14:51:14 by nchow-yu         ###   ########.fr       */
+/*   Created: 2021/11/23 11:51:56 by nchow-yu          #+#    #+#             */
+/*   Updated: 2021/12/06 15:29:53 by nchow-yu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/cub3d.h"
+#include "libft.h"
 
-char	*ft_strcpy(t_data *data, char *dest, char *str)
+void	*ft_memmove(void *dest, const void *src, size_t n)
 {
-	int	i;
+	char		*s;
+	char		*d;
+	size_t		i;
 
+	s = (char *)src;
+	d = (char *)dest;
 	i = 0;
-	while (str[i] != '\0')
+	if (dest == NULL && src == NULL)
+		return (dest);
+	if (d > s)
 	{
-		if (str[i] == '\n')
-			break ;
-		else
-			dest[i] = str[i];
-		i++;
+		while (n-- > 0)
+			d[n] = s[n];
 	}
-	while (i < data->max_len - 1)
-		dest[i++] = ' ';
-	dest[i] = '\0';
+	else
+	{
+		while (i < n)
+		{
+			d[i] = s[i];
+			i++;
+		}
+	}
 	return (dest);
 }
