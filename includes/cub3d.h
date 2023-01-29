@@ -6,7 +6,7 @@
 /*   By: sanauth <sanauth@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 00:55:10 by nicole            #+#    #+#             */
-/*   Updated: 2023/01/22 17:56:35 by sanauth          ###   ########.fr       */
+/*   Updated: 2023/01/29 15:15:27 by sanauth          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,9 @@ char	**get_file(char *file);
 //check_get_map/get_map.c
 char	**get_map(t_data *data);
 void	check_in_map(t_data *data);
-int		ft_check_char(t_data *data, int i);
+int		ft_count_pos(t_data *data);
+int		ft_verify_content(t_data *data);
 void	print_map(t_data *data);
+int		ft_check_around(t_data *data, int i, int j);
+int		ft_check_zero(t_data *data);
 #endif
