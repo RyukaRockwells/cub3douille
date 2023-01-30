@@ -6,7 +6,7 @@
 /*   By: nchow-yu <nchow-yu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 00:53:40 by nicole            #+#    #+#             */
-/*   Updated: 2023/01/24 14:50:54 by nchow-yu         ###   ########.fr       */
+/*   Updated: 2023/01/30 12:37:59 by nchow-yu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,12 @@ int	main(int nb, char **argv)
 	i = 0;
 	data.max_len = 0;
 	ft_parsing(&data, nb, argv);
-	while (data.map[i] != NULL)
-		fprintf(stderr, "|%s|\n", data.map[i++]);
 	init_window(&data);
+	init_textures(&data);
+	init_pos_player(&data);
+	draw_mini_map(&data);
+	p_mini_map(&data);
+//	draw_in_window(&data);
 	mlx_key_hook(data.win, ft_key_close, &data);
 	mlx_hook(data.win, 17, 0, ft_close_cursor, &data);
 	mlx_loop(data.mlx);

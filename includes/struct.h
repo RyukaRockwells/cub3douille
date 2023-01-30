@@ -6,12 +6,23 @@
 /*   By: nchow-yu <nchow-yu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 13:39:32 by nchow-yu          #+#    #+#             */
-/*   Updated: 2023/01/24 14:09:06 by nchow-yu         ###   ########.fr       */
+/*   Updated: 2023/01/26 15:31:43 by nchow-yu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STRUCT_H
 # define STRUCT_H
+
+# define WIDTH 640
+# define HEIGTH 480
+# define SIZE 17
+
+typedef struct s_img
+{
+	void	*img;
+	int		x;
+	int		y;
+}	t_img;
 
 typedef struct s_pos
 {
@@ -51,6 +62,28 @@ typedef struct s_data
 	t_params	params;
 	t_pos		pos;
 	t_dir		dir;
+	t_img		img;
+	t_img		textures[4];
 }	t_data;
 
 #endif
+/*
+	mlx_pixel_put(data->mlx, data->win, \
+		data->pos.x * SIZE, data->pos.y * SIZE, 0x0000F0FF);
+	mlx_pixel_put(data->mlx, data->win, \
+		(data->pos.x * SIZE) + 1, data->pos.y * SIZE, 0x0000F0FF);
+	mlx_pixel_put(data->mlx, data->win, \
+		(data->pos.x * SIZE) + 2, data->pos.y * SIZE, 0x0000F0FF);
+	mlx_pixel_put(data->mlx, data->win, \
+		(data->pos.x * SIZE) - 1, data->pos.y * SIZE, 0x0000F0FF);
+	mlx_pixel_put(data->mlx, data->win, \
+		(data->pos.x * SIZE) - 2, data->pos.y * SIZE, 0x0000F0FF);
+	mlx_pixel_put(data->mlx, data->win, \
+		data->pos.x * SIZE, (data->pos.y * SIZE) + 1, 0x0000F0FF);
+	mlx_pixel_put(data->mlx, data->win, \
+		data->pos.x * SIZE, (data->pos.y * SIZE) + 2, 0x0000F0FF);
+	mlx_pixel_put(data->mlx, data->win, \
+		data->pos.x * SIZE, (data->pos.y * SIZE) + 1, 0x0000F0FF);
+	mlx_pixel_put(data->mlx, data->win, \
+		data->pos.x * SIZE, (data->pos.y * SIZE) - 2, 0x0000F0FF);
+*/

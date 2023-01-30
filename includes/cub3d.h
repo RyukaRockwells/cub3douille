@@ -6,15 +6,12 @@
 /*   By: nchow-yu <nchow-yu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 00:55:10 by nicole            #+#    #+#             */
-/*   Updated: 2023/01/24 14:18:56 by nchow-yu         ###   ########.fr       */
+/*   Updated: 2023/01/25 19:44:32 by nchow-yu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
 # define CUB3D_H
-
-# define WIDTH 640
-# define HEIGTH 480
 
 # include <unistd.h>
 # include <stdlib.h>
@@ -28,6 +25,7 @@
 //init.c
 void	init_struct(t_data *data);
 void	init_window(t_data *data);
+void	init_pos_player(t_data *data);
 
 //utils/ft_strcmp.c
 int		ft_strcmp(const char *s1, const char *s2);
@@ -53,6 +51,8 @@ void	map_error(t_data *data);
 void	error_xpm(char *path);
 void	error_rgb(void);
 void	error_missing_params(t_data *data);
+void	error_xpm_to_img(t_data *data);
+void	ft_close_error(t_data *data);
 
 //mlx_ft/close.c
 void	ft_close(t_data *win);
@@ -77,5 +77,18 @@ void	check_params(t_data *data);
 
 //parser.c
 void	ft_parsing(t_data *data, int nb, char **argv);
+
+//***********//
+//**TEXTURE**//
+//***********//
+//init_textures.c
+void	init_textures(t_data *data);
+
+//****** *****//
+//**MINI_MAP**//
+//******* ****//
+//mini_map.c
+void	p_mini_map(t_data *data);
+void	draw_mini_map(t_data *data);
 
 #endif

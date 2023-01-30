@@ -6,7 +6,7 @@
 /*   By: nchow-yu <nchow-yu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 09:15:20 by nchow-yu          #+#    #+#             */
-/*   Updated: 2023/01/23 10:33:41 by nchow-yu         ###   ########.fr       */
+/*   Updated: 2023/01/25 18:28:01 by nchow-yu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,4 +34,32 @@ void	error_missing_params(t_data *data)
 	ft_free_str(data->file);
 	ft_free_str(data->map);
 	exit(EXIT_FAILURE);
+}
+
+
+void	error_xpm_to_img(t_data *data)
+{
+	ft_putstr_fd("Error\nYour image is not xpm\n", 2);
+	ft_close_error(data);
+}
+
+void	ft_close_error(t_data *data)
+{
+	ft_free_str(data->map);
+	if (data->textures[0].img != NULL)
+		mlx_destroy_image(data->mlx, data->textures[0].img);
+	if (data->textures[1].img != NULL)
+		mlx_destroy_image(data->mlx, data->textures[1].img);
+	if (data->textures[2].img != NULL)
+		mlx_destroy_image(data->mlx, data->textures[2].img);
+	if (data->textures[3].img != NULL)
+		mlx_destroy_image(data->mlx, data->textures[3].img);
+	mlx_clear_window(data->mlx, data->win);
+	mlx_destroy_window(data->mlx, data->win);
+	mlx_destroy_display(data->mlx);
+	ft_free_all_params(data);
+	free(data->mlx);
+	data->mlx = NULL;
+	ft_free_str(data->file);
+	exit(EXIT_SUCCESS);
 }

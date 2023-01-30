@@ -6,7 +6,7 @@
 #    By: nchow-yu <nchow-yu@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/21 00:48:03 by nicole            #+#    #+#              #
-#    Updated: 2023/01/24 14:49:15 by nchow-yu         ###   ########.fr        #
+#    Updated: 2023/01/25 19:17:21 by nchow-yu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,10 @@ FREE	=	$(addprefix srcs/all_free/, all_free.c)
 UTILS	=	$(addprefix srcs/utils/, ft_strcmp.c ft_strcpy.c ft_is_space.c)
 MLX_FT	=	$(addprefix srcs/mlx_ft/, close.c)
 PARSER	= 	$(addprefix srcs/parser/, parser.c) ${C_FILE} ${C_MAP} ${C_PARAMS} 
-SRCS	=	srcs/main.c srcs/init.c ${GNL} ${ERROR} ${FREE} ${UTILS} ${PARSER} ${MLX_FT}
+TEXTURE	=	$(addprefix srcs/textures/, init_textures.c)
+M_MAP	=	$(addprefix srcs/mini_map/, mini_map.c)
+SRCS	=	$(addprefix srcs/, main.c init.c draw_ft.c) ${GNL} ${ERROR} ${FREE} ${UTILS} ${PARSER} ${MLX_FT}\
+			${TEXTURE} ${M_MAP}
 OBJS	=	${SRCS:.c=.o}
 CC		=	clang
 CFLAGS	=	-Wall -Werror -Wextra -g3 #-fsanitize=address

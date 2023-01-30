@@ -6,7 +6,7 @@
 /*   By: nchow-yu <nchow-yu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 10:43:09 by nchow-yu          #+#    #+#             */
-/*   Updated: 2023/01/24 12:53:26 by nchow-yu         ###   ########.fr       */
+/*   Updated: 2023/01/25 19:50:22 by nchow-yu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,5 +32,29 @@ void	init_window(t_data *data)
 	{
 		free(data->mlx);
 		ft_close(data);
+	}
+	data->img.img = mlx_new_image(data->mlx, WIDTH, HEIGTH);
+}
+
+void	init_pos_player(t_data *data)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (data->map[i] != NULL)
+	{
+		j = 0;
+		while (data->map[i][j] != '\0')
+		{
+			if (data->map[i][j] == 'N' || data->map[i][j] == 'S'
+				|| data->map[i][j] == 'W' || data->map[i][j] == 'E')
+			{
+				data->pos.x = j + 0.5;
+				data->pos.y = i + 0.5;
+			}
+			j++;
+		}
+		i++;
 	}
 }
