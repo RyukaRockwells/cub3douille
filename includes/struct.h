@@ -6,7 +6,7 @@
 /*   By: nchow-yu <nchow-yu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 13:39:32 by nchow-yu          #+#    #+#             */
-/*   Updated: 2023/01/26 15:31:43 by nchow-yu         ###   ########.fr       */
+/*   Updated: 2023/01/30 13:29:04 by nchow-yu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,4 +86,19 @@ typedef struct s_data
 		data->pos.x * SIZE, (data->pos.y * SIZE) + 1, 0x0000F0FF);
 	mlx_pixel_put(data->mlx, data->win, \
 		data->pos.x * SIZE, (data->pos.y * SIZE) - 2, 0x0000F0FF);
+
+	int	i;
+	int	j;
+
+	i = data->pos.x - 2;
+	while (i <= data->pos.x + 2)
+	{
+		j = data->pos.y - 2;
+		while (j <= data->pos.y + 2)
+		{
+			mlx_pixel_put(data->mlx, data->win, (i * SIZE), (j * SIZE), 0x0000FFFF);
+			j++;
+		}
+		i++;
+	}
 */

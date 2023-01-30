@@ -6,7 +6,7 @@
 /*   By: nchow-yu <nchow-yu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 09:15:20 by nchow-yu          #+#    #+#             */
-/*   Updated: 2023/01/25 18:28:01 by nchow-yu         ###   ########.fr       */
+/*   Updated: 2023/01/30 13:15:41 by nchow-yu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ void	error_missing_params(t_data *data)
 	ft_free_str(data->map);
 	exit(EXIT_FAILURE);
 }
-
 
 void	error_xpm_to_img(t_data *data)
 {
