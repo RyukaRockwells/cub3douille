@@ -6,7 +6,7 @@
 /*   By: nchow-yu <nchow-yu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 00:55:10 by nicole            #+#    #+#             */
-/*   Updated: 2023/01/23 10:44:49 by nchow-yu         ###   ########.fr       */
+/*   Updated: 2023/01/30 15:24:28 by nchow-yu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ typedef struct s_data
 {
 	char		**file;
 	char		**map;
+	int			nb_line;
 	t_params	params;
 }	t_data;
 
@@ -64,6 +65,7 @@ void	map_error(t_data *data);
 void	error_xpm(char *path);
 void	error_rgb(void);
 void	error_missing_params(t_data *data);
+void	ft_map_error(t_data *data, char *str);
 
 //**********//
 //**PARSER**//
@@ -81,9 +83,15 @@ char	**get_map(t_data *data);
 void	get_params(t_data *data);
 
 //check_get_params/check_params.c
-int	check_params(t_data *data);
+int		check_params(t_data *data);
 
 //init.c
 void	init_struct(t_data *data);
 
+void	check_in_map(t_data *data);
+int		ft_count_pos(t_data *data);
+int		ft_verify_content(t_data *data);
+void	print_map(t_data *data);
+int		ft_check_around(t_data *data, int i, int j);
+int		ft_check_zero(t_data *data);
 #endif

@@ -6,16 +6,24 @@
 /*   By: nchow-yu <nchow-yu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 00:53:40 by nicole            #+#    #+#             */
-/*   Updated: 2023/01/23 10:47:48 by nchow-yu         ###   ########.fr       */
+/*   Updated: 2023/01/30 15:23:00 by nchow-yu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
+void	print_map(t_data *data)
+{
+	int	i;
+
+	i = 0;
+	while (data->map[i] != NULL)
+		ft_putstr_fd(data->map[i++], 1);
+}
+
 int	main(int nb, char **argv)
 {
 	t_data	data;
-	int		i;
 
 	if (nb != 2)
 		nb_arg_error();
@@ -26,6 +34,7 @@ int	main(int nb, char **argv)
 	if (data.file[0] == NULL)
 		file_invalid(&data);
 	data.map = get_map(&data);
+	check_in_map(&data);
 	get_params(&data);
 	if (check_params(&data) == 0)
 		fprintf(stderr, "cool\n");

@@ -6,7 +6,7 @@
 #    By: nchow-yu <nchow-yu@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/21 00:48:03 by nicole            #+#    #+#              #
-#    Updated: 2023/01/23 10:46:15 by nchow-yu         ###   ########.fr        #
+#    Updated: 2023/01/30 15:21:51 by nchow-yu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,7 @@ PARSER	= 	$(addprefix srcs/parser/, init.c) ${C_FILE} ${C_MAP} ${C_PARAMS}
 SRCS	=	srcs/main.c ${GNL} ${ERROR} ${FREE} ${UTILS} ${PARSER}
 OBJS	=	${SRCS:.c=.o}
 CC		=	clang
-CFLAGS	=	-Wall -Werror -Wextra -g3 #-fsanitize=address
+CFLAGS	=	-Wall -Werror -Wextra #-g3 -fsanitize=address
 HEADER	=	includes/cub3d.h
 NAME	=	cub3d
 
