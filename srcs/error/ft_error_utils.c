@@ -6,7 +6,7 @@
 /*   By: nchow-yu <nchow-yu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 09:15:20 by nchow-yu          #+#    #+#             */
-/*   Updated: 2023/01/23 10:33:41 by nchow-yu         ###   ########.fr       */
+/*   Updated: 2023/01/30 15:27:04 by nchow-yu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,5 +33,13 @@ void	error_missing_params(t_data *data)
 	ft_free_all_params(data);
 	ft_free_str(data->file);
 	ft_free_str(data->map);
+	exit(EXIT_FAILURE);
+}
+
+void	ft_map_error(t_data *data, char *str)
+{
+	ft_putstr_fd(str, 2);
+	ft_free(data->file);
+	ft_free(data->map);
 	exit(EXIT_FAILURE);
 }
