@@ -6,7 +6,7 @@
 /*   By: nchow-yu <nchow-yu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 00:53:40 by nicole            #+#    #+#             */
-/*   Updated: 2023/01/30 15:33:47 by nchow-yu         ###   ########.fr       */
+/*   Updated: 2023/01/30 15:37:30 by nchow-yu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ int	main(int nb, char **argv)
 {
 	t_data	data;
 
-	i = 0;
 	data.max_len = 0;
 	ft_parsing(&data, nb, argv);
 	init_window(&data);
