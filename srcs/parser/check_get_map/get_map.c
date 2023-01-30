@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_map.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sanauth <sanauth@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nchow-yu <nchow-yu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 22:51:21 by nicole            #+#    #+#             */
-/*   Updated: 2023/01/22 17:54:44 by sanauth          ###   ########.fr       */
+/*   Updated: 2023/01/30 15:34:23 by nchow-yu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,10 +75,10 @@ char	**get_map(t_data *data)
 		exit(EXIT_FAILURE);
 	while (j < nb_line_map)
 	{
-		map[j] = malloc(sizeof(char) * (ft_strlen(data->file[i]) + 1));
+		map[j] = malloc(sizeof(char) * (data->max_len + 1));
 		if (map[j] == NULL)
 			exit(EXIT_FAILURE);
-		map[j] = ft_strcpy(map[j], data->file[i++]);
+		map[j] = ft_strcpy(data, map[j], data->file[i++]);
 		j++;
 	}
 	map[j] = NULL;

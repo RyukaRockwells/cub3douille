@@ -6,7 +6,7 @@
 /*   By: nchow-yu <nchow-yu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 08:40:45 by nchow-yu          #+#    #+#             */
-/*   Updated: 2023/01/23 10:58:10 by nchow-yu         ###   ########.fr       */
+/*   Updated: 2023/01/24 12:57:23 by nchow-yu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,6 @@ static int	check_color_rgb(char *color)
 	}
 	while (rgb[i] != NULL)
 	{
-		fprintf(stderr, "atoi[%d] = %d\n", i, ft_atoi(rgb[i]));
 		if (ft_atoi(rgb[i]) < 0 || ft_atoi(rgb[i]) > 255)
 		{
 			error_rgb();
@@ -63,7 +62,7 @@ static int	check_color_rgb(char *color)
 	return (0);
 }
 
-int	check_params(t_data *data)
+void	check_params(t_data *data)
 {
 	if (data->params.north == NULL || data->params.south == NULL
 		|| data->params.west == NULL || data->params.east == NULL
@@ -81,5 +80,4 @@ int	check_params(t_data *data)
 		ft_free_str(data->map);
 		exit(EXIT_FAILURE);
 	}
-	return (0);
 }
