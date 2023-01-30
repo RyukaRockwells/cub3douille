@@ -6,7 +6,7 @@
 /*   By: sanauth <sanauth@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 00:55:10 by nicole            #+#    #+#             */
-/*   Updated: 2023/01/29 15:15:27 by sanauth          ###   ########.fr       */
+/*   Updated: 2023/01/30 13:22:06 by sanauth          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,9 @@ void	file_error(void);
 void	fd_error(char *file, int fd);
 void	file_invalid(t_data *data);
 void	map_error(t_data *data);
+
+//error/ft_error_2.c
+void	ft_inmap_error(char *str);
 
 //**********//
 //**PARSER**//
