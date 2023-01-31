@@ -6,7 +6,7 @@
 /*   By: sanauth <sanauth@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 22:36:08 by nicole            #+#    #+#             */
-/*   Updated: 2023/01/31 13:42:29 by sanauth          ###   ########.fr       */
+/*   Updated: 2023/01/31 14:44:33 by sanauth          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,6 @@ int	ft_check_first_char(t_data *data)
 	int	j;
 
 	i = 0;
-	printf("FIRST\n");
 	while (i < (data->nb_line - 1))
 	{
 		j = 0;
@@ -56,7 +55,10 @@ int	ft_check_first_char(t_data *data)
 			j = 0;
 		}
 		else
+		{
+			printf("char = %c, i = %d, j = %d\n", data->map[i][j], i, j);
 			return (1);
+		}
 	}
 	return (0);
 }
@@ -67,7 +69,6 @@ int	ft_check_last_char(t_data *data)
 	int	j;
 
 	i = 0;
-	printf("LAST\n");
 	while (i < data->nb_line - 1)
 	{
 		j = (int)ft_strlen(data->map[i]) - 1;
@@ -80,8 +81,6 @@ int	ft_check_last_char(t_data *data)
 		}
 		else
 		{
-			printf("strlen = %d", (int)ft_strlen(data->map[i]));
-			printf("char = %c, i = %d, j = %d\n", data->map[i][j], i, j);
 			return (1);
 		}
 	}

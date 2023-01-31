@@ -6,7 +6,7 @@
 /*   By: sanauth <sanauth@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 22:36:08 by nicole            #+#    #+#             */
-/*   Updated: 2023/01/31 13:44:05 by sanauth          ###   ########.fr       */
+/*   Updated: 2023/01/31 14:45:01 by sanauth          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@ int	ft_count_pos(t_data *data)
 	i = 0;
 	j = 0;
 	count = 0;
-	printf("COUNTPOS\n");
 	while (data->map[i][j] != '\0')
 	{
 		if (data->map[i][j] == 'N' || data->map[i][j] == 'O' ||
@@ -65,7 +64,6 @@ int	ft_verify_content(t_data *data)
 
 	i = 0;
 	j = 0;
-	printf("VERIFY\n");
 	while (data->map[i][j] != '\0')
 	{
 		if (data->map[i][j] != 'N' && data->map[i][j] != 'O' &&
@@ -106,7 +104,10 @@ int	ft_check_zero(t_data *data)
 		if (data->map[i][j] == '0')
 		{
 			if (ft_check_around(data, i, j) == 1)
+			{
+				printf("char = %c, i = %d, j = %d\n", data->map[i][j], i, j);
 				return (1);
+			}
 		}
 		if (j == (int)ft_strlen(data->map[i]) - 1 && i < data->nb_line -1)
 		{

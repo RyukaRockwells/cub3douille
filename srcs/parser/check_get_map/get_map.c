@@ -6,7 +6,7 @@
 /*   By: sanauth <sanauth@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 22:51:21 by nicole            #+#    #+#             */
-/*   Updated: 2023/01/31 13:17:36 by sanauth          ###   ########.fr       */
+/*   Updated: 2023/01/31 14:26:55 by sanauth          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,16 +18,20 @@ static int	get_first_line_map(char **file)
 	int	j;
 
 	i = 0;
+	j = 0;
 	while (file[i] != NULL)
-	{
-		j = 0;
-		while (file[i][j] != '\0')
-		{
-			if (file[i][j] == '1' && file[i][j + 1] == '1')
-				return (i);
-			j++;
-		}
 		i++;
+	i = i - 1;
+	while (i > 0)
+	{
+		if (file[i][j] == 'C' || file[i][j] == 'F'
+		|| (file[i][j] == 'E' && file[i][j + 1] == 'A')
+		|| (file[i][j] == 'W' && file[i][j + 1] == 'E')
+		|| (file[i][j] == 'S' && file[i][j + 1] == 'O')
+		|| (file[i][j] == 'N' && file[i][j + 1] == 'O'))
+			return (i + 1);
+		else
+		i--;
 	}
 	return (i);
 }
