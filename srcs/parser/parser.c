@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nchow-yu <nchow-yu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sanauth <sanauth@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 12:54:31 by nchow-yu          #+#    #+#             */
-/*   Updated: 2023/01/24 14:50:19 by nchow-yu         ###   ########.fr       */
+/*   Updated: 2023/01/31 10:16:16 by sanauth          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,4 +34,5 @@ void	ft_parsing(t_data *data, int nb, char **argv)
 	data->map = get_map(data);
 	get_params(data);
 	check_params(data);
+	check_in_map(data);
 }

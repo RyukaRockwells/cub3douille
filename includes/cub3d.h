@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nchow-yu <nchow-yu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sanauth <sanauth@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 00:55:10 by nicole            #+#    #+#             */
-/*   Updated: 2023/01/30 15:33:02 by nchow-yu         ###   ########.fr       */
+/*   Updated: 2023/01/31 10:13:42 by sanauth          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,8 +70,12 @@ char	**get_file(char *file);
 //check_get_map/get_map.c
 char	**get_map(t_data *data);
 
+//check_get_map/check_contour.c
+int		ft_check_outline(t_data *data);
+
 //check_get_params/get_params.c
 void	get_params(t_data *data);
+int		ft_check_out_char(t_data *data);
 
 //check_get_params/check_params.c
 void	check_params(t_data *data);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nchow-yu <nchow-yu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sanauth <sanauth@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 22:36:08 by nicole            #+#    #+#             */
-/*   Updated: 2023/01/30 15:26:46 by nchow-yu         ###   ########.fr       */
+/*   Updated: 2023/01/31 10:14:20 by sanauth          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,11 @@
 
 void	check_in_map(t_data *data)
 {
-	if (ft_verify_content(data) == 1)
+	if (ft_check_outline(data) == 1)
+		ft_map_error(data, "MAP ERROR: First or last line not close\n");
+	else if (ft_check_out_char(data) == 1)
+		ft_map_error(data, "MAP ERROR: wrong first or last char\n");
+	else if (ft_verify_content(data) == 1)
 		ft_map_error(data, "MAP ERROR: wrong char map\n");
 	else if (ft_count_pos(data) == 1)
 		ft_map_error(data, "MAP ERROR: too much start position\n");
