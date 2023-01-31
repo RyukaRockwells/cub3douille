@@ -6,7 +6,7 @@
 /*   By: sanauth <sanauth@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 22:36:08 by nicole            #+#    #+#             */
-/*   Updated: 2023/01/31 14:45:01 by sanauth          ###   ########.fr       */
+/*   Updated: 2023/01/31 15:05:46 by sanauth          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,9 @@ void	check_in_map(t_data *data)
 		ft_map_error(data, "MAP ERROR: too much start position\n");
 	else if (ft_check_zero(data) == 1)
 		ft_map_error(data, "MAP ERROR: map not close\n");
-	else
+	//else
 		//ft_map_error(data, "MAP OK\n");
-		printf("MAPOK\n");
+	//	printf("MAPOK\n");
 }
 
 int	ft_count_pos(t_data *data)
@@ -105,7 +105,6 @@ int	ft_check_zero(t_data *data)
 		{
 			if (ft_check_around(data, i, j) == 1)
 			{
-				printf("char = %c, i = %d, j = %d\n", data->map[i][j], i, j);
 				return (1);
 			}
 		}

@@ -6,7 +6,7 @@
 /*   By: sanauth <sanauth@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 22:36:08 by nicole            #+#    #+#             */
-/*   Updated: 2023/01/31 14:44:33 by sanauth          ###   ########.fr       */
+/*   Updated: 2023/01/31 15:05:02 by sanauth          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,6 @@ int	ft_check_first_char(t_data *data)
 		}
 		else
 		{
-			printf("char = %c, i = %d, j = %d\n", data->map[i][j], i, j);
 			return (1);
 		}
 	}
