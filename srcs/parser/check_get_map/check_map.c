@@ -6,7 +6,7 @@
 /*   By: sanauth <sanauth@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 22:36:08 by nicole            #+#    #+#             */
-/*   Updated: 2023/01/31 11:38:21 by sanauth          ###   ########.fr       */
+/*   Updated: 2023/01/31 11:40:53 by sanauth          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	check_in_map(t_data *data)
 	else if (ft_check_zero(data) == 1)
 		ft_map_error(data, "MAP ERROR: map not close\n");
 	else
-		ft_map_error(data, "MAP OK\n");
+		printf("MAP OK\n");
 }
 
 int	ft_count_pos(t_data *data)
@@ -39,7 +39,6 @@ int	ft_count_pos(t_data *data)
 	i = 0;
 	j = 0;
 	count = 0;
-	printf("Countpos\n");
 	while (data->map[i][j] != '\0')
 	{
 		if (data->map[i][j] == 'N' || data->map[i][j] == 'O' ||
@@ -64,7 +63,6 @@ int	ft_verify_content(t_data *data)
 
 	i = 0;
 	j = 0;
-	printf("Verify content\n");
 	while (data->map[i][j] != '\0')
 	{
 		if (data->map[i][j] != 'N' && data->map[i][j] != 'O' &&
@@ -85,8 +83,6 @@ int	ft_verify_content(t_data *data)
 
 int	ft_check_around(t_data *data, int i, int j)
 {
-	//printf("check around\n");
-	//printf("checkaround = %c\n", data->map[i][j]);
 	if (data->map[i][j + 1] != ' ' && data->map[i][j - 1] != ' '
 	&& data->map[i + 1][j] != ' ' && data->map[i - 1][j] != ' '
 	&& data->map[i][j + 1] != '\n' && data->map[i][j - 1] != '\n'
@@ -102,20 +98,16 @@ int	ft_check_zero(t_data *data)
 
 	i = 0;
 	j = 0;
-	printf("Checkzero\n");
 	while (data->map[i][j] && j <= (int)ft_strlen(data->map[i]) - 1)
 	{
-		//printf("datamap[i][j] = %c | i = %d | j = %d\n", data->map[i][j], i, j);
 		if (data->map[i][j] == '0')
 		{
 			if (ft_check_around(data, i, j) == 1)
 				return (1);
 		}
-		//if (data->map[i][j] == '\0' && i < data->nb_line)
 		if (j == (int)ft_strlen(data->map[i]) - 1 && i < data->nb_line -1)
 		{
 			i++;
-			//printf("strlen = %d\n", (int)ft_strlen(data->map[i]));
 			j = 0;
 		}
 		j++;
