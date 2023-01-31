@@ -6,7 +6,7 @@
 /*   By: sanauth <sanauth@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 22:36:08 by nicole            #+#    #+#             */
-/*   Updated: 2023/01/31 11:45:59 by sanauth          ###   ########.fr       */
+/*   Updated: 2023/01/31 12:52:19 by sanauth          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,8 @@ void	check_in_map(t_data *data)
 	else if (ft_check_zero(data) == 1)
 		ft_map_error(data, "MAP ERROR: map not close\n");
 	else
-		ft_map_error(data, "MAP OK\n");
+		//ft_map_error(data, "MAP OK\n");
+		printf("MAPOK\n");
 }
 
 int	ft_count_pos(t_data *data)
@@ -70,7 +71,7 @@ int	ft_verify_content(t_data *data)
 			data->map[i][j] != '0' && data->map[i][j] != '1' &&
 			data->map[i][j] != ' ' && data->map[i][j] != '\n')
 			return (1);
-		if (data->map[i][j] == '\n' && i < data->nb_line)
+		if (j == (int)ft_strlen(data->map[i]) - 1 && i < data->nb_line)
 		{
 			i++;
 			j = 0;
