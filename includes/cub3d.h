@@ -6,7 +6,7 @@
 /*   By: sanauth <sanauth@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 00:55:10 by nicole            #+#    #+#             */
-/*   Updated: 2023/01/31 10:13:42 by sanauth          ###   ########.fr       */
+/*   Updated: 2023/01/31 11:25:09 by sanauth          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,10 +72,11 @@ char	**get_map(t_data *data);
 
 //check_get_map/check_contour.c
 int		ft_check_outline(t_data *data);
+int		ft_check_last_char(t_data *data);
+int		ft_check_first_char(t_data *data);
 
 //check_get_params/get_params.c
 void	get_params(t_data *data);
-int		ft_check_out_char(t_data *data);
 
 //check_get_params/check_params.c
 void	check_params(t_data *data);
