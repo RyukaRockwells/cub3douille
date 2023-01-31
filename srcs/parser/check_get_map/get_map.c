@@ -6,7 +6,7 @@
 /*   By: sanauth <sanauth@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 22:51:21 by nicole            #+#    #+#             */
-/*   Updated: 2023/01/31 12:58:08 by sanauth          ###   ########.fr       */
+/*   Updated: 2023/01/31 13:17:36 by sanauth          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ static int	get_nb_line_map(char **file)
 		j = 0;
 		while (file[i][j] != '\0')
 		{
-			if (file[i][j] == '1')
+			if (file[i][j])
 			{
 				nb++;
 				j = 0;
@@ -95,5 +95,4 @@ void	ft_print_map(t_data *data)
 	{
 		printf("%s\n", data->map[i++]);
 	}
-	exit(0);
 }
