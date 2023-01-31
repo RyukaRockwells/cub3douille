@@ -6,7 +6,7 @@
 /*   By: sanauth <sanauth@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 00:55:10 by nicole            #+#    #+#             */
-/*   Updated: 2023/01/31 12:57:54 by sanauth          ###   ########.fr       */
+/*   Updated: 2023/01/31 16:02:40 by sanauth          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,10 @@ void	get_params(t_data *data);
 
 //check_get_params/check_params.c
 void	check_params(t_data *data);
+
+//check_get_params/count_params.c
+int		ft_count_rgb(t_data *data);
+int		ft_count_directions(t_data *data);
 
 //parser.c
 void	ft_parsing(t_data *data, int nb, char **argv);

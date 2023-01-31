@@ -6,7 +6,7 @@
 /*   By: sanauth <sanauth@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 22:51:21 by nicole            #+#    #+#             */
-/*   Updated: 2023/01/31 14:26:55 by sanauth          ###   ########.fr       */
+/*   Updated: 2023/01/31 15:39:26 by sanauth          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,8 +95,8 @@ void	ft_print_map(t_data *data)
 	int	i;
 
 	i = 0;
-	while (data->map[i])
+	while (data->file[i])
 	{
-		printf("%s\n", data->map[i++]);
+		printf("%c\n", data->file[i++][0]);
 	}
 }

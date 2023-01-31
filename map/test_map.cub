@@ -1,10 +1,22 @@
+
+F 220,100,50
+C 225,30,0
+
+fhfehwjfoeijfowejfwekfmw
+
 NO ./textures/BRICK_3E.xpm
 SO ./textures/BRICK_3E.xpm
 WE ./textures/BRICK_3D.xpm
 EA ./textures/BRICK_3D.xpm
 
-F 220,100,50
-C 225,30,0
+
+
+NO ./textures/BRICK_3E.xpm
+SO ./textures/BRICK_3E.xpm
+WE ./textures/BRICK_3D.xpm
+EA ./textures/BRICK_3D.xpm
+
+
 111
 1
 11
@@ -43,7 +55,5 @@ C 225,30,0
 1          1111111111111111111
 1111111111111000000000000001
 111111111111111111111111111111
-
-
 
 
