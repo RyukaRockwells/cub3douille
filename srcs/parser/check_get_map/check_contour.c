@@ -6,7 +6,7 @@
 /*   By: sanauth <sanauth@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 22:36:08 by nicole            #+#    #+#             */
-/*   Updated: 2023/01/31 10:08:56 by sanauth          ###   ########.fr       */
+/*   Updated: 2023/01/31 10:19:19 by sanauth          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int	ft_check_out_char(t_data *data)
 		while (data->map[i][j] == ' ')
 			j++;
 		if (data->map[i][j] == '1'
-		&& (data->map[i][(int)ft_strlen(data->map[i]) - 2] == '1'))
+		&& (data->map[i][(int)ft_strlen(data->map[i]) - 1] == '1'))
 			i++;
 		else
 			return (1);
