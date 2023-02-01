@@ -6,7 +6,7 @@
 /*   By: sanauth <sanauth@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 00:55:10 by nicole            #+#    #+#             */
-/*   Updated: 2023/02/01 11:51:11 by sanauth          ###   ########.fr       */
+/*   Updated: 2023/02/01 13:06:02 by sanauth          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,7 @@ void	get_params(t_data *data);
 
 //check_get_params/check_params.c
 void	check_params(t_data *data);
+int		ft_is_param(t_data *data);
 
 //check_get_params/count_params.c
 int		ft_count_rgb(t_data *data);

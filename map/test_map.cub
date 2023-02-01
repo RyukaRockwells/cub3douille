@@ -4,10 +4,8 @@ NO ./textures/BRICK_3E.xpm
 SO ./textures/BRICK_3E.xpm
 WE ./textures/BRICK_3D.xpm
 EA ./textures/BRICK_3D.xpm
-F 220,100,50
-C 225,30,0
-
-
+F 220,200,50
+C 225,230,0
 111
 1
 11
