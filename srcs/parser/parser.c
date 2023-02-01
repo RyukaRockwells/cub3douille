@@ -6,7 +6,7 @@
 /*   By: sanauth <sanauth@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 12:54:31 by nchow-yu          #+#    #+#             */
-/*   Updated: 2023/01/31 16:40:48 by sanauth          ###   ########.fr       */
+/*   Updated: 2023/02/01 09:42:33 by sanauth          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,8 @@ void	ft_parsing(t_data *data, int nb, char **argv)
 		i++;
 	}
 	data->map = get_map(data);
-	if (ft_count_rgb(data) == 1 || ft_count_directions(data) == 1)
+	if (ft_count_rgb(data) == 1 || ft_count_directions(data) == 1
+		|| ft_is_file_clear(data) == 1)
 		ft_map_error(data, "Error\nToo much parameters\n");
 	get_params(data);
 	check_params(data);

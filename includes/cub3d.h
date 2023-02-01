@@ -6,7 +6,7 @@
 /*   By: sanauth <sanauth@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 00:55:10 by nicole            #+#    #+#             */
-/*   Updated: 2023/01/31 16:02:40 by sanauth          ###   ########.fr       */
+/*   Updated: 2023/02/01 09:40:18 by sanauth          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,9 @@ void	check_params(t_data *data);
 //check_get_params/count_params.c
 int		ft_count_rgb(t_data *data);
 int		ft_count_directions(t_data *data);
+int		ft_is_file_clear(t_data *data);
+int		ft_line_ok(t_data *data, int i, int J);
+int		ft_empty_line(t_data *data, int i);
 
 //parser.c
 void	ft_parsing(t_data *data, int nb, char **argv);
