@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_error_utils.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nchow-yu <nchow-yu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sanauth <sanauth@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 09:15:20 by nchow-yu          #+#    #+#             */
-/*   Updated: 2023/01/30 15:31:45 by nchow-yu         ###   ########.fr       */
+/*   Updated: 2023/02/01 13:33:55 by sanauth          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ void	error_missing_params(t_data *data)
 void	ft_map_error(t_data *data, char *str)
 {
 	ft_putstr_fd(str, 2);
+	ft_free_all_params(data);
 	ft_free(data->file);
 	ft_free(data->map);
 	exit(EXIT_FAILURE);

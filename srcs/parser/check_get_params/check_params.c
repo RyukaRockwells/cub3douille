@@ -6,7 +6,7 @@
 /*   By: sanauth <sanauth@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 08:40:45 by nchow-yu          #+#    #+#             */
-/*   Updated: 2023/02/01 13:21:29 by sanauth          ###   ########.fr       */
+/*   Updated: 2023/02/01 13:43:38 by sanauth          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,8 @@ static int	check_color_rgb(char *color)
 
 void	check_params(t_data *data)
 {
+	if (ft_is_param(data) == 1)
+		ft_map_error(data, "Error\nParam error\n");
 	if (data->params.north == NULL || data->params.south == NULL
 		|| data->params.west == NULL || data->params.east == NULL
 		|| data->params.floor == NULL || data->params.ceiling == NULL)
@@ -73,10 +75,8 @@ void	check_params(t_data *data)
 		|| check_open_file(data->params.west) == 1
 		|| check_open_file(data->params.east) == 1
 		|| check_color_rgb(data->params.floor) == 1
-		|| check_color_rgb(data->params.ceiling) == 1
-		|| ft_is_param(data) == 1)
+		|| check_color_rgb(data->params.ceiling) == 1)
 	{
-		ft_putstr_fd("Error\nParam error\n", 2);
 		ft_free_all_params(data);
 		ft_free_str(data->file);
 		ft_free_str(data->map);
@@ -100,7 +100,6 @@ int	ft_is_param(t_data *data)
 	i = 0;
 	while (data->params.floor[i])
 	{
-		printf("param = %c\n", data->params.floor[i]);
 		if (ft_isdigit(data->params.floor[i]) == 1
 			|| data->params.floor[i] == ',')
 			i++;

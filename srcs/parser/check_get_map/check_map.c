@@ -6,7 +6,7 @@
 /*   By: sanauth <sanauth@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 22:36:08 by nicole            #+#    #+#             */
-/*   Updated: 2023/01/31 15:05:46 by sanauth          ###   ########.fr       */
+/*   Updated: 2023/02/01 13:47:20 by sanauth          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,20 +15,17 @@
 void	check_in_map(t_data *data)
 {
 	if (ft_check_outline(data) == 1)
-		ft_map_error(data, "MAP ERROR: First or last line not close\n");
+		ft_map_error(data, "Error\nFirst or last line not close\n");
 	else if (ft_check_first_char(data) == 1)
-		ft_map_error(data, "MAP ERROR: wrong first char\n");
+		ft_map_error(data, "Error\nWrong first char\n");
 	else if (ft_check_last_char(data) == 1)
-		ft_map_error(data, "MAP ERROR: wrong last char\n");
+		ft_map_error(data, "Error\nWrong last char\n");
 	else if (ft_verify_content(data) == 1)
-		ft_map_error(data, "MAP ERROR: wrong char map\n");
+		ft_map_error(data, "Error\nWrong char in map\n");
 	else if (ft_count_pos(data) == 1)
-		ft_map_error(data, "MAP ERROR: too much start position\n");
+		ft_map_error(data, "Error\nToo much start position\n");
 	else if (ft_check_zero(data) == 1)
-		ft_map_error(data, "MAP ERROR: map not close\n");
-	//else
-		//ft_map_error(data, "MAP OK\n");
-	//	printf("MAPOK\n");
+		ft_map_error(data, "Error\nMap not close\n");
 }
 
 int	ft_count_pos(t_data *data)
