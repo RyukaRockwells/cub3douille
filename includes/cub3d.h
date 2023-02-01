@@ -6,7 +6,7 @@
 /*   By: sanauth <sanauth@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 00:55:10 by nicole            #+#    #+#             */
-/*   Updated: 2023/02/01 09:40:18 by sanauth          ###   ########.fr       */
+/*   Updated: 2023/02/01 11:51:11 by sanauth          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,8 +88,12 @@ int		ft_is_file_clear(t_data *data);
 int		ft_line_ok(t_data *data, int i, int J);
 int		ft_empty_line(t_data *data, int i);
 
+//check_get_params/count_params_2.c
+int		ft_no_upmap(t_data *data);
+
 //parser.c
 void	ft_parsing(t_data *data, int nb, char **argv);
+void	ft_parse_2(t_data *data);
 void	ft_print_map(t_data *data);
 
 //***********//
