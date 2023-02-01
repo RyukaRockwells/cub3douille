@@ -6,7 +6,7 @@
 /*   By: nchow-yu <nchow-yu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 13:39:32 by nchow-yu          #+#    #+#             */
-/*   Updated: 2023/01/30 15:38:23 by nchow-yu         ###   ########.fr       */
+/*   Updated: 2023/02/01 12:57:59 by nchow-yu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,8 @@
 
 # define WIDTH 640
 # define HEIGTH 480
-# define SIZE 17
+# define SIZE 32
+# define PI 3.1415926
 
 typedef struct s_img
 {
@@ -26,6 +27,7 @@ typedef struct s_img
 
 typedef struct s_pos
 {
+	char	dir_view;
 	double	x;
 	double	y;
 }	t_pos;
@@ -68,38 +70,3 @@ typedef struct s_data
 }	t_data;
 
 #endif
-/*
-	mlx_pixel_put(data->mlx, data->win, \
-		data->pos.x * SIZE, data->pos.y * SIZE, 0x0000F0FF);
-	mlx_pixel_put(data->mlx, data->win, \
-		(data->pos.x * SIZE) + 1, data->pos.y * SIZE, 0x0000F0FF);
-	mlx_pixel_put(data->mlx, data->win, \
-		(data->pos.x * SIZE) + 2, data->pos.y * SIZE, 0x0000F0FF);
-	mlx_pixel_put(data->mlx, data->win, \
-		(data->pos.x * SIZE) - 1, data->pos.y * SIZE, 0x0000F0FF);
-	mlx_pixel_put(data->mlx, data->win, \
-		(data->pos.x * SIZE) - 2, data->pos.y * SIZE, 0x0000F0FF);
-	mlx_pixel_put(data->mlx, data->win, \
-		data->pos.x * SIZE, (data->pos.y * SIZE) + 1, 0x0000F0FF);
-	mlx_pixel_put(data->mlx, data->win, \
-		data->pos.x * SIZE, (data->pos.y * SIZE) + 2, 0x0000F0FF);
-	mlx_pixel_put(data->mlx, data->win, \
-		data->pos.x * SIZE, (data->pos.y * SIZE) + 1, 0x0000F0FF);
-	mlx_pixel_put(data->mlx, data->win, \
-		data->pos.x * SIZE, (data->pos.y * SIZE) - 2, 0x0000F0FF);
-
-	int	i;
-	int	j;
-
-	i = data->pos.x - 2;
-	while (i <= data->pos.x + 2)
-	{
-		j = data->pos.y - 2;
-		while (j <= data->pos.y + 2)
-		{
-			mlx_pixel_put(data->mlx, data->win, (i * SIZE), (j * SIZE), 0x0000FFFF);
-			j++;
-		}
-		i++;
-	}
-*/

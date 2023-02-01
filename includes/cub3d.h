@@ -6,7 +6,7 @@
 /*   By: nchow-yu <nchow-yu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 00:55:10 by nicole            #+#    #+#             */
-/*   Updated: 2023/01/30 15:33:02 by nchow-yu         ###   ########.fr       */
+/*   Updated: 2023/01/31 14:56:13 by nchow-yu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <stdlib.h>
 # include <errno.h>
 # include <fcntl.h>
+# include <math.h>
 # include "struct.h"
 # include "../mlx_linux/mlx.h"
 # include "../srcs/lib/libft/libft.h"
@@ -85,9 +86,9 @@ void	ft_parsing(t_data *data, int nb, char **argv);
 //init_textures.c
 void	init_textures(t_data *data);
 
-//****** *****//
+//************//
 //**MINI_MAP**//
-//******* ****//
+//************//
 //mini_map.c
 void	p_mini_map(t_data *data);
 void	draw_mini_map(t_data *data);
@@ -98,4 +99,9 @@ int		ft_verify_content(t_data *data);
 void	print_map(t_data *data);
 int		ft_check_around(t_data *data, int i, int j);
 int		ft_check_zero(t_data *data);
+
+//*************//
+//**RAYCASTER**//
+//*************//
+void	finding_h_intersection(t_data *data);
 #endif

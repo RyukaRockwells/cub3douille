@@ -6,7 +6,7 @@
 /*   By: nchow-yu <nchow-yu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 10:43:09 by nchow-yu          #+#    #+#             */
-/*   Updated: 2023/01/25 19:50:22 by nchow-yu         ###   ########.fr       */
+/*   Updated: 2023/01/31 15:37:46 by nchow-yu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,13 +27,13 @@ void	init_window(t_data *data)
 	data->mlx = mlx_init();
 	if (data->mlx == NULL)
 		ft_close(data);
-	data->win = mlx_new_window(data->mlx, WIDTH, HEIGTH, "Cub3D");
+	data->win = mlx_new_window(data->mlx, data->max_len * SIZE, data->nb_line * SIZE, "Cub3D");
 	if (data->win == NULL)
 	{
 		free(data->mlx);
 		ft_close(data);
 	}
-	data->img.img = mlx_new_image(data->mlx, WIDTH, HEIGTH);
+	data->img.img = mlx_new_image(data->mlx, data->max_len * SIZE, data->nb_line * SIZE);
 }
 
 void	init_pos_player(t_data *data)
@@ -52,6 +52,7 @@ void	init_pos_player(t_data *data)
 			{
 				data->pos.x = j + 0.5;
 				data->pos.y = i + 0.5;
+				data->pos.dir_view = data->map[i][j];
 			}
 			j++;
 		}
