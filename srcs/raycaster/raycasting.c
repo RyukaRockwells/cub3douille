@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nchow-yu <nchow-yu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sanauth <sanauth@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 14:10:40 by nchow-yu          #+#    #+#             */
-/*   Updated: 2023/02/01 14:22:46 by nchow-yu         ###   ########.fr       */
+/*   Updated: 2023/02/01 16:24:46 by sanauth          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	finding_h_intersection(t_data *data)
 		while (j <= ay + 1)
 		{
 			mlx_pixel_put(data->mlx, data->win, \
-			i, j, 0x00DC143C);
+			i, j, 0x00DC140C);
 			j++;
 		}
 		i++;
@@ -61,3 +61,4 @@ void	finding_h_intersection(t_data *data)
 	// 		j--;
 	// }
 }
+
