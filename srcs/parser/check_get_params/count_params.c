@@ -6,7 +6,7 @@
 /*   By: sanauth <sanauth@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 15:41:13 by nicole            #+#    #+#             */
-/*   Updated: 2023/02/01 12:51:41 by sanauth          ###   ########.fr       */
+/*   Updated: 2023/02/01 13:56:55 by sanauth          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,6 @@ int	ft_is_file_clear(t_data *data)
 		j = 0;
 		if (data->file[i][j] == ' ' || data->file[i][j] == '\n')
 			j = ft_empty_line(data, i);
-	//	printf("data->file[i][j] = %c | i = %d | j = %d\n", data->file[i][j], i, j);
 		if (ft_line_ok(data, i, j) == 1)
 			return (1);
 		else
