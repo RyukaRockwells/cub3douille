@@ -6,7 +6,7 @@
 /*   By: nchow-yu <nchow-yu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 14:10:40 by nchow-yu          #+#    #+#             */
-/*   Updated: 2023/02/01 14:22:46 by nchow-yu         ###   ########.fr       */
+/*   Updated: 2023/02/01 14:43:41 by nchow-yu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,12 +41,12 @@ void	finding_h_intersection(t_data *data)
 		i++;
 	}
 	fprintf(stderr, "char = %c\n%s\n", data->map[10][26], data->map[10]);
-	// i = (int)(ax / SIZE);
-	// j = (int)(ay / SIZE);
-	// if (data->map[i][j] == '0')
-	// 	fprintf(stderr, "Nothing\n");
-	// else if (data->map[i][j] == '1')
-	// 	fprintf(stderr, "It's a wall\n");
+	i = (ax / SIZE);
+	j = (ay / SIZE);
+	if (data->map[i][j] == '0')
+		fprintf(stderr, "Nothing\n");
+	else if (data->map[i][j] == '1')
+		fprintf(stderr, "It's a wall\n");
 	// i = ax;
 	// j = ay;
 	// fprintf(stderr, "p.x = %f | p.y = %f\n", data->pos.x * SIZE, data->pos.y * SIZE);
