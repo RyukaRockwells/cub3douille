@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nchow-yu <nchow-yu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sanauth <sanauth@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 00:55:10 by nicole            #+#    #+#             */
-/*   Updated: 2023/01/31 14:56:13 by nchow-yu         ###   ########.fr       */
+/*   Updated: 2023/02/01 16:51:19 by sanauth          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,4 +104,6 @@ int		ft_check_zero(t_data *data);
 //**RAYCASTER**//
 //*************//
 void	finding_h_intersection(t_data *data);
+void	cast_ray(t_data *data);
+
 #endif
