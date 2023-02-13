@@ -6,7 +6,7 @@
 /*   By: sanauth <sanauth@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 01:22:11 by nicole            #+#    #+#             */
-/*   Updated: 2023/02/13 09:51:36 by sanauth          ###   ########.fr       */
+/*   Updated: 2023/02/13 13:20:23 by sanauth          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,12 @@ void	file_error(void)
 
 void	fd_error(char *file, int fd)
 {
+	(void)(fd);
 	ft_putstr_fd("Error\n", 2);
 	ft_putstr_fd(strerror(errno), 2);
 	ft_putstr_fd(": ", 2);
 	ft_putstr_fd(file, 2);
 	ft_putstr_fd("\n", 2);
-	close(fd);
 	exit(EXIT_FAILURE);
 }
 
