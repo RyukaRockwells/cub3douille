@@ -6,7 +6,7 @@
 /*   By: nchow-yu <nchow-yu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 14:10:40 by nchow-yu          #+#    #+#             */
-/*   Updated: 2023/02/13 18:12:11 by nchow-yu         ###   ########.fr       */
+/*   Updated: 2023/02/13 19:58:02 by nchow-yu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void	find_h_intersection(t_data *data, double degrees)
 	count = 0;
 	if (degrees == 180.0 || degrees == 90.0 || degrees == 270.0 || degrees == 0.0)
 		return ;
-	else if (degrees >= 0.1 && degrees <= 179.0)
+	else if (degrees >= 0.1 && degrees <= 179.9)
 		ay = floor(data->pos.y) * (SIZE) - 1;
 	else if (degrees >= 181.0 && degrees <= 360.0)
 		ay = floor(data->pos.y) * (SIZE) + SIZE;
@@ -76,7 +76,7 @@ void	find_h_intersection(t_data *data, double degrees)
 	while ((ay < ((data->nb_line - 1) * SIZE) && ax < ((data->max_len - 1) * SIZE))
 		&& (data->map[(int)ay / SIZE][(int)ax / SIZE] != '1' && data->map[(int)ay / SIZE][(int)ax / SIZE] != ' '))
 	{
-		//fprintf(stderr, "ax pixel = %f | ay pixl = %f\n | a max = %d | a min = %d\n", ax / SIZE, ay / SIZE, data->max_len, data->nb_line);
+		fprintf(stderr, "ax pixel = %f | ay pixl = %f\n | a max = %d | a min = %d\n", ax / SIZE, ay / SIZE, data->max_len, data->nb_line);
 		i = ax - 1;
 		while (i <= ax + 1)
 		{
@@ -93,7 +93,7 @@ void	find_h_intersection(t_data *data, double degrees)
 		old_y = ay;
 		next_x = SIZE / tan(degrees * (M_PI / 180));
 		ax = old_x + next_x;
-		if ((degrees >= 0.1 && degrees <= 179.0))
+		if ((degrees >= 0.1 && degrees <= 179.9))
 			ay = old_y - SIZE;
 		else if ((degrees >= 181.0 && degrees <= 360.0))
 			ay = old_y + SIZE;
@@ -105,9 +105,8 @@ void	find_h_intersection(t_data *data, double degrees)
 	//bresenham(data, old_x, old_y);
 	i = old_x - 1;
 	j = old_y - 1;
-	//fprintf(stderr, "i = %f | old_x = %f | j = %f | old_y = %f\n", i, old_x, j, old_y);
-	while (i <= old_x + 1
-		&& (data->map[(int)old_y / SIZE][(int)old_x / SIZE] != '1' && data->map[(int)old_y / SIZE][(int)old_x / SIZE] != ' '))
+	fprintf(stderr, "i = %f | old_x = %f | j = %f | old_y = %f\n", i, old_x, j, old_y);
+	while (i <= old_x + 1)
 	{
 		j = old_y - 1;
 		while (j <= old_y + 1)
