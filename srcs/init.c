@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sanauth <sanauth@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nchow-yu <nchow-yu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 10:43:09 by nchow-yu          #+#    #+#             */
-/*   Updated: 2023/02/01 18:09:06 by sanauth          ###   ########.fr       */
+/*   Updated: 2023/02/10 13:20:05 by nchow-yu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,10 +60,10 @@ void	init_pos_player(t_data *data)
 		i++;
 	}
 	count = i;
-	printf("data->pos.x * SIZE) - count = %f\n", (data->pos.x * SIZE) - count);
-	printf("data->pos.y * SIZE) = %f\n", (data->pos.y * SIZE));
-	while ((data->pos.x * SIZE) - count-- < 1500)
-	{
-		mlx_pixel_put(data->mlx, data->win, (data->pos.x * SIZE) - count, (data->pos.y + 1) * SIZE, 0x00FF00);
-	}
+	//printf("data->pos.x * SIZE) - count = %f\n", (data->pos.x * SIZE) - count);
+	//printf("data->pos.y * SIZE) = %f\n", (data->pos.y * SIZE));
+	// while ((data->pos.x * SIZE) - count-- < 1500)
+	// {
+	// 	mlx_pixel_put(data->mlx, data->win, (data->pos.x * SIZE) - count, (data->pos.y + 1) * SIZE, 0x00FF00);
+	// }
 }
