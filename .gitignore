@@ -1,1 +1,8 @@
 *.o
+map/invalid_maps
+map/valid_maps
+test.sh
+error_copy.log
+error_valgrind.log
+error.log
+

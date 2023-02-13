@@ -6,7 +6,7 @@
 /*   By: sanauth <sanauth@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 08:40:45 by nchow-yu          #+#    #+#             */
-/*   Updated: 2023/02/01 13:43:38 by sanauth          ###   ########.fr       */
+/*   Updated: 2023/02/13 11:58:41 by sanauth          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,15 @@ static int	nb_line_split(char **str)
 static int	check_open_file(char *path)
 {
 	int	fd;
+	int	i;
 
+	i = ft_strlen(path);
+	if (path[i - 1] != 'm' || path[i - 2] != 'p' || path[i - 3] != 'x'
+		|| path[i - 4] != '.')
+	{
+		error_xpm(path);
+		return (1);
+	}
 	fd = open(path, O_RDONLY);
 	if (fd < 0)
 	{

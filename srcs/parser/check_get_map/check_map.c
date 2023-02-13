@@ -6,7 +6,7 @@
 /*   By: sanauth <sanauth@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 22:36:08 by nicole            #+#    #+#             */
-/*   Updated: 2023/02/01 13:47:20 by sanauth          ###   ########.fr       */
+/*   Updated: 2023/02/13 11:38:08 by sanauth          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ void	check_in_map(t_data *data)
 		ft_map_error(data, "Error\nWrong char in map\n");
 	else if (ft_count_pos(data) == 1)
 		ft_map_error(data, "Error\nToo much start position\n");
+	else if (ft_count_pos(data) == 2)
+		ft_map_error(data, "Error\nNo start position\n");
 	else if (ft_check_zero(data) == 1)
 		ft_map_error(data, "Error\nMap not close\n");
 }
@@ -39,8 +41,8 @@ int	ft_count_pos(t_data *data)
 	count = 0;
 	while (data->map[i][j] != '\0')
 	{
-		if (data->map[i][j] == 'N' || data->map[i][j] == 'O' ||
-			data->map[i][j] == 'P' || data->map[i][j] == 'S')
+		if (data->map[i][j] == 'N' || data->map[i][j] == 'W' ||
+			data->map[i][j] == 'E' || data->map[i][j] == 'S')
 			count++;
 		j++;
 		if (j == (int)ft_strlen(data->map[i]) && i < data->nb_line - 1)
@@ -51,6 +53,8 @@ int	ft_count_pos(t_data *data)
 	}
 	if (count > 1)
 		return (1);
+	else if (count == 0)
+		return (2);
 	return (0);
 }
 
@@ -63,8 +67,8 @@ int	ft_verify_content(t_data *data)
 	j = 0;
 	while (data->map[i][j] != '\0')
 	{
-		if (data->map[i][j] != 'N' && data->map[i][j] != 'O' &&
-			data->map[i][j] != 'P' && data->map[i][j] != 'S' &&
+		if (data->map[i][j] != 'N' && data->map[i][j] != 'E' &&
+			data->map[i][j] != 'W' && data->map[i][j] != 'S' &&
 			data->map[i][j] != '0' && data->map[i][j] != '1' &&
 			data->map[i][j] != ' ' && data->map[i][j] != '\n')
 			return (1);

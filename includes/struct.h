@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   struct.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nchow-yu <nchow-yu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sanauth <sanauth@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 13:39:32 by nchow-yu          #+#    #+#             */
-/*   Updated: 2023/01/30 15:38:23 by nchow-yu         ###   ########.fr       */
+/*   Updated: 2023/02/13 11:52:05 by sanauth          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STRUCT_H
 # define STRUCT_H
 
-# define WIDTH 640
-# define HEIGTH 480
+# define WIDTH 1000
+# define HEIGTH 1000
 # define SIZE 17
 
 typedef struct s_img

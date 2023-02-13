@@ -6,7 +6,7 @@
 /*   By: sanauth <sanauth@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 12:54:31 by nchow-yu          #+#    #+#             */
-/*   Updated: 2023/02/01 14:18:16 by sanauth          ###   ########.fr       */
+/*   Updated: 2023/02/13 11:59:24 by sanauth          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,3 +46,4 @@ void	ft_parse_2(t_data *data)
 	if (ft_is_file_clear(data) == 1 || ft_no_upmap(data) == 1)
 		ft_map_error(data, "Error\nFile error\n");
 }
+
