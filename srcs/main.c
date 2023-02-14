@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nchow-yu <nchow-yu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sanauth <sanauth@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 00:53:40 by nicole            #+#    #+#             */
-/*   Updated: 2023/02/13 19:52:46 by nchow-yu         ###   ########.fr       */
+/*   Updated: 2023/02/14 12:47:43 by sanauth          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ int	main(int nb, char **argv)
 	{
 		fprintf(stderr, "RIGHT - Enter in find_h\n");
 		find_h_intersection(&data, degrees);
-		fprintf(stderr, "LEFT - Enter in find_v\n");
+		//fprintf(stderr, "LEFT - Enter in find_v\n");
 		// finding_v_intersection(&data, degrees, 0x00FF1493, 0X001E90FF);
 		if (degrees == 0.0)
 			degrees = 360.0;
