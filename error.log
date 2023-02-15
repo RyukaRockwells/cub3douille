@@ -1,0 +1,77 @@
+degrees = 0.000000
+RIGHT - Enter in find_h
+Right - degrees = 359.906250
+RIGHT - Enter in find_h
+pi180 = 6.281549
+AVANT >>>>>>>>>>>>> ax = 742.762396 | ay = 128.000000 | degree = 359.906250 | posx = 752.000000 | posy = 112.000000
+
+j = 128.000000 | degrees = 359.906250 | i = 741.762396 
+ 
+j = 129.000000 | degrees = 359.906250 | i = 741.762396 
+ 
+j = 130.000000 | degrees = 359.906250 | i = 741.762396 
+ 
+j = 128.000000 | degrees = 359.906250 | i = 742.762396 
+ 
+j = 129.000000 | degrees = 359.906250 | i = 742.762396 
+ 
+j = 130.000000 | degrees = 359.906250 | i = 742.762396 
+ 
+j = 128.000000 | degrees = 359.906250 | i = 743.762396 
+ 
+j = 129.000000 | degrees = 359.906250 | i = 743.762396 
+ 
+j = 130.000000 | degrees = 359.906250 | i = 743.762396 
+ =================================================================
+==315699==ERROR: AddressSanitizer: heap-buffer-overflow on address 0x604000001385 at pc 0x0000004d541c bp 0x7fff1f46bef0 sp 0x7fff1f46bee8
+READ of size 1 at 0x604000001385 thread T0
+    #0 0x4d541b in find_h_intersection /mnt/nfs/homes/sanauth/TC/raycast_atm/srcs/raycaster/raycasting.c:80:7
+    #1 0x4cbdc7 in main /mnt/nfs/homes/sanauth/TC/raycast_atm/srcs/main.c:63:3
+    #2 0x7f811c209d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #3 0x7f811c209e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #4 0x41f5c4 in _start (/mnt/nfs/homes/sanauth/TC/raycast_atm/cub3D+0x41f5c4)
+
+0x604000001385 is located 11 bytes to the left of 33-byte region [0x604000001390,0x6040000013b1)
+allocated by thread T0 here:
+    #0 0x49a48d in malloc (/mnt/nfs/homes/sanauth/TC/raycast_atm/cub3D+0x49a48d)
+    #1 0x4ccf66 in get_line /mnt/nfs/homes/sanauth/TC/raycast_atm/srcs/lib/get_next_line/get_next_line.c:26:8
+    #2 0x4cde6d in get_next_line /mnt/nfs/homes/sanauth/TC/raycast_atm/srcs/lib/get_next_line/get_next_line.c:105:8
+    #3 0x4cfebd in get_file /mnt/nfs/homes/sanauth/TC/raycast_atm/srcs/parser/check_get_file/get_file.c:52:18
+    #4 0x4cfa50 in ft_parsing /mnt/nfs/homes/sanauth/TC/raycast_atm/srcs/parser/parser.c:25:15
+    #5 0x4cb6c6 in main /mnt/nfs/homes/sanauth/TC/raycast_atm/srcs/main.c:37:2
+    #6 0x7f811c209d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+
+SUMMARY: AddressSanitizer: heap-buffer-overflow /mnt/nfs/homes/sanauth/TC/raycast_atm/srcs/raycaster/raycasting.c:80:7 in find_h_intersection
+Shadow bytes around the buggy address:
+  0x0c087fff8220: fa fa 00 00 00 00 03 fa fa fa fd fd fd fd fd fd
+  0x0c087fff8230: fa fa fd fd fd fd fd fd fa fa fd fd fd fd fd fd
+  0x0c087fff8240: fa fa fd fd fd fd fd fd fa fa fd fd fd fd fd fa
+  0x0c087fff8250: fa fa fd fd fd fd fd fd fa fa fd fd fd fd fd fd
+  0x0c087fff8260: fa fa fd fd fd fd fd fd fa fa fd fd fd fd fd fd
+=>0x0c087fff8270:[fa]fa 00 00 00 00 01 fa fa fa fd fd fd fd fd fd
+  0x0c087fff8280: fa fa fd fd fd fd fd fd fa fa fd fd fd fd fd fd
+  0x0c087fff8290: fa fa 00 00 00 00 03 fa fa fa 00 00 00 00 03 fa
+  0x0c087fff82a0: fa fa 00 00 00 00 03 fa fa fa 00 00 00 00 03 fa
+  0x0c087fff82b0: fa fa 00 00 00 00 03 fa fa fa 00 00 00 00 03 fa
+  0x0c087fff82c0: fa fa 00 00 00 00 03 fa fa fa 00 00 00 00 03 fa
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+  Shadow gap:              cc
+==315699==ABORTING
