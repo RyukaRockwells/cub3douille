@@ -6,7 +6,7 @@
 /*   By: sanauth <sanauth@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 00:53:40 by nicole            #+#    #+#             */
-/*   Updated: 2023/02/14 14:39:12 by sanauth          ###   ########.fr       */
+/*   Updated: 2023/02/16 14:08:31 by sanauth          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@ int	main(int nb, char **argv)
 {
 	t_data	data;
 	double		degrees;
-	int		init_degrees;
-	int		nb_ray;
+	double		init_degrees;
+	int			nb_ray;
 
 	data.max_len = 0;
 	nb_ray = 0;
@@ -53,13 +53,15 @@ int	main(int nb, char **argv)
 		fprintf(stderr, "degrees is NULL\n");
 		degrees = 0.0;
 	}
+	degrees = degrees + 30.0;
 	init_degrees = degrees;
 	fprintf(stderr, "degrees = %f\n", degrees);
 	//find_h_intersection(&data, degrees);
 	//finding_v_intersection(&data, degrees);
-	while (degrees >= (init_degrees - 30))
+	while (degrees >= (init_degrees - 60.0))
 	{
 		fprintf(stderr, "RIGHT - Enter in find_h\n");
+	fprintf(stderr, "degrees2 = %f\n", degrees);
 		find_h_intersection(&data, degrees);
 		//fprintf(stderr, "LEFT - Enter in find_v\n");
 		// finding_v_intersection(&data, degrees, 0x00FF1493, 0X001E90FF);

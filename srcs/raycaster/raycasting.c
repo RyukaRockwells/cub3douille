@@ -6,7 +6,7 @@
 /*   By: sanauth <sanauth@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 14:10:40 by nchow-yu          #+#    #+#             */
-/*   Updated: 2023/02/15 18:20:50 by sanauth          ###   ########.fr       */
+/*   Updated: 2023/02/16 14:14:34 by sanauth          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,12 +64,13 @@ void	find_h_intersection(t_data *data, double degrees)
 	if (degrees == 180.0 || degrees == 90.0 || degrees == 270.0 || degrees == 0.0)
 		return ;
 	else if (degrees >= 0.1 && degrees <= 179.9)
-		ay = floor(data->pos.y) * (SIZE) -1;
+		ay = floor(data->pos.y) * (SIZE) - 1;
 	else if (degrees >= 181.0 && degrees <= 360.0)
 		ay = floor(data->pos.y) * (SIZE) + SIZE;
 	else
 		return ;
-	ax = (data->pos.x * SIZE) + ((data->pos.y * SIZE) - ay) / tan(60*(M_PI / 180));
+	ax = ((data->pos.x)* SIZE) + ((data->pos.y * SIZE) - ay) / tan(degrees * (M_PI / 180));
+
 	fprintf(stderr, "pi180 = %f\n", degrees *(M_PI / 180));
 	//fprintf(stderr,"tan(degree * (M_pi /180)= %f\n", tan(degrees * (M_PI / 180)));
 	//fprintf(stderr, "ax = %f | max_len = %d | ay = %f | nb_line = %d\n", ax, ((data->max_len - 1) * SIZE), ay, ((data->nb_line - 1) * SIZE));
@@ -80,10 +81,10 @@ void	find_h_intersection(t_data *data, double degrees)
 		&& (data->map[(int)ay / SIZE][(int)ax / SIZE] != '1' && data->map[(int)ay / SIZE][(int)ax / SIZE] != ' '))
 	{
 		//fprintf(stderr, "ax pixel = %f | ay pixl = %f\n | a max = %d | a min = %d\n", ax / SIZE, ay / SIZE, data->max_len, data->nb_line);
-		i = ax - 1;
+		i = ax;
 		while (i <= ax + 1)
 		{
-			j = ay - 1;
+			j = ay;
 			while (j <= ay + 1)
 			{
 				mlx_pixel_put(data->mlx, data->win, \
@@ -105,7 +106,7 @@ void	find_h_intersection(t_data *data, double degrees)
 		else
 			break ;
 	}
-	if (ax >= ((data->max_len - 1) * SIZE) || ay >= ((data->nb_line - 1) * SIZE))
+	if (ax >= ((data->max_len - 1) * SIZE) || ay >= ((data->nb_line) * SIZE))
 		return ;
 	//fprintf(stderr, "APREEES >>>>>>>>>>>>>>>>>>>>>> ax = %f | ay = %f\n", ax, ay);
 	old_x = ax;
@@ -147,23 +148,23 @@ void	find_h_intersection(t_data *data, double degrees)
 	//mlx_pixel_put(data->mlx, data->win, \
 	//		952, 34, 0X001E90FF);
 	mlx_pixel_put(data->mlx, data->win, \
-			846, 250, 0X001E90FF);
+			840, 220, 0X001E90FF);
 	mlx_pixel_put(data->mlx, data->win, \
-			846, 251, 0X001E90FF);
+			840, 221, 0X001E90FF);
 	mlx_pixel_put(data->mlx, data->win, \
-			846, 252, 0X001E90FF);
+			840, 222, 0X001E90FF);
 	mlx_pixel_put(data->mlx, data->win, \
-			846, 250, 0X001E90FF);
+			840, 220, 0X001E90FF);
 	mlx_pixel_put(data->mlx, data->win, \
-			846, 251, 0X001E90FF);
+			840, 221, 0X001E90FF);
 	mlx_pixel_put(data->mlx, data->win, \
-			846, 252, 0X001E90FF);
+			840, 222, 0X001E90FF);
 	mlx_pixel_put(data->mlx, data->win, \
-			846, 250, 0X001E90FF);
+			840, 220, 0X001E90FF);
 	mlx_pixel_put(data->mlx, data->win, \
-			846, 251, 0X001E90FF);
+			840, 221, 0X001E90FF);
 	mlx_pixel_put(data->mlx, data->win, \
-			846, 252, 0X001E90FF);
+			840, 222, 0X001E90FF);
 }
 
 void	finding_v_intersection(t_data *data, double degrees, int color_in, int color_out)
