@@ -6,7 +6,7 @@
 /*   By: nchow-yu <nchow-yu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 14:10:40 by nchow-yu          #+#    #+#             */
-/*   Updated: 2023/02/17 12:49:35 by nchow-yu         ###   ########.fr       */
+/*   Updated: 2023/02/17 12:55:12 by nchow-yu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -244,7 +244,7 @@ Steps of finding intersections with vertical grid lines:
     The ray is facing right in the picture, so B.x = rounded_down(Px/64) * (64) + 64.
     If the ray had been facing left B.x = rounded_down(Px/64) * (64) – 1.
     A.y = Py + (Px-A.x)*tan(ALPHA);
-    Find Xa. (Note: Xa is just the width of the grid; however, if the ray is facing right, Xa will be positive, if the ray is facing left, Ya will be negative.)
+    Find Xa. (Note: Xa is just the width of the grid; however, if the ray is facing right, Xa will be positive, if the ray is facing left, Ya will be negative.)
     Find Ya using the equation given above.
     Check the grid at the intersection point. If there is a wall on the grid, stop and calculate the distance.
     If there is no wall, extend the to the next intersection point. Notice that the coordinate of the next intersection point -call it (Xnew,Ynew) is just Xnew=Xold+Xa, and Ynew=YOld+Ya.
