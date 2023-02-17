@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sanauth <sanauth@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nchow-yu <nchow-yu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 14:10:40 by nchow-yu          #+#    #+#             */
-/*   Updated: 2023/02/16 14:14:34 by sanauth          ###   ########.fr       */
+/*   Updated: 2023/02/17 12:49:35 by nchow-yu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ void	find_h_intersection(t_data *data, double degrees)
 	double	old_x;
 	double	old_y;
 	double	next_x;
+	double	ya;
 	double		i;
 	double		j;
 	int			count;
@@ -64,40 +65,40 @@ void	find_h_intersection(t_data *data, double degrees)
 	if (degrees == 180.0 || degrees == 90.0 || degrees == 270.0 || degrees == 0.0)
 		return ;
 	else if (degrees >= 0.1 && degrees <= 179.9)
-		ay = floor(data->pos.y) * (SIZE) - 1;
+		ay = floor(data->pos.y) * (SIZE) - 0.00001;
 	else if (degrees >= 181.0 && degrees <= 360.0)
 		ay = floor(data->pos.y) * (SIZE) + SIZE;
 	else
 		return ;
-	ax = ((data->pos.x)* SIZE) + ((data->pos.y * SIZE) - ay) / tan(degrees * (M_PI / 180));
-
-	fprintf(stderr, "pi180 = %f\n", degrees *(M_PI / 180));
-	//fprintf(stderr,"tan(degree * (M_pi /180)= %f\n", tan(degrees * (M_PI / 180)));
-	//fprintf(stderr, "ax = %f | max_len = %d | ay = %f | nb_line = %d\n", ax, ((data->max_len - 1) * SIZE), ay, ((data->nb_line - 1) * SIZE));
+	ax = (data->pos.x * SIZE) + (ay - (data->pos.y * SIZE)) / tan(degrees * (M_PI / 180));
+	fprintf(stderr, "ax = %f | max_len = %d | ay = %f | nb_line = %d\n", ax, ((data->max_len - 1) * SIZE), ay, ((data->nb_line - 1) * SIZE));
 	data->dir.x = ax;
 	data->dir.y = ay;
-	fprintf(stderr, "AVANT >>>>>>>>>>>>> ax = %f | ay = %f | degree = %f | posx = %f | posy = %f\n", ax, ay, degrees, (data->pos.x* SIZE), (data->pos.y* SIZE));
+	if (ax >= ((data->max_len - 1) * SIZE) || ay >= ((data->nb_line - 1) * SIZE)
+		|| ax < 0)
+		return ;
 	while ((ay < ((double)(data->nb_line - 1) * SIZE) && ax < ((data->max_len - 1) * SIZE))
 		&& (data->map[(int)ay / SIZE][(int)ax / SIZE] != '1' && data->map[(int)ay / SIZE][(int)ax / SIZE] != ' '))
 	{
-		//fprintf(stderr, "ax pixel = %f | ay pixl = %f\n | a max = %d | a min = %d\n", ax / SIZE, ay / SIZE, data->max_len, data->nb_line);
-		i = ax;
+		i = ax - 1;
 		while (i <= ax + 1)
 		{
-			j = ay;
+			j = ay - 1;
 			while (j <= ay + 1)
 			{
 				mlx_pixel_put(data->mlx, data->win, \
 				i, j, 0x00006400);
-				j++;			
-				fprintf(stderr, "\nj = %f | degrees = %f | i = %f \n ", j, degrees, i);
-				//fprintf(stderr, "COUCOUUU\n");
+				j++;
 			}
 			i++;
 		}
 		old_x = ax;
 		old_y = ay;
-		next_x = SIZE / tan(degrees * (M_PI / 180));
+		if (degrees >= 0.1 && degrees <= 179.)
+			ya = -SIZE;
+		else if (degrees >= 181.0 && degrees <= 360.0)
+			ya = SIZE;
+		next_x = (ya - 1) / tan(degrees * (M_PI / 180));
 		ax = old_x + next_x;
 		if ((degrees >= 0.1 && degrees <= 179.9))
 			ay = old_y - SIZE;
@@ -106,15 +107,11 @@ void	find_h_intersection(t_data *data, double degrees)
 		else
 			break ;
 	}
-	if (ax >= ((data->max_len - 1) * SIZE) || ay >= ((data->nb_line) * SIZE))
-		return ;
-	//fprintf(stderr, "APREEES >>>>>>>>>>>>>>>>>>>>>> ax = %f | ay = %f\n", ax, ay);
 	old_x = ax;
 	old_y = ay;
 	//bresenham(data, old_x, old_y);
 	i = old_x - 1;
 	j = old_y - 1;
-	//fprintf(stderr, "i = %f | old_x = %f | j = %f | old_y = %f\n", i, old_x, j, old_y);
 	while (i <= old_x + 1)
 	{
 		j = old_y - 1;
@@ -123,48 +120,10 @@ void	find_h_intersection(t_data *data, double degrees)
 			mlx_pixel_put(data->mlx, data->win, \
 			i, j, 0x00F4A460);
 			j++;
-			//fprintf(stderr, "\nj = %f | degrees = %f | old_y + 1 = %f | i = %f | old_x + 1 = %f\n\n ", j, degrees, old_y + 1, i, old_x + 1);
 		}
 		i++;
 		count++;
 	}
-	//fprintf(stderr, "\ncount = %d\n\n", count);
-	//mlx_pixel_put(data->mlx, data->win, \
-	//		950, 32, 0X001E90FF);
-	//mlx_pixel_put(data->mlx, data->win, \
-	//		950, 33, 0X001E90FF);
-	//mlx_pixel_put(data->mlx, data->win, \
-	//		950, 34, 0X001E90FF);
-	//mlx_pixel_put(data->mlx, data->win, \
-	//		951, 32, 0X001E90FF);
-	//mlx_pixel_put(data->mlx, data->win, \
-	//		951, 33, 0X001E90FF);
-	//mlx_pixel_put(data->mlx, data->win, \
-	//		951, 34, 0X001E90FF);
-	//mlx_pixel_put(data->mlx, data->win, \
-	//		952, 32, 0X001E90FF);
-	//mlx_pixel_put(data->mlx, data->win, \
-	//		952, 33, 0X001E90FF);
-	//mlx_pixel_put(data->mlx, data->win, \
-	//		952, 34, 0X001E90FF);
-	mlx_pixel_put(data->mlx, data->win, \
-			840, 220, 0X001E90FF);
-	mlx_pixel_put(data->mlx, data->win, \
-			840, 221, 0X001E90FF);
-	mlx_pixel_put(data->mlx, data->win, \
-			840, 222, 0X001E90FF);
-	mlx_pixel_put(data->mlx, data->win, \
-			840, 220, 0X001E90FF);
-	mlx_pixel_put(data->mlx, data->win, \
-			840, 221, 0X001E90FF);
-	mlx_pixel_put(data->mlx, data->win, \
-			840, 222, 0X001E90FF);
-	mlx_pixel_put(data->mlx, data->win, \
-			840, 220, 0X001E90FF);
-	mlx_pixel_put(data->mlx, data->win, \
-			840, 221, 0X001E90FF);
-	mlx_pixel_put(data->mlx, data->win, \
-			840, 222, 0X001E90FF);
 }
 
 void	finding_v_intersection(t_data *data, double degrees, int color_in, int color_out)
