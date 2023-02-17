@@ -6,7 +6,7 @@
 /*   By: nchow-yu <nchow-yu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 00:53:40 by nicole            #+#    #+#             */
-/*   Updated: 2023/02/13 19:52:46 by nchow-yu         ###   ########.fr       */
+/*   Updated: 2023/02/17 12:46:48 by nchow-yu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ int	main(int nb, char **argv)
 	{
 		fprintf(stderr, "RIGHT - Enter in find_h\n");
 		find_h_intersection(&data, degrees);
-		fprintf(stderr, "LEFT - Enter in find_v\n");
+		// fprintf(stderr, "LEFT - Enter in find_v\n");
 		// finding_v_intersection(&data, degrees, 0x00FF1493, 0X001E90FF);
 		if (degrees == 0.0)
 			degrees = 360.0;
@@ -69,20 +69,20 @@ int	main(int nb, char **argv)
 		nb_ray++;
 		fprintf(stderr, "Right - degrees = %f\n", degrees);
 	}
-	// degrees = init_degrees;
-	// fprintf(stderr, "\n\ndegrees = %f\n\n", degrees);
-	// while (degrees <= (init_degrees + 30))
-	// {
-	// 	fprintf(stderr, "Right - Enter in find_h\n");
-	// 	find_h_intersection(&data, degrees);
-	// 	// fprintf(stderr, "LEFT - Enter in find_v\n");
-	// 	// finding_v_intersection(&data, degrees, 0x00FF1493, 0X001E90FF);
-	// 	if (degrees == 0.0)
-	// 		degrees = 360.0;
-	// 	degrees += 0.09375;
-	// 	nb_ray++;
-	// 	fprintf(stderr, "Left - degrees = %f\n", degrees);
-	// }
+	degrees = init_degrees;
+	fprintf(stderr, "\n\ndegrees = %f\n\n", degrees);
+	while (degrees <= (init_degrees + 30))
+	{
+		fprintf(stderr, "Right - Enter in find_h\n");
+		find_h_intersection(&data, degrees);
+		// fprintf(stderr, "LEFT - Enter in find_v\n");
+		// finding_v_intersection(&data, degrees, 0x00FF1493, 0X001E90FF);
+		if (degrees == 0.0)
+			degrees = 360.0;
+		degrees += 0.09375;
+		nb_ray++;
+		fprintf(stderr, "Left - degrees = %f\n", degrees);
+	}
 	fprintf(stderr, "nb_ray = %d\n", nb_ray);
 //	draw_in_window(&data);
 	mlx_key_hook(data.win, ft_key_close, &data);
