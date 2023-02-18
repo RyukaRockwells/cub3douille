@@ -6,7 +6,7 @@
 /*   By: nchow-yu <nchow-yu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 10:43:09 by nchow-yu          #+#    #+#             */
-/*   Updated: 2023/02/10 13:20:05 by nchow-yu         ###   ########.fr       */
+/*   Updated: 2023/02/18 17:21:23 by nchow-yu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,10 +60,18 @@ void	init_pos_player(t_data *data)
 		i++;
 	}
 	count = i;
-	//printf("data->pos.x * SIZE) - count = %f\n", (data->pos.x * SIZE) - count);
-	//printf("data->pos.y * SIZE) = %f\n", (data->pos.y * SIZE));
-	// while ((data->pos.x * SIZE) - count-- < 1500)
-	// {
-	// 	mlx_pixel_put(data->mlx, data->win, (data->pos.x * SIZE) - count, (data->pos.y + 1) * SIZE, 0x00FF00);
-	// }
+}
+
+void	init_degrees(t_data *data)
+{
+	if (data->map[(int)data->pos.y][(int)data->pos.x] == 'N')
+		data->degrees = 90.0;
+	else if (data->map[(int)data->pos.y][(int)data->pos.x] == 'S')
+		data->degrees = 270.0;
+	else if (data->map[(int)data->pos.y][(int)data->pos.x] == 'W')
+		data->degrees = 0.0;
+	else if (data->map[(int)data->pos.y][(int)data->pos.x] == 'E')
+		data->degrees = 180.0;
+	else
+		data->degrees = 0.0;
 }

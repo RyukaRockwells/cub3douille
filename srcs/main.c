@@ -6,7 +6,7 @@
 /*   By: nchow-yu <nchow-yu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 00:53:40 by nicole            #+#    #+#             */
-/*   Updated: 2023/02/18 14:16:25 by nchow-yu         ###   ########.fr       */
+/*   Updated: 2023/02/18 18:10:06 by nchow-yu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,95 +20,67 @@ static int	ft_close_cursor(t_data *data)
 
 static int	ft_key_close(int key, t_data *data)
 {
+	draw_mini_map(data);
+	p_mini_map(data);
 	if (key == 65307)
 		ft_close(data);
+	else if (key == 100)
+		data->degrees += 0.09375;
+	ft_fov(data);
 	return (1);
 }
 
-static void	draw_point(t_data *data)
-{
-	int		i;
-	int		j;
-	int		init_i;
-	int		init_j;
-	double	pt_h;
-	double	pt_v;
+// static double	ft_absolute(double nb)
+// {
+// 	if (nb < 0)
+// 		return (-nb);
+// 	return (nb);
+// }
 
-	pt_h = sqrt(pow((data->pos.x * SIZE) - data->hor.x, 2) + pow((data->pos.y * SIZE) - data->hor.y, 2));
-	pt_v = sqrt(pow((data->pos.x * SIZE) - data->ver.x, 2) + pow((data->pos.y * SIZE) - data->ver.y, 2));
-	if (pt_h > pt_v)
-	{
-		i = data->ver.x - 1;
-		j = data->ver.y - 1;
-	}
-	else
-	{
-		i = data->hor.x - 1;
-		j = data->hor.y - 1;
-	}
-	if (i == -1 || j == -1)
-		return ;
-	init_i = i + 1;
-	init_j = j + 1;
-	while (i <= init_i + 1)
-	{
-		j = init_j - 1;
-		while (j <= init_j + 1)
-		{
-			mlx_pixel_put(data->mlx, data->win, \
-			i, j, 0X0000FF7F);
-			j++;
-		}
-		i++;
-	}
-}
+// static void	bresenham(t_data *data, double d_x, double d_y)
+// {
+// 	double	decision;
+// 	double	x;
+// 	double	y;
+// 	double	diff_x;
+// 	double	diff_y;
+
+// 	diff_x = ft_absolute(d_x - (data->pos.x * SIZE));
+// 	diff_y = ft_absolute(d_y - (data->pos.y * SIZE));
+// 	x = (data->pos.x * SIZE);
+// 	y = (data->pos.y * SIZE);
+// 	decision = 2 * diff_y - diff_x;
+// 	while (x <= d_x)
+// 	{
+// 		mlx_pixel_put(data->mlx, data->win, x, y, 0x00FF00);
+// 		if (decision <= 0)
+// 			decision += (2 * diff_y);
+// 		else
+// 		{
+// 			decision += (2 * (diff_y - diff_x));
+// 			if (d_y > (data->pos.y * SIZE))
+// 				y += 1;
+// 			else
+// 				y += -1;
+// 		}
+// 		x++;
+// 	}
+// }
 
 int	main(int nb, char **argv)
 {
 	t_data	data;
-	double	degrees;
-	double	init_degrees;
-	int		nb_ray;
 
 	data.max_len = 0;
-	nb_ray = 0;
+	data.degrees = 0.0;
 	ft_parsing(&data, nb, argv);
+	init_pos_player(&data);
+	init_degrees(&data);
 	init_window(&data);
 	init_textures(&data);
-	init_pos_player(&data);
 	draw_mini_map(&data);
 	p_mini_map(&data);
-	if (data.map[(int)data.pos.y][(int)data.pos.x] == 'N')
-		degrees = 90.0;
-	else if (data.map[(int)data.pos.y][(int)data.pos.x] == 'S')
-		degrees = 270.0;
-	else if (data.map[(int)data.pos.y][(int)data.pos.x] == 'W')
-		degrees = 0.0;
-	else if (data.map[(int)data.pos.y][(int)data.pos.x] == 'E')
-		degrees = 180.0;
-	else
-		degrees = 0.0;
-	init_degrees = degrees;
-	fprintf(stderr, "degrees = %f\n", degrees);
-	while (degrees > ((int)(init_degrees - 30.0) % 360))
-	{
-		find_h_intersection(&data, degrees);
-		finding_v_intersection(&data, degrees);
-		degrees -= 0.09375;
-		nb_ray++;
-		draw_point(&data);
-	}
-	degrees = init_degrees;
-	fprintf(stderr, "\ndegrees = %f | max = %f\n\n", degrees, init_degrees + 30);
-	while (degrees < ((int)(init_degrees + 30) % 360))
-	{
-		find_h_intersection(&data, degrees);
-		finding_v_intersection(&data, degrees);
-		degrees += 0.09375;
-		nb_ray++;
-		draw_point(&data);
-	}
-	fprintf(stderr, "nb_ray = %d\n", nb_ray);
+	ft_fov(&data);
 //	draw_in_window(&data);
 	mlx_key_hook(data.win, ft_key_close, &data);
 	mlx_hook(data.win, 17, 0, ft_close_cursor, &data);

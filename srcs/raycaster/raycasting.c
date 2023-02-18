@@ -6,7 +6,7 @@
 /*   By: nchow-yu <nchow-yu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 14:10:40 by nchow-yu          #+#    #+#             */
-/*   Updated: 2023/02/18 14:09:46 by nchow-yu         ###   ########.fr       */
+/*   Updated: 2023/02/18 16:25:46 by nchow-yu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,7 @@ void	find_h_intersection(t_data *data, double degrees)
 	double	next_x;
 	double	ya;
 
-	if (degrees == 180.0 || degrees == 90.0
-		|| degrees == 270.0 || degrees == 0.0)
+	if (degrees == 90.0 || degrees == 180.0 || degrees == 270.0)
 		return ;
 	else if (degrees >= 0.1 && degrees <= 179.9)
 		ay = floor(data->pos.y) * (SIZE) - 0.00001;
@@ -34,6 +33,8 @@ void	find_h_intersection(t_data *data, double degrees)
 	if (ax >= ((data->max_len - 1) * SIZE) || ay >= ((data->nb_line - 1) * SIZE)
 		|| ax <= 0 || ay <= 0)
 		return ;
+	if (degrees == 90.0)
+		fprintf(stderr, "Je suis pile poil au milieu\n");
 	while ((data->map[(int)ay / SIZE][(int)ax / SIZE] != '1'
 		&& data->map[(int)ay / SIZE][(int)ax / SIZE] != ' '))
 	{
@@ -63,17 +64,15 @@ void	finding_v_intersection(t_data *data, double degrees)
 	double	last_x;
 	double	last_y;
 
-	if (degrees == 180.0 || degrees == 90.0
-		|| degrees == 270.0 || degrees == 0.0)
+	if (degrees == 90.0 || degrees == 180.0 || degrees == 270.0)
 		return ;
-	else if ((degrees >= 0.0 && degrees <= 90.0) || (degrees >= 360.0 && degrees >= 270.0))
+	else if ((degrees >= 0.0 && degrees <= 90.0) || (degrees >= 270.0 && degrees <= 360.0))
 		bx = floor(data->pos.x) * (SIZE) - 0.00001;
 	else if (degrees >= 90.0 && degrees <= 270.0)
 		bx = floor(data->pos.x) * (SIZE) + SIZE;
 	else
 		return ;
 	by = (data->pos.y * SIZE) + (bx - (data->pos.x * SIZE)) * tan(degrees * (M_PI / 180));
-	// fprintf(stderr, "bx = %f | by = %f\n", bx, by);
 	if ((by >= (data->nb_line - 1) * SIZE) || (bx >= (data->max_len - 1) * SIZE)
 		|| bx <= 0 || by <= 0)
 		return ;
@@ -82,7 +81,7 @@ void	finding_v_intersection(t_data *data, double degrees)
 	{
 		last_x = bx;
 		last_y = by;
-		if ((degrees >= 0.0 && degrees <= 90.0) || (degrees >= 360.0 && degrees >= 270.0))
+		if ((degrees >= 0.0 && degrees <= 90.0) || (degrees >= 270.0 && degrees <= 360.0))
 			xa = -SIZE;
 		else if (degrees >= 90.0 && degrees <= 270.0)
 			xa = SIZE;

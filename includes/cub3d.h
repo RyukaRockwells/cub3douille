@@ -6,7 +6,7 @@
 /*   By: nchow-yu <nchow-yu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 00:55:10 by nicole            #+#    #+#             */
-/*   Updated: 2023/02/18 13:47:52 by nchow-yu         ###   ########.fr       */
+/*   Updated: 2023/02/18 18:07:41 by nchow-yu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@
 void	init_struct(t_data *data);
 void	init_window(t_data *data);
 void	init_pos_player(t_data *data);
+void	init_degrees(t_data *data);
 
 //utils/ft_strcmp.c
 int		ft_strcmp(const char *s1, const char *s2);
@@ -106,5 +107,8 @@ int		ft_check_zero(t_data *data);
 void	find_h_intersection(t_data *data, double degrees);
 void	cast_ray(t_data *data);
 void	finding_v_intersection(t_data *data, double degrees);
+
+//raycaster/fov_player.c
+void	ft_fov(t_data *data);
 
 #endif

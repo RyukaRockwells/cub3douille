@@ -6,7 +6,7 @@
 /*   By: nchow-yu <nchow-yu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 13:39:32 by nchow-yu          #+#    #+#             */
-/*   Updated: 2023/02/18 12:19:24 by nchow-yu         ###   ########.fr       */
+/*   Updated: 2023/02/18 16:59:52 by nchow-yu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,7 @@ typedef struct s_data
 	void		*win;
 	int			max_len;
 	int			nb_line;
+	double		degrees;
 	t_params	params;
 	t_pos		pos;
 	t_dir		dir;
