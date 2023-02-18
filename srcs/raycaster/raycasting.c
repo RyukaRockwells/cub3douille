@@ -6,48 +6,48 @@
 /*   By: nchow-yu <nchow-yu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 14:10:40 by nchow-yu          #+#    #+#             */
-/*   Updated: 2023/02/17 12:57:42 by nchow-yu         ###   ########.fr       */
+/*   Updated: 2023/02/18 12:23:36 by nchow-yu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-static double	ft_absolute(double nb)
-{
-	if (nb < 0)
-		return (-nb);
-	return (nb);
-}
+// static double	ft_absolute(double nb)
+// {
+// 	if (nb < 0)
+// 		return (-nb);
+// 	return (nb);
+// }
 
-static void	bresenham(t_data *data, double d_x, double d_y)
-{
-	double	decision;
-	double	x;
-	double	y;
-	double	diff_x;
-	double	diff_y;
+// static void	bresenham(t_data *data, double d_x, double d_y)
+// {
+// 	double	decision;
+// 	double	x;
+// 	double	y;
+// 	double	diff_x;
+// 	double	diff_y;
 
-	diff_x = ft_absolute(d_x - (data->pos.x * SIZE));
-	diff_y = ft_absolute(d_y - (data->pos.y * SIZE));
-	x = (data->pos.x * SIZE);
-	y = (data->pos.y * SIZE);
-	decision = 2 * diff_y - diff_x;
-	while (x <= d_x)
-	{
-		mlx_pixel_put(data->mlx, data->win, x, y, 0x00FF00);
-		if (decision <= 0)
-			decision += (2 * diff_y);
-		else
-		{
-			decision += (2 * (diff_y - diff_x));
-			if (d_y > (data->pos.y * SIZE))
-				y += 1;
-			else
-				y += -1;
-		}
-		x++;
-	}
-}
+// 	diff_x = ft_absolute(d_x - (data->pos.x * SIZE));
+// 	diff_y = ft_absolute(d_y - (data->pos.y * SIZE));
+// 	x = (data->pos.x * SIZE);
+// 	y = (data->pos.y * SIZE);
+// 	decision = 2 * diff_y - diff_x;
+// 	while (x <= d_x)
+// 	{
+// 		mlx_pixel_put(data->mlx, data->win, x, y, 0x00FF00);
+// 		if (decision <= 0)
+// 			decision += (2 * diff_y);
+// 		else
+// 		{
+// 			decision += (2 * (diff_y - diff_x));
+// 			if (d_y > (data->pos.y * SIZE))
+// 				y += 1;
+// 			else
+// 				y += -1;
+// 		}
+// 		x++;
+// 	}
+// }
 
 void	find_h_intersection(t_data *data, double degrees)
 {
@@ -57,12 +57,11 @@ void	find_h_intersection(t_data *data, double degrees)
 	double	old_y;
 	double	next_x;
 	double	ya;
-	double		i;
-	double		j;
-	int			count;
+	// double		i;
+	// double		j;
 
-	count = 0;
-	if (degrees == 180.0 || degrees == 90.0 || degrees == 270.0 || degrees == 0.0)
+	if (degrees == 180.0 || degrees == 90.0
+		|| degrees == 270.0 || degrees == 0.0)
 		return ;
 	else if (degrees >= 0.1 && degrees <= 179.9)
 		ay = floor(data->pos.y) * (SIZE) - 0.00001;
@@ -71,59 +70,54 @@ void	find_h_intersection(t_data *data, double degrees)
 	else
 		return ;
 	ax = (data->pos.x * SIZE) + (ay - (data->pos.y * SIZE)) / tan(degrees * (M_PI / 180));
-	fprintf(stderr, "ax = %f | max_len = %d | ay = %f | nb_line = %d\n", ax, ((data->max_len - 1) * SIZE), ay, ((data->nb_line - 1) * SIZE));
-	data->dir.x = ax;
-	data->dir.y = ay;
 	if (ax >= ((data->max_len - 1) * SIZE) || ay >= ((data->nb_line - 1) * SIZE)
-		|| ax < 0)
+		|| ax <= 0 || ay <= 0)
 		return ;
-	while ((ay < ((double)(data->nb_line - 1) * SIZE) && ax < ((data->max_len - 1) * SIZE))
-		&& (data->map[(int)ay / SIZE][(int)ax / SIZE] != '1' && data->map[(int)ay / SIZE][(int)ax / SIZE] != ' '))
+	while ((data->map[(int)ay / SIZE][(int)ax / SIZE] != '1'
+		&& data->map[(int)ay / SIZE][(int)ax / SIZE] != ' '))
 	{
-		i = ax - 1;
-		while (i <= ax + 1)
-		{
-			j = ay - 1;
-			while (j <= ay + 1)
-			{
-				mlx_pixel_put(data->mlx, data->win, \
-				i, j, 0x00006400);
-				j++;
-			}
-			i++;
-		}
+		// i = ax - 1;
+		// while (i <= ax + 1)
+		// {
+		// 	j = ay - 1;
+		// 	while (j <= ay + 1)
+		// 	{
+		// 		mlx_pixel_put(data->mlx, data->win, \
+		// 		i, j, 0x00006400);
+		// 		j++;
+		// 	}
+		// 	i++;
+		// }
 		old_x = ax;
 		old_y = ay;
-		if (degrees >= 0.1 && degrees <= 179.)
+		if (degrees >= 0.1 && degrees <= 179.9)
 			ya = -SIZE;
 		else if (degrees >= 181.0 && degrees <= 360.0)
 			ya = SIZE;
 		next_x = (ya - 1) / tan(degrees * (M_PI / 180));
 		ax = old_x + next_x;
-		if ((degrees >= 0.1 && degrees <= 179.9))
-			ay = old_y - SIZE;
-		else if ((degrees >= 181.0 && degrees <= 360.0))
-			ay = old_y + SIZE;
-		else
+		ay = old_y + ya;
+		if (ax < 0 || ay < 0)
 			break ;
 	}
+	data->hor.x = ax;
+	data->hor.y = ay;
 	old_x = ax;
 	old_y = ay;
 	//bresenham(data, old_x, old_y);
-	i = old_x - 1;
-	j = old_y - 1;
-	while (i <= old_x + 1)
-	{
-		j = old_y - 1;
-		while (j <= old_y + 1)
-		{
-			mlx_pixel_put(data->mlx, data->win, \
-			i, j, 0x00F4A460);
-			j++;
-		}
-		i++;
-		count++;
-	}
+	// i = old_x - 1;
+	// j = old_y - 1;
+	// while (i <= old_x + 1)
+	// {
+	// 	j = old_y - 1;
+	// 	while (j <= old_y + 1)
+	// 	{
+	// 		mlx_pixel_put(data->mlx, data->win, \
+	// 		i, j, 0x00F4A460);
+	// 		j++;
+	// 	}
+	// 	i++;
+	// }
 }
 
 void	finding_v_intersection(t_data *data, double degrees, int color_in, int color_out)
@@ -134,81 +128,68 @@ void	finding_v_intersection(t_data *data, double degrees, int color_in, int colo
 	double	ya;
 	double	last_x;
 	double	last_y;
-	int		i;
-	int		j;
+	// int		i;
+	// int		j;
 
-	if (degrees == 180.0 || degrees == 90.0 || degrees == 270.0 || degrees == 0.0)
+	if (degrees == 180.0 || degrees == 90.0
+		|| degrees == 270.0 || degrees == 0.0)
 		return ;
-	else if ((degrees >= 0.1 && degrees <= 88.9) || (degrees >= 360.0 && degrees >= 270.1))
-	{
-		fprintf(stderr, "choose right\n");
+	else if ((degrees >= 0.0 && degrees <= 90.0) || (degrees >= 360.0 && degrees >= 270.0))
+		bx = floor(data->pos.x) * (SIZE) - 0.00001;
+	else if (degrees >= 90.0 && degrees <= 270.0)
 		bx = floor(data->pos.x) * (SIZE) + SIZE;
-	}
-	else if (degrees >= 91.1 && degrees <= 269.9)
-	{
-		fprintf(stderr, "choose left\n");
-		bx = floor(data->pos.x) * (SIZE) + 1;
-	}
 	else
+		return ;
+	by = (data->pos.y * SIZE) + (bx - (data->pos.x * SIZE)) * tan(degrees * (M_PI / 180));
+	if ((by > (data->nb_line - 1) * SIZE) || (bx > (data->max_len - 1) * SIZE)
+		|| bx <= 0 || by <= 0)
+		return ;
+	while ((data->map[(int)by / SIZE][(int)bx / SIZE] != '1')
+		&& data->map[(int)by / SIZE][(int)bx / SIZE] != ' ')
 	{
-		fprintf(stderr, "Nothing again\n");
-		bx = floor(data->pos.x) * (SIZE) + SIZE;
-	}
-	by = (data->pos.y * SIZE) + ((data->pos.x * SIZE) - bx) / tan(degrees * (M_PI / 180));
-	fprintf(stderr, "bx = %f | by = %f\n", bx, by);
-	fprintf(stderr, "pos.y = %f | pos.x = %f\n", data->pos.y * SIZE, data->pos.x * SIZE);
-	last_x = 0.0;
-	last_y = 0.0;
-	if ((degrees >= 0.1 && degrees <= 89.9) || (degrees >= 360.0 && degrees >= 270.1))
-	{
-		fprintf(stderr, "choose right for incr\n");
-		xa = SIZE;
-	}
-	else if (degrees >= 90.1 && degrees <= 269.9)
-	{
-		fprintf(stderr, "choose left for incr\n");
-		xa = -SIZE;
-	}
-	ya = SIZE * tan(degrees * (M_PI / 180));
-	fprintf(stderr, "bx = %f | max_len = %d | by = %lf | nb_line = %d\n", bx, ((data->max_len - 1) * SIZE), by, ((data->nb_line - 1) * SIZE));
-	while ((by < ((data->nb_line - 1) * SIZE) && bx < ((data->max_len - 1) * SIZE))
-		&& (data->map[(int)by / SIZE][(int)bx / SIZE] != '1'))
-	{
+		// i = bx - 1;
+		// while (i <= bx + 1)
+		// {
+		// 	j = by - 1;
+		// 	while (j <= by + 1)
+		// 	{
+		// 		mlx_pixel_put(data->mlx, data->win, \
+		// 		i, j, color_in);
+		// 		j++;
+		// 	}
+		// 	i++;
+		// }
 		last_x = bx;
 		last_y = by;
-		bx = last_x + xa;
+		if ((degrees >= 0.0 && degrees <= 90.0) || (degrees >= 360.0 && degrees >= 270.0))
+			xa = -SIZE;
+		else if (degrees >= 90.0 && degrees <= 270.0)
+			xa = SIZE;
+		ya = (xa - 1) * tan(degrees * (M_PI / 180));
 		by = last_y + ya;
-		i = bx - 1;
-		while (i <= bx + 1)
-		{
-			j = by - 1;
-			while (j <= by + 1)
-			{
-				mlx_pixel_put(data->mlx, data->win, \
-				i, j, color_in);
-				j++;
-			}
-			i++;
-		}
+		bx = last_x + xa;
+		if (by < 0 || bx < 0)
+			break ;
 	}
+	data->ver.x = bx;
+	data->ver.y = by;
+	last_x = bx;
+	last_y = by;
+	//bresenham(data, last_x, last_y);
+	// i = last_x - 1;
+	// while (i <= last_x + 1)
+	// {
+	// 	j = last_y - 1;
+	// 	while (j <= last_y + 1)
+	// 	{
+	// 		mlx_pixel_put(data->mlx, data->win, \
+	// 		i, j, color_out);
+	// 		j++;
+	// 	}
+	// 	i++;
+	// }
 	(void)color_in;
-	if (last_x == 0.0)
-		last_x = bx;
-	if (last_y == 0.0)
-		last_y = by;
-	bresenham(data, last_x, last_y);
-	i = last_x - 1;
-	while (i <= last_x + 1)
-	{
-		j = last_y - 1;
-		while (j <= last_y + 1)
-		{
-			mlx_pixel_put(data->mlx, data->win, \
-			i, j, color_out);
-			j++;
-		}
-		i++;
-	}
+	(void)color_out;
 }
 /*
 void bresenham(void *mlx, void *win, int x0, int y0, int x1, int y1)

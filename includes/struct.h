@@ -6,7 +6,7 @@
 /*   By: nchow-yu <nchow-yu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 13:39:32 by nchow-yu          #+#    #+#             */
-/*   Updated: 2023/02/03 18:46:46 by nchow-yu         ###   ########.fr       */
+/*   Updated: 2023/02/18 12:19:24 by nchow-yu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,18 @@ typedef struct s_plan
 	double	y;
 }	t_plan;
 
+typedef struct s_hor
+{
+	double	x;
+	double	y;
+}	t_hor;
+
+typedef struct s_ver
+{
+	double	x;
+	double	y;
+}	t_ver;
+
 typedef struct s_params
 {
 	char	*north;
@@ -65,6 +77,8 @@ typedef struct s_data
 	t_params	params;
 	t_pos		pos;
 	t_dir		dir;
+	t_hor		hor;
+	t_ver		ver;
 	t_img		img;
 	t_img		textures[4];
 }	t_data;
