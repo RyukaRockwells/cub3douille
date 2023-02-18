@@ -6,7 +6,7 @@
 /*   By: nchow-yu <nchow-yu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 00:53:40 by nicole            #+#    #+#             */
-/*   Updated: 2023/02/18 13:41:13 by nchow-yu         ###   ########.fr       */
+/*   Updated: 2023/02/18 14:16:25 by nchow-yu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,25 +35,21 @@ static void	draw_point(t_data *data)
 	double	pt_v;
 
 	pt_h = sqrt(pow((data->pos.x * SIZE) - data->hor.x, 2) + pow((data->pos.y * SIZE) - data->hor.y, 2));
-	fprintf(stderr, "distance de hor =  %f\n", pt_h);
 	pt_v = sqrt(pow((data->pos.x * SIZE) - data->ver.x, 2) + pow((data->pos.y * SIZE) - data->ver.y, 2));
-	fprintf(stderr, "distance de ver =  %f\n", pt_v);
 	if (pt_h > pt_v)
 	{
-		i = data->ver.x;
-		j = data->ver.y;
+		i = data->ver.x - 1;
+		j = data->ver.y - 1;
 	}
 	else
 	{
-		fprintf(stderr, "hor\n");
-		i = data->hor.x;
-		j = data->hor.y;
+		i = data->hor.x - 1;
+		j = data->hor.y - 1;
 	}
-	fprintf(stderr, "ver | x = %f | y = %f\n", data->ver.x, data->ver.y);
-	fprintf(stderr, "hor | x = %f | y = %f\n", data->hor.x, data->hor.y);
-	init_i = i;
-	init_j = j;
-	i = i - 1;
+	if (i == -1 || j == -1)
+		return ;
+	init_i = i + 1;
+	init_j = j + 1;
 	while (i <= init_i + 1)
 	{
 		j = init_j - 1;
@@ -87,49 +83,30 @@ int	main(int nb, char **argv)
 	else if (data.map[(int)data.pos.y][(int)data.pos.x] == 'S')
 		degrees = 270.0;
 	else if (data.map[(int)data.pos.y][(int)data.pos.x] == 'W')
-		degrees = 360.0;
+		degrees = 0.0;
 	else if (data.map[(int)data.pos.y][(int)data.pos.x] == 'E')
 		degrees = 180.0;
 	else
-	{
-		fprintf(stderr, "degrees is NULL\n");
 		degrees = 0.0;
-	}
 	init_degrees = degrees;
 	fprintf(stderr, "degrees = %f\n", degrees);
-	while (degrees > (init_degrees - 30.0))
+	while (degrees > ((int)(init_degrees - 30.0) % 360))
 	{
-		// fprintf(stderr, "LEFT - Enter in find_h\n");
 		find_h_intersection(&data, degrees);
-		// fprintf(stderr, "LEFT - Enter in find_v\n");
-		finding_v_intersection(&data, degrees, 0x004682B4, 0X0000FF7F);
-		if (degrees == 0.0)
-			degrees = 360.0;
+		finding_v_intersection(&data, degrees);
 		degrees -= 0.09375;
 		nb_ray++;
 		draw_point(&data);
-		// fprintf(stderr, "LEFT - degrees = %f\n", degrees);
 	}
-	if (init_degrees == 360.0)
-	{
-		init_degrees = 0.0;
-		degrees = 0.0;
-	}
-	else
-		degrees = init_degrees;
+	degrees = init_degrees;
 	fprintf(stderr, "\ndegrees = %f | max = %f\n\n", degrees, init_degrees + 30);
-	while (degrees < (init_degrees + 30))
+	while (degrees < ((int)(init_degrees + 30) % 360))
 	{
-		// fprintf(stderr, "RIGHT - Enter in find_h\n");
 		find_h_intersection(&data, degrees);
-		// fprintf(stderr, "RIGHT - Enter in find_v\n");
-		finding_v_intersection(&data, degrees, 0x004682B4, 0X0000FF7F);
-		if (degrees == 360.0)
-			degrees = 0.0;
+		finding_v_intersection(&data, degrees);
 		degrees += 0.09375;
 		nb_ray++;
 		draw_point(&data);
-		// fprintf(stderr, "RIGHT - degrees = %f\n", degrees);
 	}
 	fprintf(stderr, "nb_ray = %d\n", nb_ray);
 //	draw_in_window(&data);
