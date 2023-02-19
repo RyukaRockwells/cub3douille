@@ -6,7 +6,7 @@
 /*   By: nchow-yu <nchow-yu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 14:10:40 by nchow-yu          #+#    #+#             */
-/*   Updated: 2023/02/18 16:25:46 by nchow-yu         ###   ########.fr       */
+/*   Updated: 2023/02/19 23:13:22 by nchow-yu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ void	find_h_intersection(t_data *data, double degrees)
 	else
 		return ;
 	ax = (data->pos.x * SIZE) + (ay - (data->pos.y * SIZE)) / tan(degrees * (M_PI / 180));
+	fprintf(stderr, "\ndegrees = %f | ax = %f | ay = %f\n", degrees, ax, ay);
 	if (ax >= ((data->max_len - 1) * SIZE) || ay >= ((data->nb_line - 1) * SIZE)
 		|| ax <= 0 || ay <= 0)
 		return ;
