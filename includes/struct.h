@@ -6,17 +6,16 @@
 /*   By: nchow-yu <nchow-yu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 13:39:32 by nchow-yu          #+#    #+#             */
-/*   Updated: 2023/02/18 16:59:52 by nchow-yu         ###   ########.fr       */
+/*   Updated: 2023/02/20 19:45:49 by nchow-yu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STRUCT_H
 # define STRUCT_H
 
-# define WIDTH 640
-# define HEIGTH 480
+# define WIDTH 320
+# define HEIGTH 200
 # define SIZE 32
-# define PI 3.1415926
 
 typedef struct s_img
 {
@@ -30,19 +29,9 @@ typedef struct s_pos
 	char	dir_view;
 	double	x;
 	double	y;
+	double	dx;
+	double	dy;
 }	t_pos;
-
-typedef struct s_dir
-{
-	double	x;
-	double	y;
-}	t_dir;
-
-typedef struct s_plan
-{
-	double	x;
-	double	y;
-}	t_plan;
 
 typedef struct s_hor
 {
@@ -77,9 +66,6 @@ typedef struct s_data
 	double		degrees;
 	t_params	params;
 	t_pos		pos;
-	t_dir		dir;
-	t_hor		hor;
-	t_ver		ver;
 	t_img		img;
 	t_img		textures[4];
 }	t_data;

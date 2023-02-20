@@ -6,7 +6,7 @@
 /*   By: nchow-yu <nchow-yu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 10:43:09 by nchow-yu          #+#    #+#             */
-/*   Updated: 2023/02/18 17:21:23 by nchow-yu         ###   ########.fr       */
+/*   Updated: 2023/02/20 19:47:26 by nchow-yu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,4 +74,6 @@ void	init_degrees(t_data *data)
 		data->degrees = 180.0;
 	else
 		data->degrees = 0.0;
+	data->pos.dx = cos(data->degrees * M_PI / 180) * 5;
+	data->pos.dy = sin(data->degrees * M_PI / 180) * 5;
 }

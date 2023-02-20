@@ -6,7 +6,7 @@
 /*   By: nchow-yu <nchow-yu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/18 18:05:02 by nchow-yu          #+#    #+#             */
-/*   Updated: 2023/02/19 23:24:48 by nchow-yu         ###   ########.fr       */
+/*   Updated: 2023/02/20 19:30:59 by nchow-yu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static void	bresenham(t_data *data, double d_x, double d_y)
 	decision = 2 * diff_y - diff_x;
 	while (x <= d_x)
 	{
-		mlx_pixel_put(data->mlx, data->win, x, y, 0x00A52A2A);
+		mlx_pixel_put(data->mlx, data->win, x, y, 0x0000F0FF);
 		if (decision <= 0)
 			decision += (2 * diff_y);
 		else
@@ -49,92 +49,60 @@ static void	bresenham(t_data *data, double d_x, double d_y)
 	}
 }
 
-static void	draw_point(t_data *data, int degrees)
+static void	draw_point(t_data *data, int degrees, t_ver *ver, t_hor *hor)
 {
-	int		i;
-	int		j;
-	// int		init_i;
-	// int		init_j;
+	double		i;
+	double		j;
+	int		init_i;
+	int		init_j;
 	double	pt_h;
 	double	pt_v;
 
-	if ((int)degrees % 90 == 0)
-	{
-		pt_h = sqrt(pow(((data->pos.x * SIZE + (SIZE / 2)) - data->hor.x), 2) + pow(((data->pos.y * SIZE + (SIZE / 2)) - data->hor.y), 2));
-		pt_v = sqrt(pow(((data->pos.x * SIZE + (SIZE / 2)) - data->ver.x), 2) + pow(((data->pos.y * SIZE + (SIZE / 2)) - data->ver.y), 2));
-		fprintf(stderr, "sqrt => degrees = %d | pt_h = %f | pt_v = %f\n", degrees, pt_h, pt_v);
-	}
-	else
-	{
-		pt_h = fabs(((double)(data->pos.x * SIZE + (SIZE / 2)) - data->hor.x) / cos(degrees * M_PI / 180));
-		pt_v = fabs(((double)(data->pos.y * SIZE + (SIZE / 2)) - data->ver.y) / sin(degrees * M_PI / 180));
-		fprintf(stderr, "fabs => degrees = %d | pt_h = %f | pt_v = %f\n", degrees, pt_h, pt_v);
-	}
-	if (pt_h > pt_v)
-	{
-		i = data->ver.x - 1;
-		j = data->ver.y - 1;
-		fprintf(stderr, "ver => x = %d | y = %d\n", i, j);
-		fprintf(stderr, "pos => x = %f | y = %f\n\n", data->pos.x, data->pos.y);
-	}
-	else
-	{
-		i = data->hor.x - 1;
-		j = data->hor.y - 1;
-		fprintf(stderr, "data->degrees = %f\n", data->degrees);
-		fprintf(stderr, "hor => x = %d | y = %d\n", i, j);
-		fprintf(stderr, "ver => x = %f | y = %f\n", data->ver.x, data->ver.y);
-		fprintf(stderr, "pos => x = %f | y = %f\n", data->pos.x, data->pos.y);
-		fprintf(stderr, "y = %f\n", floor(data->pos.y) * SIZE - 0.00001);
-		fprintf(stderr, "x = %f\n\n", (data->pos.x * SIZE) + ((floor(data->pos.y) * SIZE - 0.00001) - (data->pos.y * SIZE)) / tan(156.0 * (M_PI / 180)));
-	}
-	if (degrees == 186.0)
-	{
-		pt_h = sqrt(pow(((data->pos.x * SIZE + (SIZE / 2)) - data->hor.x), 2) + pow(((data->pos.y * SIZE + (SIZE / 2)) - data->hor.y), 2));
-		pt_v = sqrt(pow(((data->pos.x * SIZE + (SIZE / 2)) - data->ver.x), 2) + pow(((data->pos.y * SIZE + (SIZE / 2)) - data->ver.y), 2));
-		fprintf(stderr, "sqrt ==> pt_h = %f | pt_v = %f\n", pt_h, pt_v);
-		pt_h = fabs(((double)(data->pos.x * SIZE + (SIZE / 2)) - data->hor.x) / cos(degrees * M_PI / 180));
-		pt_v = fabs(((double)(data->pos.y * SIZE + (SIZE / 2)) - data->ver.y) / sin(degrees * M_PI / 180));
-		fprintf(stderr, "fabs ==> pt_h = %f | pt_v = %f\n", pt_h, pt_v);
-	}
-	// if (i == 263 && j == 254)
-	// {
-	// 	init_i = i + 1;
-	// 	init_j = j + 1;
-	// 	while (i <= init_i + 1)
-	// 	{
-	// 		j = init_j - 1;
-	// 		while (j <= init_j + 1)
-	// 		{
-	// 			mlx_pixel_put(data->mlx, data->win, \
-	// 			i, j, 0X0000FF7F);
-	// 			j++;
-	// 		}
-	// 		i++;
-	// 	}
-	// }
-	bresenham(data, i, j);
-	// fprintf(stderr, "pt_h = %f | pt_v = %f\n", pt_h, pt_v);
-	// fprintf(stderr, "pt_hy = %f | pt_vy = %f\n", pt_hy, pt_vy);
-	// if (i == -1 || j == -1)
+	(void)degrees;
+	fprintf(stderr, "hor - x = %f | y = %f\n", hor->x, hor->y);
+	fprintf(stderr, "ver - x = %f | y = %f\n\n", ver->x, ver->y);
+	// if ((ver->x == -1 && ver->y == -1) || (hor->x == -1 && hor->y == -1))
 	// 	return ;
-	// init_i = i + 1;
-	// init_j = j + 1;
-	// while (i <= init_i + 1)
+	// if ((int)degrees % 90 == 0)
 	// {
-	// 	j = init_j - 1;
-	// 	while (j <= init_j + 1)
-	// 	{
-	// 		mlx_pixel_put(data->mlx, data->win, \
-	// 		i, j, 0X0000FF7F);
-	// 		j++;
-	// 	}
-	// 	i++;
+	pt_h = sqrt(pow(((data->pos.x * SIZE) - hor->x), 2) + pow(((data->pos.y * SIZE) - hor->y), 2));
+	pt_v = sqrt(pow(((data->pos.x * SIZE) - ver->x), 2) + pow(((data->pos.y * SIZE) - ver->y), 2));
 	// }
+	// else
+	// {
+	// 	pt_h = fabs(((double)(data->pos.x * SIZE + (SIZE / 2)) - data->hor.x) / cos(degrees * M_PI / 180));
+	// 	pt_v = fabs(((double)(data->pos.y * SIZE + (SIZE / 2)) - data->ver.y) / sin(degrees * M_PI / 180));
+	// }
+	if (pt_h > pt_v || (hor->x == -1 && hor->y == -1))
+	{
+		i = ver->x;
+		j = ver->y;
+	}
+	else
+	{
+		i = hor->x;
+		j = hor->y;
+	}
+	bresenham(data, i, j);
+	init_i = i + 1;
+	init_j = j + 1;
+	while (i <= init_i + 1)
+	{
+		j = init_j - 1;
+		while (j <= init_j + 1)
+		{
+			mlx_pixel_put(data->mlx, data->win, \
+			i, j, 0X00A52A2A);
+			j++;
+		}
+		i++;
+	}
 }
 
 void	ft_fov(t_data *data)
 {
+	t_ver	ver;
+	t_hor	hor;
 	double	initial_degrees;
 	int		result;
 	int		nb_ray;
@@ -143,25 +111,26 @@ void	ft_fov(t_data *data)
 	initial_degrees = data->degrees;
 	if (data->degrees == 0.0)
 		data->degrees = 360.0;
+	fprintf(stderr, "degrees = %f\n", data->degrees);
 	result = (int)(initial_degrees - 30) % 360;
 	if (result < 0)
 		result += 360;
 	while (data->degrees > result)
 	{
-		find_h_intersection(data, data->degrees);
-		finding_v_intersection(data, data->degrees);
-		data->degrees -= (60/10);
+		hor = find_h_intersection(data, data->degrees);
+		ver = finding_v_intersection(data, data->degrees);
+		draw_point(data, data->degrees, &ver, &hor);
+		data->degrees -= 0.09375;
 		nb_ray++;
-		draw_point(data, data->degrees);
 	}
 	data->degrees = initial_degrees;
 	while (data->degrees < ((int)(initial_degrees + 30) % 360))
 	{
-		find_h_intersection(data, data->degrees);
-		finding_v_intersection(data, data->degrees);
-		data->degrees += (60/10);
+		hor = find_h_intersection(data, data->degrees);
+		ver = finding_v_intersection(data, data->degrees);
+		draw_point(data, data->degrees, &ver, &hor);
+		data->degrees += 0.09375;
 		nb_ray++;
-		draw_point(data, data->degrees);
 	}
 	fprintf(stderr, "nb_ray = %d\n", nb_ray);
 	data->degrees = initial_degrees;

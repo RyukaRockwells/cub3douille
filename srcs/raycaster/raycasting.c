@@ -6,93 +6,87 @@
 /*   By: nchow-yu <nchow-yu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 14:10:40 by nchow-yu          #+#    #+#             */
-/*   Updated: 2023/02/19 23:13:22 by nchow-yu         ###   ########.fr       */
+/*   Updated: 2023/02/20 19:00:22 by nchow-yu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-void	find_h_intersection(t_data *data, double degrees)
+t_hor	find_h_intersection(t_data *data, double degrees)
 {
-	double	ax;
-	double	ay;
+	t_hor	hor;
 	double	old_x;
 	double	old_y;
 	double	next_x;
 	double	ya;
 
-	if (degrees == 90.0 || degrees == 180.0 || degrees == 270.0)
-		return ;
-	else if (degrees >= 0.1 && degrees <= 179.9)
-		ay = floor(data->pos.y) * (SIZE) - 0.00001;
-	else if (degrees >= 181.0 && degrees <= 360.0)
-		ay = floor(data->pos.y) * (SIZE) + SIZE;
-	else
-		return ;
-	ax = (data->pos.x * SIZE) + (ay - (data->pos.y * SIZE)) / tan(degrees * (M_PI / 180));
-	fprintf(stderr, "\ndegrees = %f | ax = %f | ay = %f\n", degrees, ax, ay);
-	if (ax >= ((data->max_len - 1) * SIZE) || ay >= ((data->nb_line - 1) * SIZE)
-		|| ax <= 0 || ay <= 0)
-		return ;
-	if (degrees == 90.0)
-		fprintf(stderr, "Je suis pile poil au milieu\n");
-	while ((data->map[(int)ay / SIZE][(int)ax / SIZE] != '1'
-		&& data->map[(int)ay / SIZE][(int)ax / SIZE] != ' '))
+	if (degrees > 0.0 && degrees < 180.0)
+		hor.y = floor(data->pos.y) * (SIZE) - 1;
+	else if (degrees > 180.0 && degrees < 360.0)
+		hor.y = floor(data->pos.y) * (SIZE) + SIZE + 1;
+	hor.x = (data->pos.x * SIZE) + (hor.y - (data->pos.y * SIZE)) / tan(degrees * (M_PI / 180));
+	if (hor.x >= ((data->max_len - 1) * SIZE) || hor.y >= ((data->nb_line - 1) * SIZE)
+		|| hor.x <= 0 || hor.y <= 0)
 	{
-		old_x = ax;
-		old_y = ay;
-		if (degrees >= 0.1 && degrees <= 179.9)
+		hor.x = -1;
+		hor.y = -1;
+		return (hor);
+	}
+	while ((data->map[(int)(round(hor.y * 100 / SIZE) / 100)][(int)(round(hor.x * 100 / SIZE) / 100)] != '1')
+		&& data->map[(int)(round(hor.y * 100 / SIZE) / 100)][(int)(round(hor.x * 100 / SIZE) / 100)] != ' ')
+	{
+		old_x = hor.x;
+		old_y = hor.y;
+		if (degrees > 0.0 && degrees < 180.0)
 			ya = -SIZE;
-		else if (degrees >= 181.0 && degrees <= 360.0)
+		else if (degrees > 180.0 && degrees < 360.0)
 			ya = SIZE;
 		next_x = (ya - 1) / tan(degrees * (M_PI / 180));
-		ax = old_x + next_x;
-		ay = old_y + ya;
-		if (ax >= ((data->max_len - 1) * SIZE) || ay >= ((data->nb_line - 1) * SIZE)
-			|| ax < 0 || ay < 0)
+		hor.x = old_x + next_x;
+		hor.y = old_y + ya;
+		if (hor.x >= ((data->max_len - 1) * SIZE)
+			|| hor.y >= ((data->nb_line - 1) * SIZE)
+			|| hor.x < 0 || hor.y < 0)
 			break ;
 	}
-	data->hor.x = ax;
-	data->hor.y = ay;
+	return (hor);
 }
 
-void	finding_v_intersection(t_data *data, double degrees)
+t_ver	finding_v_intersection(t_data *data, double degrees)
 {
-	double	bx;
-	double	by;
+	t_ver	ver;
 	double	xa;
 	double	ya;
 	double	last_x;
 	double	last_y;
 
-	if (degrees == 90.0 || degrees == 180.0 || degrees == 270.0)
-		return ;
-	else if ((degrees >= 0.0 && degrees <= 90.0) || (degrees >= 270.0 && degrees <= 360.0))
-		bx = floor(data->pos.x) * (SIZE) - 0.00001;
-	else if (degrees >= 90.0 && degrees <= 270.0)
-		bx = floor(data->pos.x) * (SIZE) + SIZE;
-	else
-		return ;
-	by = (data->pos.y * SIZE) + (bx - (data->pos.x * SIZE)) * tan(degrees * (M_PI / 180));
-	if ((by >= (data->nb_line - 1) * SIZE) || (bx >= (data->max_len - 1) * SIZE)
-		|| bx <= 0 || by <= 0)
-		return ;
-	while ((data->map[(int)by / SIZE][(int)bx / SIZE] != '1')
-		&& data->map[(int)by / SIZE][(int)bx / SIZE] != ' ')
+	if ((degrees > 0.0 && degrees < 90.0) || (degrees > 270.0 && degrees < 360.0))
+		ver.x = floor(data->pos.x) * (SIZE) - 1;
+	else if (degrees > 90.0 && degrees < 270.0)
+		ver.x = floor(data->pos.x) * (SIZE) + SIZE + 1;
+	ver.y = (data->pos.y * SIZE) + (ver.x - (data->pos.x * SIZE)) * tan(degrees * (M_PI / 180));
+	if ((ver.y >= (data->nb_line - 1) * SIZE) || (ver.x >= (data->max_len - 1) * SIZE)
+		|| ver.x <= 0 || ver.y <= 0)
 	{
-		last_x = bx;
-		last_y = by;
-		if ((degrees >= 0.0 && degrees <= 90.0) || (degrees >= 270.0 && degrees <= 360.0))
+		ver.x = -1;
+		ver.y = -1;
+		return (ver);
+	}
+	while ((data->map[(int)(round(ver.y * 1000) / 1000) / SIZE][(int)(round(ver.x * 1000) / 1000) / SIZE] != '1')
+		&& data->map[(int)(round(ver.y * 1000) / 1000) / SIZE][(int)(round(ver.x * 1000) / 1000) / SIZE] != ' ')
+	{
+		last_x = ver.x;
+		last_y = ver.y;
+		if ((degrees > 0.0 && degrees < 90.0) || (degrees > 270.0 && degrees < 360.0))
 			xa = -SIZE;
-		else if (degrees >= 90.0 && degrees <= 270.0)
+		else if (degrees > 90.0 && degrees < 270.0)
 			xa = SIZE;
 		ya = (xa - 1) * tan(degrees * (M_PI / 180));
-		by = last_y + ya;
-		bx = last_x + xa;
-		if ((by >= (data->nb_line - 1) * SIZE) || (bx >= (data->max_len - 1) * SIZE)
-			|| by < 0 || bx < 0)
+		ver.y = last_y + ya;
+		ver.x = last_x + xa;
+		if ((ver.y >= (data->nb_line - 1) * SIZE) || (ver.x >= (data->max_len - 1) * SIZE)
+			|| ver.y < 0 || ver.x < 0)
 			break ;
 	}
-	data->ver.x = bx;
-	data->ver.y = by;
+	return (ver);
 }

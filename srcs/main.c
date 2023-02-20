@@ -6,7 +6,7 @@
 /*   By: nchow-yu <nchow-yu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 00:53:40 by nicole            #+#    #+#             */
-/*   Updated: 2023/02/19 18:57:51 by nchow-yu         ###   ########.fr       */
+/*   Updated: 2023/02/20 20:00:40 by nchow-yu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,16 +18,26 @@ static int	ft_close_cursor(t_data *data)
 	return (1);
 }
 
-static int	ft_key_close(int key, t_data *data)
+static int	ft_key_catch(int key, t_data *data)
 {
 	draw_mini_map(data);
 	p_mini_map(data);
-	if (key == 65307)
-		ft_close(data);
-	else if (key == 100)
-		data->degrees += 0.09375;
-	while (mlx_key_hook(data->win, ft_key_close, data) == 1)
-		fprintf(stderr, "Key Hook!!\n");
+	// if (key == 65307)
+	// 	ft_close(data);
+	// else if (key == 'd')
+	// 	data->degrees += 0.1875;
+	// else if (key == 'a')
+	// 	data->degrees -= 0.1875;
+	// else if (key == 'w')
+	// 	data->pos.y += 0.1;
+	// else if (key == 's')
+	// 	data->pos.y += 0.1;
+	// if (key == 'a' || key == 'd' || key == 'w' || key == 's')
+	// {
+	// 	mlx_clear_window(data->mlx, data->win);
+	// 	draw_mini_map(data);
+	// 	p_mini_map(data);
+	// }
 	ft_fov(data);
 	return (1);
 }
@@ -47,7 +57,9 @@ int	main(int nb, char **argv)
 	p_mini_map(&data);
 	ft_fov(&data);
 //	draw_in_window(&data);
-	mlx_key_hook(data.win, ft_key_close, &data);
+	mlx_key_hook(data.win, ft_key_catch, &data);
+	mlx_hook(data.win, 2, 1L << 0, ft_key_catch, &data);
+	mlx_hook(data.win, 3, 1L << 1, ft_key_catch, &data);
 	mlx_hook(data.win, 17, 0, ft_close_cursor, &data);
 	mlx_loop(data.mlx);
 }

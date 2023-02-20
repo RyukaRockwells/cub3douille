@@ -6,7 +6,7 @@
 /*   By: nchow-yu <nchow-yu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 00:55:10 by nicole            #+#    #+#             */
-/*   Updated: 2023/02/18 18:07:41 by nchow-yu         ###   ########.fr       */
+/*   Updated: 2023/02/20 19:00:30 by nchow-yu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,9 +104,9 @@ int		ft_check_zero(t_data *data);
 //*************//
 //**RAYCASTER**//
 //*************//
-void	find_h_intersection(t_data *data, double degrees);
+t_hor	find_h_intersection(t_data *data, double degrees);
 void	cast_ray(t_data *data);
-void	finding_v_intersection(t_data *data, double degrees);
+t_ver	finding_v_intersection(t_data *data, double degrees);
 
 //raycaster/fov_player.c
 void	ft_fov(t_data *data);
