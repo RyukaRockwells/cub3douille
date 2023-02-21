@@ -6,7 +6,7 @@
 /*   By: nchow-yu <nchow-yu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 14:10:40 by nchow-yu          #+#    #+#             */
-/*   Updated: 2023/02/20 19:00:22 by nchow-yu         ###   ########.fr       */
+/*   Updated: 2023/02/21 13:57:46 by nchow-yu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ t_hor	find_h_intersection(t_data *data, double degrees)
 	double	old_y;
 	double	next_x;
 	double	ya;
+	// double	i;
+	// double	j;
 
 	if (degrees > 0.0 && degrees < 180.0)
 		hor.y = floor(data->pos.y) * (SIZE) - 1;
@@ -28,6 +30,8 @@ t_hor	find_h_intersection(t_data *data, double degrees)
 	if (hor.x >= ((data->max_len - 1) * SIZE) || hor.y >= ((data->nb_line - 1) * SIZE)
 		|| hor.x <= 0 || hor.y <= 0)
 	{
+		fprintf(stderr, "degrees = %f\n", degrees);
+		fprintf(stderr, "hor - x = %f | y = %f\n", hor.x, hor.y);
 		hor.x = -1;
 		hor.y = -1;
 		return (hor);
@@ -49,6 +53,19 @@ t_hor	find_h_intersection(t_data *data, double degrees)
 			|| hor.x < 0 || hor.y < 0)
 			break ;
 	}
+	// i = hor.x - 1;
+	// j = hor.y - 1;
+	// while (i <= hor.x + 1)
+	// {
+	// 	j = hor.y - 1;
+	// 	while (j <= hor.y + 1)
+	// 	{
+	// 		mlx_pixel_put(data->mlx, data->win, \
+	// 		i, j, 0x00F4A460);
+	// 		j++;
+	// 	}
+	// 	i++;
+	// }
 	return (hor);
 }
 
@@ -59,6 +76,8 @@ t_ver	finding_v_intersection(t_data *data, double degrees)
 	double	ya;
 	double	last_x;
 	double	last_y;
+	// double	i;
+	// double	j;
 
 	if ((degrees > 0.0 && degrees < 90.0) || (degrees > 270.0 && degrees < 360.0))
 		ver.x = floor(data->pos.x) * (SIZE) - 1;
@@ -68,12 +87,14 @@ t_ver	finding_v_intersection(t_data *data, double degrees)
 	if ((ver.y >= (data->nb_line - 1) * SIZE) || (ver.x >= (data->max_len - 1) * SIZE)
 		|| ver.x <= 0 || ver.y <= 0)
 	{
+		fprintf(stderr, "degrees = %f\n", degrees);
+		fprintf(stderr, "ver - x = %f | y = %f\n", ver.x, ver.y);
 		ver.x = -1;
 		ver.y = -1;
 		return (ver);
 	}
-	while ((data->map[(int)(round(ver.y * 1000) / 1000) / SIZE][(int)(round(ver.x * 1000) / 1000) / SIZE] != '1')
-		&& data->map[(int)(round(ver.y * 1000) / 1000) / SIZE][(int)(round(ver.x * 1000) / 1000) / SIZE] != ' ')
+	while ((data->map[(int)(round(ver.y * 100) / 100) / SIZE][(int)(round(ver.x * 100) / 100) / SIZE] != '1')
+		&& data->map[(int)(round(ver.y * 100) / 100) / SIZE][(int)(round(ver.x * 100) / 100) / SIZE] != ' ')
 	{
 		last_x = ver.x;
 		last_y = ver.y;
@@ -88,5 +109,18 @@ t_ver	finding_v_intersection(t_data *data, double degrees)
 			|| ver.y < 0 || ver.x < 0)
 			break ;
 	}
+	// i = ver.x - 1;
+	// j = ver.y - 1;
+	// while (i <= ver.x + 1)
+	// {
+	// 	j = ver.y - 1;
+	// 	while (j <= ver.y + 1)
+	// 	{
+	// 		mlx_pixel_put(data->mlx, data->win, \
+	// 		i, j, 0x00F5F5F5);
+	// 		j++;
+	// 	}
+	// 	i++;
+	// }
 	return (ver);
 }
