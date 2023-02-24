@@ -3,19 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   struct.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sanauth <sanauth@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nchow-yu <nchow-yu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 13:39:32 by nchow-yu          #+#    #+#             */
-/*   Updated: 2023/02/13 11:52:05 by sanauth          ###   ########.fr       */
+/*   Updated: 2023/02/24 13:14:05 by nchow-yu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STRUCT_H
 # define STRUCT_H
 
-# define WIDTH 1000
-# define HEIGTH 1000
-# define SIZE 17
+# define WIDTH 320
+# define HEIGTH 200
+# define SIZE 32
 
 typedef struct s_img
 {
@@ -26,21 +26,24 @@ typedef struct s_img
 
 typedef struct s_pos
 {
+	char	dir_view;
 	double	x;
 	double	y;
+	double	dx;
+	double	dy;
 }	t_pos;
 
-typedef struct s_dir
+typedef struct s_hor
 {
 	double	x;
 	double	y;
-}	t_dir;
+}	t_hor;
 
-typedef struct s_plan
+typedef struct s_ver
 {
 	double	x;
 	double	y;
-}	t_plan;
+}	t_ver;
 
 typedef struct s_params
 {
@@ -60,46 +63,11 @@ typedef struct s_data
 	void		*win;
 	int			max_len;
 	int			nb_line;
+	double		degrees;
 	t_params	params;
 	t_pos		pos;
-	t_dir		dir;
 	t_img		img;
 	t_img		textures[4];
 }	t_data;
 
 #endif
-/*
-	mlx_pixel_put(data->mlx, data->win, \
-		data->pos.x * SIZE, data->pos.y * SIZE, 0x0000F0FF);
-	mlx_pixel_put(data->mlx, data->win, \
-		(data->pos.x * SIZE) + 1, data->pos.y * SIZE, 0x0000F0FF);
-	mlx_pixel_put(data->mlx, data->win, \
-		(data->pos.x * SIZE) + 2, data->pos.y * SIZE, 0x0000F0FF);
-	mlx_pixel_put(data->mlx, data->win, \
-		(data->pos.x * SIZE) - 1, data->pos.y * SIZE, 0x0000F0FF);
-	mlx_pixel_put(data->mlx, data->win, \
-		(data->pos.x * SIZE) - 2, data->pos.y * SIZE, 0x0000F0FF);
-	mlx_pixel_put(data->mlx, data->win, \
-		data->pos.x * SIZE, (data->pos.y * SIZE) + 1, 0x0000F0FF);
-	mlx_pixel_put(data->mlx, data->win, \
-		data->pos.x * SIZE, (data->pos.y * SIZE) + 2, 0x0000F0FF);
-	mlx_pixel_put(data->mlx, data->win, \
-		data->pos.x * SIZE, (data->pos.y * SIZE) + 1, 0x0000F0FF);
-	mlx_pixel_put(data->mlx, data->win, \
-		data->pos.x * SIZE, (data->pos.y * SIZE) - 2, 0x0000F0FF);
-
-	int	i;
-	int	j;
-
-	i = data->pos.x - 2;
-	while (i <= data->pos.x + 2)
-	{
-		j = data->pos.y - 2;
-		while (j <= data->pos.y + 2)
-		{
-			mlx_pixel_put(data->mlx, data->win, (i * SIZE), (j * SIZE), 0x0000FFFF);
-			j++;
-		}
-		i++;
-	}
-*/

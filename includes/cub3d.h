@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sanauth <sanauth@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nchow-yu <nchow-yu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 00:55:10 by nicole            #+#    #+#             */
-/*   Updated: 2023/02/01 13:06:02 by sanauth          ###   ########.fr       */
+/*   Updated: 2023/02/24 13:13:36 by nchow-yu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <stdlib.h>
 # include <errno.h>
 # include <fcntl.h>
+# include <math.h>
 # include "struct.h"
 # include "../mlx_linux/mlx.h"
 # include "../srcs/lib/libft/libft.h"
@@ -26,6 +27,7 @@
 void	init_struct(t_data *data);
 void	init_window(t_data *data);
 void	init_pos_player(t_data *data);
+void	init_degrees(t_data *data);
 
 //utils/ft_strcmp.c
 int		ft_strcmp(const char *s1, const char *s2);
@@ -103,9 +105,9 @@ void	ft_print_map(t_data *data);
 //init_textures.c
 void	init_textures(t_data *data);
 
-//****** *****//
+//************//
 //**MINI_MAP**//
-//******* ****//
+//************//
 //mini_map.c
 void	p_mini_map(t_data *data);
 void	draw_mini_map(t_data *data);
@@ -116,4 +118,15 @@ int		ft_verify_content(t_data *data);
 void	print_map(t_data *data);
 int		ft_check_around(t_data *data, int i, int j);
 int		ft_check_zero(t_data *data);
+
+//*************//
+//**RAYCASTER**//
+//*************//
+t_hor	find_h_intersection(t_data *data, double degrees);
+void	cast_ray(t_data *data);
+t_ver	finding_v_intersection(t_data *data, double degrees);
+
+//raycaster/fov_player.c
+void	ft_fov(t_data *data);
+
 #endif

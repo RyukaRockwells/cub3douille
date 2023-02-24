@@ -6,7 +6,7 @@
 /*   By: nchow-yu <nchow-yu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 19:13:21 by nchow-yu          #+#    #+#             */
-/*   Updated: 2023/01/30 14:05:17 by nchow-yu         ###   ########.fr       */
+/*   Updated: 2023/02/24 13:01:32 by nchow-yu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,11 @@ void	p_mini_map(t_data *data)
 	int	i;
 	int	j;
 
-	i = (data->pos.x * SIZE) - 2;
-	while (i <= (data->pos.x * SIZE) + 2)
+	i = (data->pos.x * SIZE);
+	while (i <= (data->pos.x * SIZE))
 	{
-		j = (data->pos.y * SIZE) - 2;
-		while (j <= (data->pos.y * SIZE) + 2)
+		j = (data->pos.y * SIZE);
+		while (j <= (data->pos.y * SIZE))
 		{
 			mlx_pixel_put(data->mlx, data->win, \
 			i, j, 0x0000F0FF);

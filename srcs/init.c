@@ -6,7 +6,7 @@
 /*   By: nchow-yu <nchow-yu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 10:43:09 by nchow-yu          #+#    #+#             */
-/*   Updated: 2023/01/25 19:50:22 by nchow-yu         ###   ########.fr       */
+/*   Updated: 2023/02/23 16:04:26 by nchow-yu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,19 +27,22 @@ void	init_window(t_data *data)
 	data->mlx = mlx_init();
 	if (data->mlx == NULL)
 		ft_close(data);
-	data->win = mlx_new_window(data->mlx, WIDTH, HEIGTH, "Cub3D");
+	data->win = mlx_new_window(data->mlx, data->max_len * SIZE, \
+		data->nb_line * SIZE, "Cub3D");
 	if (data->win == NULL)
 	{
 		free(data->mlx);
 		ft_close(data);
 	}
-	data->img.img = mlx_new_image(data->mlx, WIDTH, HEIGTH);
+	data->img.img = mlx_new_image(data->mlx, data->max_len * SIZE, \
+		data->nb_line * SIZE);
 }
 
 void	init_pos_player(t_data *data)
 {
 	int	i;
 	int	j;
+	int	count;
 
 	i = 0;
 	while (data->map[i] != NULL)
@@ -52,9 +55,27 @@ void	init_pos_player(t_data *data)
 			{
 				data->pos.x = j + 0.5;
 				data->pos.y = i + 0.5;
+				data->pos.dir_view = data->map[i][j];
 			}
 			j++;
 		}
 		i++;
 	}
+	count = i;
+}
+
+void	init_degrees(t_data *data)
+{
+	if (data->map[(int)data->pos.y][(int)data->pos.x] == 'N')
+		data->degrees = (M_PI * 1.5);
+	else if (data->map[(int)data->pos.y][(int)data->pos.x] == 'S')
+		data->degrees = M_PI / 2;
+	else if (data->map[(int)data->pos.y][(int)data->pos.x] == 'W')
+		data->degrees = M_PI;
+	else if (data->map[(int)data->pos.y][(int)data->pos.x] == 'E')
+		data->degrees = 0.0;
+	else
+		data->degrees = 0.0;
+	data->pos.dx = cos(data->degrees * M_PI / 180) * 5;
+	data->pos.dy = sin(data->degrees * M_PI / 180) * 5;
 }
