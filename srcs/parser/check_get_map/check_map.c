@@ -6,7 +6,7 @@
 /*   By: nchow-yu <nchow-yu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 22:36:08 by nicole            #+#    #+#             */
-/*   Updated: 2023/01/30 15:26:46 by nchow-yu         ###   ########.fr       */
+/*   Updated: 2023/02/24 13:00:51 by nchow-yu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int	ft_count_pos(t_data *data)
 			data->map[i][j] == 'P' || data->map[i][j] == 'S')
 			count++;
 		j++;
-		if (data->map[i][j - 1] == '\n' && i < 13) //remplacer 13 par nbline
+		if (data->map[i][j - 1] == '\n' && i < data->nb_line)
 		{
 			i++;
 			j = 0;

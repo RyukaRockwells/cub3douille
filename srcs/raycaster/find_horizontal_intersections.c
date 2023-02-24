@@ -6,7 +6,7 @@
 /*   By: nchow-yu <nchow-yu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 14:10:40 by nchow-yu          #+#    #+#             */
-/*   Updated: 2023/02/24 12:19:57 by nchow-yu         ###   ########.fr       */
+/*   Updated: 2023/02/24 12:10:57 by nchow-yu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,12 @@ static t_hor	first_point_ray(t_data *data, double rad)
 	{
 		hor.x = -1;
 		hor.y = -1;
+		return (hor);
 	}
 	return (hor);
 }
 
-static t_hor	next_intersection(t_hor hor, double rad)
+static t_hor	next_intersection_hor(t_hor hor, double rad)
 {
 	double	old_x;
 	double	old_y;
@@ -62,7 +63,7 @@ t_hor	find_h_intersection(t_data *data, double rad)
 		&& data->map[(int)(round(hor.y * 1000 / SIZE) / 1000)] \
 		[(int)(round(hor.x * 1000 / SIZE) / 1000)] != ' ')
 	{
-		hor = next_intersection(hor, rad);
+		hor = next_intersection_hor(hor, rad);
 		if (hor.x >= ((data->max_len - 1) * SIZE)
 			|| hor.y >= ((data->nb_line - 1) * SIZE)
 			|| hor.x < 0 || hor.y < 0)
