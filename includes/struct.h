@@ -6,7 +6,7 @@
 /*   By: nchow-yu <nchow-yu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 13:39:32 by nchow-yu          #+#    #+#             */
-/*   Updated: 2023/02/24 13:14:05 by nchow-yu         ###   ########.fr       */
+/*   Updated: 2023/02/25 14:28:37 by nchow-yu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,12 @@ typedef struct s_ver
 	double	y;
 }	t_ver;
 
+typedef struct s_fov
+{
+	double	degrees;
+	double	dist;
+}	t_fov;
+
 typedef struct s_params
 {
 	char	*north;
@@ -63,7 +69,7 @@ typedef struct s_data
 	void		*win;
 	int			max_len;
 	int			nb_line;
-	double		degrees;
+	double		rad;
 	t_params	params;
 	t_pos		pos;
 	t_img		img;

@@ -6,7 +6,7 @@
 /*   By: nchow-yu <nchow-yu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/18 18:05:02 by nchow-yu          #+#    #+#             */
-/*   Updated: 2023/02/24 13:00:07 by nchow-yu         ###   ########.fr       */
+/*   Updated: 2023/02/25 13:29:39 by nchow-yu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,31 +63,38 @@ static void	call_ft_for_dist(t_data *data)
 	t_ver	ver;
 	t_hor	hor;
 
-	hor = find_h_intersection(data, data->degrees);
-	ver = finding_v_intersection(data, data->degrees);
+	hor = find_h_intersection(data, data->rad);
+	ver = finding_v_intersection(data, data->rad);
 	choose_pointtodist(data, &ver, &hor);
 }
 
 void	ft_fov(t_data *data)
 {
-	double	initial_degrees;
+	double	initial_rad;
 	double	result;
 
-	initial_degrees = data->degrees;
-	if (data->degrees == 0.0)
-		data->degrees = M_PI * 2;
-	result = (initial_degrees - 0.523599);
+	initial_rad = data->rad;
+	if (data->rad == 0.0)
+		data->rad = M_PI * 2;
+	result = (initial_rad - 0.523599);
 	if (result < 0)
 		result += M_PI * 2;
-	while (data->degrees > result)
+	fprintf(stderr, "min = %f\n", result * (180 / M_PI));
+	while (data->rad > result)
 	{
 		call_ft_for_dist(data);
-		data->degrees -= 0.00327249;
+		data->rad -= 0.00327249;
 	}
-	data->degrees = initial_degrees;
-	while (data->degrees < (initial_degrees + 0.523599))
+	data->rad = initial_rad;
+	result = (initial_rad + 0.523599);
+	if (result > 6.2832)
+		result -= M_PI * 2;
+	fprintf(stderr, "min = %f\n", result * (180 / M_PI));
+	while (data->rad < result)
 	{
 		call_ft_for_dist(data);
-		data->degrees += 0.00327249;
+		data->rad += 0.00327249;
 	}
+	data->rad = initial_rad;
+	fprintf(stderr, "degrees = %f\n", data->rad * (180 / M_PI));
 }

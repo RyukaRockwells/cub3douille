@@ -6,7 +6,7 @@
 /*   By: nchow-yu <nchow-yu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/22 17:18:04 by nchow-yu          #+#    #+#             */
-/*   Updated: 2023/02/24 13:18:48 by nchow-yu         ###   ########.fr       */
+/*   Updated: 2023/02/26 15:19:13 by nchow-yu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,6 @@ static char	*get_str_params(char *str)
 	len = 0;
 	while (ft_is_space(str[i]) == 1)
 		i++;
-	if (str[i] == '1')
-	{
-		fprintf(stderr, "Error\n");
-		return (NULL);
-	}
 	start = i;
 	while (str[i] != '\0')
 	{
