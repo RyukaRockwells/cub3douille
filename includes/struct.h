@@ -6,7 +6,7 @@
 /*   By: nchow-yu <nchow-yu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 13:39:32 by nchow-yu          #+#    #+#             */
-/*   Updated: 2023/02/27 18:03:06 by nchow-yu         ###   ########.fr       */
+/*   Updated: 2023/02/28 11:18:57 by nchow-yu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,17 +33,11 @@ typedef struct s_pos
 	double	dy;
 }	t_pos;
 
-typedef struct s_hor
+typedef struct s_coord
 {
 	double	x;
 	double	y;
-}	t_hor;
-
-typedef struct s_ver
-{
-	double	x;
-	double	y;
-}	t_ver;
+}	t_coord;
 
 typedef struct s_fov
 {

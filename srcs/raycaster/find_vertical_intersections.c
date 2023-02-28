@@ -6,15 +6,15 @@
 /*   By: nchow-yu <nchow-yu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 12:10:38 by nchow-yu          #+#    #+#             */
-/*   Updated: 2023/02/27 16:38:47 by nchow-yu         ###   ########.fr       */
+/*   Updated: 2023/02/28 11:19:29 by nchow-yu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-static t_ver	first_point_ray(t_data *data, double rad)
+static t_coord	first_point_ray(t_data *data, double rad)
 {
-	t_ver	ver;
+	t_coord	ver;
 
 	if (rad < (M_PI / 2) || rad > (M_PI * 1.5))
 		ver.x = floor(data->pos.x) * (SIZE) + SIZE;
@@ -31,7 +31,7 @@ static t_ver	first_point_ray(t_data *data, double rad)
 	return (ver);
 }
 
-static t_ver	next_intersection(t_ver ver, double rad)
+static t_coord	next_intersection(t_coord ver, double rad)
 {
 	double	delta_x;
 	double	delta_y;
@@ -50,9 +50,9 @@ static t_ver	next_intersection(t_ver ver, double rad)
 	return (ver);
 }
 
-t_ver	finding_v_intersection(t_data *data, double rad)
+t_coord	finding_v_intersection(t_data *data, double rad)
 {
-	t_ver	ver;
+	t_coord	ver;
 
 	ver = first_point_ray(data, rad);
 	if (ver.x == -1 && ver.y == -1)

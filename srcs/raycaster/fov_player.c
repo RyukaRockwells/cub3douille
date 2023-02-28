@@ -6,76 +6,54 @@
 /*   By: nchow-yu <nchow-yu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/18 18:05:02 by nchow-yu          #+#    #+#             */
-/*   Updated: 2023/02/28 11:05:09 by nchow-yu         ###   ########.fr       */
+/*   Updated: 2023/02/28 12:50:45 by nchow-yu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-static void	draw_point(t_data *data, double i, double j)
-{
-	double	init_i;
-	double	init_j;
-
-	init_i = i;
-	init_j = j;
-	i -= 2;
-	j -= 2;
-	while (i <= init_i + 2)
-	{
-		j = init_j - 2;
-		while (j <= init_j + 2)
-			mlx_pixel_put(data->mlx, data->win, i, j++, 0xFFFFFFFF);
-		i++;
-	}
-}
-
 //for norme remove line 61
-static void	choose_pointtodist(t_data *data, t_ver *ver, t_hor *hor, double rad)
+static t_fov	choose_dist(t_data *data, t_coord *v, t_coord *h, double rad)
 {
-	double		i;
-	double		j;
-	double		dist_h;
-	double		dist_v;
+	double		d_h;
+	double		d_v;
+	t_fov		fov;
 
-	dist_h = sqrt(pow(((data->pos.x * SIZE) - hor->x), 2) \
-		+ pow(((data->pos.y * SIZE) - hor->y), 2));
-	dist_v = sqrt(pow(((data->pos.x * SIZE) - ver->x), 2) \
-		+ pow(((data->pos.y * SIZE) - ver->y), 2));
-	if ((ver->x != -1 && ver->y != -1)
-		&& (dist_h >= dist_v || (hor->x == -1 && hor->y == -1)))
-	{
-		i = ver->x;
-		j = ver->y;
-		fill_the_struct_for_render(rad, dist_v, 'V');
-	}
-	else if ((hor->x != -1 && hor->y != -1)
-		&& (dist_v >= dist_h || (ver->x == -1 && ver->y == -1)))
-	{
-		i = hor->x;
-		j = hor->y;
-		fill_the_struct_for_render(rad, dist_h, 'H');
-	}
-	else
-		return ;
-	draw_point(data, i, j);
+	fov.degrees = 0;
+	fov.dist = 0;
+	fov.wall_orientation = '\0';
+	d_h = sqrt(pow(((data->pos.x * SIZE) - h->x), 2) \
+		+ pow(((data->pos.y * SIZE) - h->y), 2));
+	d_v = sqrt(pow(((data->pos.x * SIZE) - v->x), 2) \
+		+ pow(((data->pos.y * SIZE) - v->y), 2));
+	if ((v->x != -1 && v->y != -1)
+		&& (d_h >= d_v || (h->x == -1 && h->y == -1)))
+		fov = fill_the_struct_for_render(rad, d_v, 'V', v, data);
+	else if ((h->x != -1 && h->y != -1)
+		&& (d_v >= d_h || (v->x == -1 && v->y == -1)))
+		fov = fill_the_struct_for_render(rad, d_h, 'H', h, data);
+	return (fov);
 }
 
-static void	call_ft_for_dist(t_data *data, double rad)
+static t_fov	call_ft_for_dist(t_data *data, double rad)
 {
-	t_ver	ver;
-	t_hor	hor;
+	t_coord	ver;
+	t_coord	hor;
+	t_fov	fov;
 
 	hor = find_h_intersection(data, rad);
 	ver = finding_v_intersection(data, rad);
-	choose_pointtodist(data, &ver, &hor, rad);
+	fov = choose_dist(data, &ver, &hor, rad);
+	return (fov);
 }
 
-static void	check_all_left_intersect(t_data *data)
+static t_fov	*check_all_left_intersect(t_data *data, t_fov *fov)
 {
 	double	tmp_rad;
 	double	res;
+	int		i;
 
+	i = 320;
 	tmp_rad = data->rad;
 	res = (data->rad - 0.523599);
 	if (res < 0)
@@ -85,17 +63,22 @@ static void	check_all_left_intersect(t_data *data)
 	}
 	while (tmp_rad > res)
 	{
-		call_ft_for_dist(data, tmp_rad);
-		tmp_rad -= 0.00327249;
+		fov[i] = call_ft_for_dist(data, tmp_rad);
+		tmp_rad -= 0.00163625;
+		i--;
 	}
+	return (fov);
 }
 
-void	ft_fov(t_data *data)
+t_fov	*ft_fov(t_data *data)
 {
 	double	tmp_rad;
 	double	result;
+	t_fov	*fov;
+	int		i;
 
-	check_all_left_intersect(data);
+	fov = malloc(sizeof(t_fov) * 640);
+	fov = check_all_left_intersect(data, fov);
 	tmp_rad = data->rad;
 	result = (data->rad + 0.523599);
 	if (result > 6.2832)
@@ -103,9 +86,18 @@ void	ft_fov(t_data *data)
 		tmp_rad -= M_PI * 2;
 		result -= M_PI * 2;
 	}
+	i = 320;
 	while (tmp_rad < result)
 	{
-		call_ft_for_dist(data, tmp_rad);
-		tmp_rad += 0.00327249;
+		fov[i] = call_ft_for_dist(data, tmp_rad);
+		tmp_rad += 0.00163625;
+		i++;
 	}
+	return (fov);
+	// i = 0;
+	// while (i != 640)
+	// {
+	// 	fprintf(stderr, "index = %d | degrees = %f | distance = %f | wall = %c\n", i, fov[i].degrees, fov[i].dist, fov[i].wall_orientation);
+	// 	i++;
+	// }
 }

@@ -6,7 +6,7 @@
 /*   By: nchow-yu <nchow-yu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 00:53:40 by nicole            #+#    #+#             */
-/*   Updated: 2023/02/28 10:53:16 by nchow-yu         ###   ########.fr       */
+/*   Updated: 2023/02/28 12:50:23 by nchow-yu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ static int	ft_key_catch(int key, t_data *data)
 int	main(int nb, char **argv)
 {
 	t_data	data;
+	t_fov	*fov;
 
 	data.max_len = 0;
 	data.rad = 0.0;
@@ -59,7 +60,7 @@ int	main(int nb, char **argv)
 	init_textures(&data);
 	draw_mini_map(&data);
 	p_mini_map(&data);
-	ft_fov(&data);
+	fov = ft_fov(&data);
 	mlx_hook(data.win, 2, 1L << 0, ft_key_catch, &data);
 	mlx_hook(data.win, 17, 0, ft_close_cursor, &data);
 	mlx_loop(data.mlx);

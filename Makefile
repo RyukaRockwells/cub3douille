@@ -6,7 +6,7 @@
 #    By: nchow-yu <nchow-yu@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/21 00:48:03 by nicole            #+#    #+#              #
-#    Updated: 2023/02/28 10:52:49 by nchow-yu         ###   ########.fr        #
+#    Updated: 2023/02/28 11:24:57 by nchow-yu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ C_FILE	=	$(addprefix srcs/parser/check_get_file/, check_file.c get_file.c)
 C_MAP	=	$(addprefix srcs/parser/check_get_map/, check_map.c get_map.c check_contour.c)
 C_PARAMS=	$(addprefix srcs/parser/check_get_params/, check_params.c get_params.c count_params.c count_params_2.c)
 FREE	=	$(addprefix srcs/all_free/, all_free.c)
-UTILS	=	$(addprefix srcs/utils/, ft_strcmp.c ft_strcpy.c ft_is_space.c key_ft.c)
+UTILS	=	$(addprefix srcs/utils/, ft_strcmp.c ft_strcpy.c ft_is_space.c key_ft.c draw_point.c)
 MLX_FT	=	$(addprefix srcs/mlx_ft/, close.c)
 PARSER	= 	$(addprefix srcs/parser/, parser.c) ${C_FILE} ${C_MAP} ${C_PARAMS} 
 TEXTURE	=	$(addprefix srcs/textures/, init_textures.c)
