@@ -6,7 +6,7 @@
 /*   By: nchow-yu <nchow-yu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 00:53:40 by nicole            #+#    #+#             */
-/*   Updated: 2023/02/28 12:50:23 by nchow-yu         ###   ########.fr       */
+/*   Updated: 2023/02/28 13:01:22 by nchow-yu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ int	main(int nb, char **argv)
 	draw_mini_map(&data);
 	p_mini_map(&data);
 	fov = ft_fov(&data);
+	ft_start_draw(&data);
 	mlx_hook(data.win, 2, 1L << 0, ft_key_catch, &data);
 	mlx_hook(data.win, 17, 0, ft_close_cursor, &data);
 	mlx_loop(data.mlx);

@@ -6,7 +6,7 @@
 /*   By: nchow-yu <nchow-yu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 00:55:10 by nicole            #+#    #+#             */
-/*   Updated: 2023/02/28 12:50:04 by nchow-yu         ###   ########.fr       */
+/*   Updated: 2023/02/28 13:00:03 by nchow-yu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,8 +100,19 @@ t_coord	finding_v_intersection(t_data *data, double rad);
 
 //fov_player.c
 t_fov	*ft_fov(t_data *data);
+void	ft_put_3d(t_data *data);
+void	ft_write_sky(t_data *data, int x, int y);
+void	ft_write_floor(t_data *data, int x, int y);
 
 //fill_the_struct_for_render.c
 t_fov	fill_the_struct_for_render(double rad, double d, char i, t_coord *coord, t_data *data);
+
+//void	ft_printwall(t_data *data);
+int		ft_calculate_wall_heigth(int wall_dist, int wall_height, int column);
+int		ft_define_wall_pixel_start(int wall_height, int pixel_start);
+void	ft_write_wall(t_data *data, int wall_pixel_start, \
+		int nb_pixel, int column);
+void	ft_start_draw(t_data *data);
+char	*load_texture(char *filename, t_data *data);
 
 #endif
