@@ -6,7 +6,7 @@
 /*   By: nchow-yu <nchow-yu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 00:53:40 by nicole            #+#    #+#             */
-/*   Updated: 2023/02/25 13:32:13 by nchow-yu         ###   ########.fr       */
+/*   Updated: 2023/02/28 10:53:16 by nchow-yu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,29 +30,18 @@ static int	ft_key_catch(int key, t_data *data)
 {
 	if (key == 65307)
 		ft_close(data);
-	else if (key == 'w'
-		&& data->map[(int)(data->pos.y + ((sin(data->rad) * 10) / SIZE))] \
-		[(int)(data->pos.x + ((cos(data->rad) * 10) / SIZE))] != '1')
-	{
-		data->pos.x += (cos(data->rad) * 10) / SIZE;
-		data->pos.y += (sin(data->rad) * 10) / SIZE;
-	}
-	else if (key == 's'
-		&& data->map[(int)(data->pos.y - ((sin(data->rad) * 10) / SIZE))] \
-		[(int)(data->pos.x - ((cos(data->rad) * 10) / SIZE))] != '1')
-	{
-		data->pos.x -= (cos(data->rad) * 10) / SIZE;
-		data->pos.y -= (sin(data->rad) * 10) / SIZE;
-	}
-	else if (key == 'a')
+	else if (key == 'w' || key == 's' || key == 'a' || key == 'd')
+		move_player(key, data);
+	else if (key == 65361)
 		data->rad -= 0.0175;
-	else if (key == 'd')
+	else if (key == 65363)
 		data->rad += 0.0175;
 	if (data->rad < 0.0)
 		data->rad += M_PI * 2;
-	else if (data->rad > 6.2832)
+	else if (data->rad >= M_PI * 2)
 		data->rad -= M_PI * 2;
-	if (key == 'w' || key == 's' || key == 'a' || key == 'd')
+	if (key == 65363 || key == 65361
+		|| key == 'w' || key == 's' || key == 'a' || key == 'd')
 		refresh_window(data);
 	return (1);
 }

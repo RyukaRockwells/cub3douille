@@ -6,7 +6,7 @@
 /*   By: nchow-yu <nchow-yu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 12:10:38 by nchow-yu          #+#    #+#             */
-/*   Updated: 2023/02/24 12:20:26 by nchow-yu         ###   ########.fr       */
+/*   Updated: 2023/02/27 16:38:47 by nchow-yu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static t_ver	first_point_ray(t_data *data, double rad)
 {
 	t_ver	ver;
 
-	if ((rad < (M_PI / 2)) || (rad > (M_PI * 1.5)))
+	if (rad < (M_PI / 2) || rad > (M_PI * 1.5))
 		ver.x = floor(data->pos.x) * (SIZE) + SIZE;
 	else
 		ver.x = floor(data->pos.x) * (SIZE) - 1;
@@ -40,7 +40,7 @@ static t_ver	next_intersection(t_ver ver, double rad)
 
 	last_x = ver.x;
 	last_y = ver.y;
-	if ((rad < (M_PI / 2)) || (rad > (M_PI * 1.5)))
+	if (rad < (M_PI / 2) || rad > (M_PI * 1.5))
 		delta_x = SIZE;
 	else
 		delta_x = -SIZE;

@@ -6,7 +6,7 @@
 /*   By: nchow-yu <nchow-yu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 13:39:32 by nchow-yu          #+#    #+#             */
-/*   Updated: 2023/02/25 14:28:37 by nchow-yu         ###   ########.fr       */
+/*   Updated: 2023/02/27 18:03:06 by nchow-yu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ typedef struct s_fov
 {
 	double	degrees;
 	double	dist;
+	char	wall_orientation;
 }	t_fov;
 
 typedef struct s_params

@@ -6,7 +6,7 @@
 /*   By: nchow-yu <nchow-yu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 00:55:10 by nicole            #+#    #+#             */
-/*   Updated: 2023/02/24 18:17:09 by nchow-yu         ###   ########.fr       */
+/*   Updated: 2023/02/28 10:47:57 by nchow-yu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,10 +38,16 @@ char	*ft_strcpy(t_data *data, char *dest, char *str);
 //utils/ft_is_space.c
 int		ft_is_space(char c);
 
+//utils/key_ft.c
+void	move_player(int key, t_data *data);
+
 //free/all_free.c
 void	ft_free_str(char **str);
 void	ft_free_all_params(t_data *data);
 
+//**********//
+//**ERROR***//
+//**********//
 //error/ft_error.c
 void	nb_arg_error(void);
 void	file_error(void);
@@ -128,5 +134,8 @@ t_ver	finding_v_intersection(t_data *data, double rad);
 
 //raycaster/fov_player.c
 void	ft_fov(t_data *data);
+
+//raycaster/fill_the_struct_for_render.c
+void	fill_the_struct_for_render(double rad, double dist, char intersect);
 
 #endif
