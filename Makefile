@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: nchow-yu <nchow-yu@student.42.fr>          +#+  +:+       +#+         #
+#    By: sanauth <sanauth@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/21 00:48:03 by nicole            #+#    #+#              #
-#    Updated: 2023/02/25 14:44:05 by nchow-yu         ###   ########.fr        #
+#    Updated: 2023/02/28 11:13:13 by sanauth          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ PARSER	= 	$(addprefix srcs/parser/, parser.c) ${C_FILE} ${C_MAP} ${C_PARAMS}
 TEXTURE	=	$(addprefix srcs/textures/, init_textures.c)
 M_MAP	=	$(addprefix srcs/mini_map/, mini_map.c)
 RAYCAS	=	$(addprefix srcs/raycaster/, find_horizontal_intersections.c find_vertical_intersections.c\
-			fov_player.c)
+			fov_player.c rendernorm.c rendernorm2.c)
 SRCS	=	$(addprefix srcs/, main.c init.c draw_ft.c) ${GNL} ${ERROR} ${FREE} ${UTILS} ${PARSER} ${MLX_FT}\
 			${TEXTURE} ${M_MAP} ${RAYCAS}
 OBJS	=	${SRCS:.c=.o}

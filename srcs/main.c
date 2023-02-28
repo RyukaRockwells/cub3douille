@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nchow-yu <nchow-yu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sanauth <sanauth@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 00:53:40 by nicole            #+#    #+#             */
-/*   Updated: 2023/02/25 13:32:13 by nchow-yu         ###   ########.fr       */
+/*   Updated: 2023/02/28 11:12:52 by sanauth          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,9 +68,10 @@ int	main(int nb, char **argv)
 	init_rad(&data);
 	init_window(&data);
 	init_textures(&data);
-	draw_mini_map(&data);
-	p_mini_map(&data);
+	//draw_mini_map(&data);
+	//p_mini_map(&data);
 	ft_fov(&data);
+	ft_start_draw(&data);
 	mlx_hook(data.win, 2, 1L << 0, ft_key_catch, &data);
 	mlx_hook(data.win, 17, 0, ft_close_cursor, &data);
 	mlx_loop(data.mlx);

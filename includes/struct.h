@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   struct.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nchow-yu <nchow-yu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sanauth <sanauth@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 13:39:32 by nchow-yu          #+#    #+#             */
-/*   Updated: 2023/02/25 14:28:37 by nchow-yu         ###   ########.fr       */
+/*   Updated: 2023/02/28 11:17:19 by sanauth          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STRUCT_H
 # define STRUCT_H
 
-# define WIDTH 320
-# define HEIGTH 200
+# define WIDTH 640
+# define HEIGTH 400
 # define SIZE 32
 
 typedef struct s_img
@@ -61,6 +61,17 @@ typedef struct s_params
 	char	*ceiling;
 }	t_params;
 
+typedef struct s_texture
+{
+	void	*img;
+	int		*addr;
+	int		txt_bpp;
+	int		txt_width;
+	int		txt_height;
+	int		txt_line_size;
+	int		txt_endian;
+}	t_texture;
+
 typedef struct s_data
 {
 	char		**file;
@@ -70,6 +81,13 @@ typedef struct s_data
 	int			max_len;
 	int			nb_line;
 	double		rad;
+	double		degrees;
+	void		*new_img;
+	int			nb_line_map;
+	int			bpp;
+	int			endian;
+	char		*buffer;
+	t_texture	texture;
 	t_params	params;
 	t_pos		pos;
 	t_img		img;

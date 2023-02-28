@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nchow-yu <nchow-yu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sanauth <sanauth@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 00:55:10 by nicole            #+#    #+#             */
-/*   Updated: 2023/02/24 18:17:09 by nchow-yu         ###   ########.fr       */
+/*   Updated: 2023/02/28 11:11:23 by sanauth          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,5 +128,15 @@ t_ver	finding_v_intersection(t_data *data, double rad);
 
 //raycaster/fov_player.c
 void	ft_fov(t_data *data);
+void	ft_put_3d(t_data *data);
+void	ft_write_sky(t_data *data, int x, int y);
+void	ft_write_floor(t_data *data, int x, int y);
+//void	ft_printwall(t_data *data);
+int		ft_calculate_wall_heigth(int wall_dist, int wall_height, int column);
+int		ft_define_wall_pixel_start(int wall_height, int pixel_start);
+void	ft_write_wall(t_data *data, int wall_pixel_start, \
+		int nb_pixel, int column);
+void	ft_start_draw(t_data *data);
+char	*load_texture(char *filename, t_data *data);
 
 #endif
