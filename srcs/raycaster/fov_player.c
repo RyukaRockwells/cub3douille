@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fov_player.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nchow-yu <nchow-yu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sanauth <sanauth@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/18 18:05:02 by nchow-yu          #+#    #+#             */
-/*   Updated: 2023/02/28 12:50:45 by nchow-yu         ###   ########.fr       */
+/*   Updated: 2023/02/28 16:57:01 by sanauth          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,11 +93,11 @@ t_fov	*ft_fov(t_data *data)
 		tmp_rad += 0.00163625;
 		i++;
 	}
+	i = 0;
+	//while (i != 640)
+	//{
+	//	fprintf(stderr, "index = %d | degrees = %f | distance = %f | wall = %c\n", i, fov[i].degrees, fov[i].dist, fov[i].wall_orientation);
+	//	i++;
+	//}
 	return (fov);
-	// i = 0;
-	// while (i != 640)
-	// {
-	// 	fprintf(stderr, "index = %d | degrees = %f | distance = %f | wall = %c\n", i, fov[i].degrees, fov[i].dist, fov[i].wall_orientation);
-	// 	i++;
-	// }
 }

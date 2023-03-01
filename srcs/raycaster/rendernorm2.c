@@ -6,11 +6,12 @@
 /*   By: sanauth <sanauth@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 11:21:16 by sanauth           #+#    #+#             */
-/*   Updated: 2023/02/28 11:21:17 by sanauth          ###   ########.fr       */
+/*   Updated: 2023/03/01 10:33:11 by sanauth          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
+#include "../includes/struct.h"
 
 void	ft_put_3d(t_data *data)
 {
@@ -82,31 +83,30 @@ void	ft_write_floor(t_data *data, int x, int y)
 	ft_free(tab);
 }
 
-void	ft_write_wall(t_data *data, int pixel_start, int nb_pixel, int column)
+void	ft_write_wall(t_data *data, double pixel_start, double nb_pixel, int column)
 {
-	int		wall_pixel_end;
+	double	wall_pixel_end;
 	char	*txt_data;
 	int		txt_index;
 	float	wall_height_ratio;
 	int		txt_column;
 
-	wall_pixel_end = pixel_start + nb_pixel;
+	//wall_pixel_end = pixel_start + nb_pixel;
 	txt_data = load_texture("./textures/debug_north.xpm", data);
+	wall_pixel_end = nb_pixel / 2 + HEIGTH / 2;
+	if (wall_pixel_end >= HEIGTH)
+	{
+		wall_pixel_end = HEIGTH - 1;
+	}
 	while (pixel_start < wall_pixel_end)
 	{
-		wall_height_ratio = (float) \
-		(wall_pixel_end - pixel_start) / nb_pixel;
-		txt_column = (int) \
-		((1 - wall_height_ratio) * data->texture.txt_height);
-		txt_index = txt_column * data->texture.txt_width + \
-		(column % data->texture.txt_width);
-		data->buffer[(pixel_start * data->nb_line_map) + (column * 4)] = \
-		txt_data[(txt_index * data->texture.txt_bpp) / 8];
-		data->buffer[(pixel_start * data->nb_line_map) + (column * 4) + 1] = \
-		txt_data[(txt_index * data->texture.txt_bpp) / 8 + 1];
-		data->buffer[(pixel_start * data->nb_line_map) + (column * 4) + 2] = \
-		txt_data[(txt_index * data->texture.txt_bpp) / 8 + 2];
-		data->buffer[(pixel_start * data->nb_line_map) + (column * 4) + 3] = 0;
+		wall_height_ratio = (float)(wall_pixel_end - pixel_start) / nb_pixel;
+		txt_column = (int)((1 - wall_height_ratio) * data->texture.txt_height);
+		txt_index = txt_column * data->texture.txt_width + (column % data->texture.txt_width);
+		data->buffer[((int)pixel_start * data->nb_line_map) + (column * 4)] = txt_data[(txt_index * data->texture.txt_bpp) / 8];
+		data->buffer[((int)pixel_start * data->nb_line_map) + (column * 4) + 1] = txt_data[(txt_index * data->texture.txt_bpp) / 8 + 1];
+		data->buffer[((int)pixel_start * data->nb_line_map) + (column * 4) + 2] = txt_data[(txt_index * data->texture.txt_bpp) / 8 + 2];
+		data->buffer[((int)pixel_start * data->nb_line_map) + (column * 4) + 3] = 0;
 		pixel_start++;
 	}
 }

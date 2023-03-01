@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nchow-yu <nchow-yu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sanauth <sanauth@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 00:55:10 by nicole            #+#    #+#             */
-/*   Updated: 2023/02/28 13:00:03 by nchow-yu         ###   ########.fr       */
+/*   Updated: 2023/02/28 17:03:41 by sanauth          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,11 +108,11 @@ void	ft_write_floor(t_data *data, int x, int y);
 t_fov	fill_the_struct_for_render(double rad, double d, char i, t_coord *coord, t_data *data);
 
 //void	ft_printwall(t_data *data);
-int		ft_calculate_wall_heigth(int wall_dist, int wall_height, int column);
-int		ft_define_wall_pixel_start(int wall_height, int pixel_start);
-void	ft_write_wall(t_data *data, int wall_pixel_start, \
-		int nb_pixel, int column);
-void	ft_start_draw(t_data *data);
+double	ft_calculate_wall_heigth(double wall_dist, double degree, int column);
+double	ft_define_wall_pixel_start(double wall_height);
+void	ft_write_wall(t_data *data, double wall_pixel_start, \
+		double nb_pixel, int column);
+void	ft_start_draw(t_data *data, t_fov *fov);
 char	*load_texture(char *filename, t_data *data);
 
 #endif
