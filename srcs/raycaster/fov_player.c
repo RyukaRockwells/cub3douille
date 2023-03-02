@@ -6,7 +6,7 @@
 /*   By: nchow-yu <nchow-yu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/18 18:05:02 by nchow-yu          #+#    #+#             */
-/*   Updated: 2023/02/28 12:50:45 by nchow-yu         ###   ########.fr       */
+/*   Updated: 2023/03/02 16:35:33 by nchow-yu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ static t_fov	choose_dist(t_data *data, t_coord *v, t_coord *h, double rad)
 
 	fov.degrees = 0;
 	fov.dist = 0;
+	fov.x = 0.0;
+	fov.y = 0.0;
 	fov.wall_orientation = '\0';
 	d_h = sqrt(pow(((data->pos.x * SIZE) - h->x), 2) \
 		+ pow(((data->pos.y * SIZE) - h->y), 2));
