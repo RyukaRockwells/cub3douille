@@ -6,7 +6,11 @@
 /*   By: sanauth <sanauth@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 00:55:10 by nicole            #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2023/02/28 17:03:41 by sanauth          ###   ########.fr       */
+=======
+/*   Updated: 2023/03/01 15:41:50 by nchow-yu         ###   ########.fr       */
+>>>>>>> main
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +56,7 @@ int		ft_is_space(char c);
 void	move_player(int key, t_data *data);
 
 //draw_point.c
-void	draw_point(t_data *data, double i, double j);
+void	draw_point(t_data *data, double i, double j, int color);
 
 //**********//
 //**ERROR***//

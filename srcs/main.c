@@ -6,7 +6,11 @@
 /*   By: sanauth <sanauth@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 00:53:40 by nicole            #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2023/03/02 14:51:15 by sanauth          ###   ########.fr       */
+=======
+/*   Updated: 2023/03/01 16:22:34 by nchow-yu         ###   ########.fr       */
+>>>>>>> main
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +65,11 @@ int	main(int nb, char **argv)
 	//draw_mini_map(&data);
 	//p_mini_map(&data);
 	fov = ft_fov(&data);
+<<<<<<< HEAD
 	ft_start_draw(&data, fov);
+=======
+	// ft_start_draw(&data);
+>>>>>>> main
 	mlx_hook(data.win, 2, 1L << 0, ft_key_catch, &data);
 	mlx_hook(data.win, 17, 0, ft_close_cursor, &data);
 	mlx_loop(data.mlx);

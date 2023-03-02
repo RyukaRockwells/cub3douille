@@ -6,7 +6,11 @@
 /*   By: sanauth <sanauth@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/18 18:05:02 by nchow-yu          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2023/03/02 14:32:20 by sanauth          ###   ########.fr       */
+=======
+/*   Updated: 2023/03/02 16:36:55 by nchow-yu         ###   ########.fr       */
+>>>>>>> main
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +25,8 @@ static t_fov	choose_dist(t_data *data, t_coord *v, t_coord *h, double rad)
 
 	fov.degrees = 0;
 	fov.dist = 0;
+	fov.x = 0.0;
+	fov.y = 0.0;
 	fov.wall_orientation = '\0';
 	d_h = sqrt(pow(((data->pos.x * SIZE) - h->x), 2) \
 		+ pow(((data->pos.y * SIZE) - h->y), 2));
@@ -53,7 +59,7 @@ static t_fov	*check_all_left_intersect(t_data *data, t_fov *fov)
 	double	res;
 	int		i;
 
-	i = 320;
+	i = 319;
 	tmp_rad = data->rad;
 	res = (data->rad - 0.523599);
 	if (res < 0)
