@@ -6,7 +6,7 @@
 /*   By: sanauth <sanauth@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 13:39:32 by nchow-yu          #+#    #+#             */
-/*   Updated: 2023/02/28 14:13:01 by sanauth          ###   ########.fr       */
+/*   Updated: 2023/03/02 16:04:08 by sanauth          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # define WIDTH 640
 # define HEIGTH 400
 # define SIZE 32
-# define FOV 10
+# define FOV 60
 
 typedef struct s_img
 {
@@ -44,6 +44,8 @@ typedef struct s_fov
 {
 	double	degrees;
 	double	dist;
+	double	x;
+	double	y;
 	char	wall_orientation;
 }	t_fov;
 

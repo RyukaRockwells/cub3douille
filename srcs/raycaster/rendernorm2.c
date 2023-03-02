@@ -6,7 +6,7 @@
 /*   By: sanauth <sanauth@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 11:21:16 by sanauth           #+#    #+#             */
-/*   Updated: 2023/03/01 10:33:11 by sanauth          ###   ########.fr       */
+/*   Updated: 2023/03/02 13:06:41 by sanauth          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,7 @@ void	ft_write_wall(t_data *data, double pixel_start, double nb_pixel, int column
 	{
 		wall_height_ratio = (float)(wall_pixel_end - pixel_start) / nb_pixel;
 		txt_column = (int)((1 - wall_height_ratio) * data->texture.txt_height);
-		txt_index = txt_column * data->texture.txt_width + (column % data->texture.txt_width);
+		txt_index = txt_column * data->texture.txt_width + (column % (data->texture.txt_width));
 		data->buffer[((int)pixel_start * data->nb_line_map) + (column * 4)] = txt_data[(txt_index * data->texture.txt_bpp) / 8];
 		data->buffer[((int)pixel_start * data->nb_line_map) + (column * 4) + 1] = txt_data[(txt_index * data->texture.txt_bpp) / 8 + 1];
 		data->buffer[((int)pixel_start * data->nb_line_map) + (column * 4) + 2] = txt_data[(txt_index * data->texture.txt_bpp) / 8 + 2];
