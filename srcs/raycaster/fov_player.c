@@ -6,7 +6,7 @@
 /*   By: nchow-yu <nchow-yu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/18 18:05:02 by nchow-yu          #+#    #+#             */
-/*   Updated: 2023/02/28 12:50:45 by nchow-yu         ###   ########.fr       */
+/*   Updated: 2023/03/02 16:33:16 by nchow-yu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ static t_fov	*check_all_left_intersect(t_data *data, t_fov *fov)
 	double	res;
 	int		i;
 
-	i = 320;
+	i = 319;
 	tmp_rad = data->rad;
 	res = (data->rad - 0.523599);
 	if (res < 0)
@@ -94,10 +94,4 @@ t_fov	*ft_fov(t_data *data)
 		i++;
 	}
 	return (fov);
-	// i = 0;
-	// while (i != 640)
-	// {
-	// 	fprintf(stderr, "index = %d | degrees = %f | distance = %f | wall = %c\n", i, fov[i].degrees, fov[i].dist, fov[i].wall_orientation);
-	// 	i++;
-	// }
 }

@@ -6,7 +6,7 @@
 /*   By: nchow-yu <nchow-yu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 00:55:10 by nicole            #+#    #+#             */
-/*   Updated: 2023/02/28 13:00:03 by nchow-yu         ###   ########.fr       */
+/*   Updated: 2023/03/01 15:41:50 by nchow-yu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ int		ft_is_space(char c);
 void	move_player(int key, t_data *data);
 
 //draw_point.c
-void	draw_point(t_data *data, double i, double j);
+void	draw_point(t_data *data, double i, double j, int color);
 
 //**********//
 //**ERROR***//
