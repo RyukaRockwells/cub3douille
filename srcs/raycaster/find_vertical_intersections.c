@@ -6,7 +6,7 @@
 /*   By: nchow-yu <nchow-yu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 12:10:38 by nchow-yu          #+#    #+#             */
-/*   Updated: 2023/02/28 11:19:29 by nchow-yu         ###   ########.fr       */
+/*   Updated: 2023/03/02 16:32:38 by nchow-yu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,17 @@ static t_coord	first_point_ray(t_data *data, double rad)
 	t_coord	ver;
 
 	if (rad < (M_PI / 2) || rad > (M_PI * 1.5))
+	{
 		ver.x = floor(data->pos.x) * (SIZE) + SIZE;
+		ver.y = (data->pos.y * SIZE) + \
+			((ver.x - (data->pos.x * SIZE)) * tan(rad));
+	}
 	else
+	{
 		ver.x = floor(data->pos.x) * (SIZE) - 1;
-	ver.y = (data->pos.y * SIZE) + (ver.x - (data->pos.x * SIZE)) * tan(rad);
+		ver.y = (data->pos.y * SIZE) + \
+			(((ver.x + 1) - (data->pos.x * SIZE)) * tan(rad));
+	}
 	if ((ver.y >= (data->nb_line - 1) * SIZE)
 		|| (ver.x >= (data->max_len - 1) * SIZE)
 		|| ver.x <= 0 || ver.y <= 0)
@@ -54,13 +61,19 @@ t_coord	finding_v_intersection(t_data *data, double rad)
 {
 	t_coord	ver;
 
+	if (rad == (M_PI / 2) || rad == (M_PI * 1.5))
+	{
+		ver.x = -1;
+		ver.y = -1;
+		return (ver);
+	}
 	ver = first_point_ray(data, rad);
 	if (ver.x == -1 && ver.y == -1)
 		return (ver);
-	while ((data->map[(int)(round(ver.y * 1000) / 1000) / SIZE] \
-		[(int)(round(ver.x * 1000) / 1000) / SIZE] != '1')
-		&& data->map[(int)(round(ver.y * 1000) / 1000) / SIZE] \
-		[(int)(round(ver.x * 1000) / 1000) / SIZE] != ' ')
+	while ((data->map[(int)(ver.y / SIZE)] \
+		[(int)(ver.x / SIZE)] != '1')
+		&& data->map[(int)(ver.y / SIZE)] \
+		[(int)(ver.x / SIZE)] != ' ')
 	{
 		ver = next_intersection(ver, rad);
 		if ((ver.y >= (data->nb_line - 1) * SIZE)

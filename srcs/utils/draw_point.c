@@ -6,13 +6,15 @@
 /*   By: nchow-yu <nchow-yu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 11:14:13 by nchow-yu          #+#    #+#             */
-/*   Updated: 2023/02/28 11:14:42 by nchow-yu         ###   ########.fr       */
+/*   Updated: 2023/03/02 16:32:48 by nchow-yu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
+#include <X11/Xlib.h>
+#include "../../mlx_linux/mlx_int.h"
 
-void	draw_point(t_data *data, double i, double j)
+void	draw_point(t_data *data, double i, double j, int color)
 {
 	double	init_i;
 	double	init_j;
@@ -25,8 +27,8 @@ void	draw_point(t_data *data, double i, double j)
 	{
 		j = init_j - 2;
 		while (j <= init_j + 2)
-			mlx_pixel_put(data->mlx, data->win, i, j++, 0xFFFFFFFF);
+			mlx_pixel_put(data->mlx, data->win, i, j++, color);
 		i++;
 	}
+	XFlush(((t_xvar *)data->mlx)->display);
 }
-
