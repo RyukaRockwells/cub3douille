@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   count_params_2.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sanauth <sanauth@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nchow-yu <nchow-yu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 15:41:13 by nicole            #+#    #+#             */
-/*   Updated: 2023/02/01 13:53:59 by sanauth          ###   ########.fr       */
+/*   Updated: 2023/03/03 15:11:55 by nchow-yu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	ft_no_upmap(t_data *data)
 	int	i;
 	int	j;
 
-	i = data->nb_line;
+	i = mapline(data->map);
 	j = 0;
 	while ((i > 0) && ((data->file[i][j] == '1') || (data->file[i][j] == '0')
 		|| (data->file[i][j] == '\n') || (data->file[i][j] == ' ')))

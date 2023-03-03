@@ -6,7 +6,7 @@
 /*   By: nchow-yu <nchow-yu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 14:10:40 by nchow-yu          #+#    #+#             */
-/*   Updated: 2023/02/28 11:20:27 by nchow-yu         ###   ########.fr       */
+/*   Updated: 2023/03/03 15:13:28 by nchow-yu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ static t_coord	first_point_ray(t_data *data, double rad)
 	else
 		hor.y = floor(data->pos.y) * (SIZE) - 1;
 	hor.x = (data->pos.x * SIZE) + (hor.y - (data->pos.y * SIZE)) / tan(rad);
-	if (hor.x >= ((data->max_len - 1) * SIZE)
-		|| hor.y >= ((data->nb_line - 1) * SIZE)
+	if (hor.x >= ((maplenmax(data->map) - 1) * SIZE)
+		|| hor.y >= ((mapline(data->map) - 1) * SIZE)
 		|| hor.x <= 0 || hor.y <= 0)
 	{
 		hor.x = -1;
@@ -63,8 +63,8 @@ t_coord	find_h_intersection(t_data *data, double rad)
 		[(int)(round(hor.x * 1000 / SIZE) / 1000)] != ' ')
 	{
 		hor = next_intersection(hor, rad);
-		if (hor.x >= ((data->max_len - 1) * SIZE)
-			|| hor.y >= ((data->nb_line - 1) * SIZE)
+		if (hor.x >= ((maplenmax(data->map) - 1) * SIZE)
+			|| hor.y >= ((mapline(data->map) - 1) * SIZE)
 			|| hor.x < 0 || hor.y < 0)
 			break ;
 	}

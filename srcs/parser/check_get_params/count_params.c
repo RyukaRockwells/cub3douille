@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   count_params.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sanauth <sanauth@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nchow-yu <nchow-yu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 15:41:13 by nicole            #+#    #+#             */
-/*   Updated: 2023/02/01 13:56:55 by sanauth          ###   ########.fr       */
+/*   Updated: 2023/03/03 15:12:14 by nchow-yu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ int	ft_is_file_clear(t_data *data)
 	int	j;
 
 	i = 0;
-	while (i < data->nb_line)
+	while (i < mapline(data->map))
 	{
 		j = 0;
 		if (data->file[i][j] == ' ' || data->file[i][j] == '\n')

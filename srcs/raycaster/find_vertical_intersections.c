@@ -6,7 +6,7 @@
 /*   By: nchow-yu <nchow-yu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 12:10:38 by nchow-yu          #+#    #+#             */
-/*   Updated: 2023/03/02 16:32:38 by nchow-yu         ###   ########.fr       */
+/*   Updated: 2023/03/03 15:12:56 by nchow-yu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@ static t_coord	first_point_ray(t_data *data, double rad)
 		ver.y = (data->pos.y * SIZE) + \
 			(((ver.x + 1) - (data->pos.x * SIZE)) * tan(rad));
 	}
-	if ((ver.y >= (data->nb_line - 1) * SIZE)
-		|| (ver.x >= (data->max_len - 1) * SIZE)
+	if ((ver.y >= (mapline(data->map) - 1) * SIZE)
+		|| (ver.x >= (maplenmax(data->map) - 1) * SIZE)
 		|| ver.x <= 0 || ver.y <= 0)
 	{	
 		ver.x = -1;
@@ -76,8 +76,8 @@ t_coord	finding_v_intersection(t_data *data, double rad)
 		[(int)(ver.x / SIZE)] != ' ')
 	{
 		ver = next_intersection(ver, rad);
-		if ((ver.y >= (data->nb_line - 1) * SIZE)
-			|| (ver.x >= (data->max_len - 1) * SIZE)
+		if ((ver.y >= (mapline(data->map) - 1) * SIZE)
+			|| (ver.x >= (maplenmax(data->map) - 1) * SIZE)
 			|| ver.y < 0 || ver.x < 0)
 			break ;
 	}

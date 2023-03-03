@@ -6,7 +6,7 @@
 /*   By: nchow-yu <nchow-yu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 00:55:10 by nicole            #+#    #+#             */
-/*   Updated: 2023/03/01 15:41:50 by nchow-yu         ###   ########.fr       */
+/*   Updated: 2023/03/03 15:18:54 by nchow-yu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	ft_close(t_data *win);
 int		ft_strcmp(const char *s1, const char *s2);
 
 //ft_strcpy.c
-char	*ft_strcpy(t_data *data, char *dest, char *str);
+char	*ft_strcpy(char *dest, char *str);
 //ft_is_space.c
 int		ft_is_space(char c);
 
@@ -53,6 +53,11 @@ void	move_player(int key, t_data *data);
 
 //draw_point.c
 void	draw_point(t_data *data, double i, double j, int color);
+
+//height_map.c
+int		maplenmax(char **map);
+int		mapline(char **map);
+int		max_line(char **file);
 
 //**********//
 //**ERROR***//

@@ -6,7 +6,7 @@
 /*   By: nchow-yu <nchow-yu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 13:39:32 by nchow-yu          #+#    #+#             */
-/*   Updated: 2023/03/01 17:29:43 by nchow-yu         ###   ########.fr       */
+/*   Updated: 2023/03/03 15:19:42 by nchow-yu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,15 +75,13 @@ typedef struct s_data
 	char		**map;
 	void		*mlx;
 	void		*win;
-	int			max_len;
-	int			nb_line;
 	double		rad;
-	double		degrees;
 	void		*new_img;
 	int			nb_line_map;
 	int			bpp;
 	int			endian;
 	char		*buffer;
+	t_fov		*fov;
 	t_texture	texture;
 	t_params	params;
 	t_pos		pos;
@@ -92,3 +90,6 @@ typedef struct s_data
 }	t_data;
 
 #endif
+
+//On peut extraire max_len et nb_line mais faut faire des fonctions int qui
+//retourne ces valeurs pour pouvoir quand même les utiliser sans tout casser

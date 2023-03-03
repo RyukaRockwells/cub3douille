@@ -6,7 +6,7 @@
 /*   By: nchow-yu <nchow-yu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 22:36:08 by nicole            #+#    #+#             */
-/*   Updated: 2023/02/24 13:27:55 by nchow-yu         ###   ########.fr       */
+/*   Updated: 2023/03/03 15:21:17 by nchow-yu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int	ft_count_pos(t_data *data)
 			data->map[i][j] == 'E' || data->map[i][j] == 'S')
 			count++;
 		j++;
-		if (j == (int)ft_strlen(data->map[i]) && i < data->nb_line - 1)
+		if (j == (int)ft_strlen(data->map[i]) && i < mapline(data->map) - 1)
 		{
 			i++;
 			j = 0;
@@ -72,7 +72,7 @@ int	ft_verify_content(t_data *data)
 			data->map[i][j] != '0' && data->map[i][j] != '1' &&
 			data->map[i][j] != ' ' && data->map[i][j] != '\n')
 			return (1);
-		if (j == (int)ft_strlen(data->map[i]) - 1 && i < data->nb_line - 1)
+		if (j == (int)ft_strlen(data->map[i]) - 1 && i < mapline(data->map) - 1)
 		{
 			i++;
 			j = 0;
@@ -109,7 +109,7 @@ int	ft_check_zero(t_data *data)
 				return (1);
 			}
 		}
-		if (j == (int)ft_strlen(data->map[i]) - 1 && i < data->nb_line -1)
+		if (j == (int)ft_strlen(data->map[i]) - 1 && i < mapline(data->map) - 1)
 		{
 			i++;
 			j = 0;

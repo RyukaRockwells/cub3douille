@@ -6,7 +6,7 @@
 /*   By: nchow-yu <nchow-yu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 14:10:40 by nchow-yu          #+#    #+#             */
-/*   Updated: 2023/03/02 16:31:56 by nchow-yu         ###   ########.fr       */
+/*   Updated: 2023/03/03 15:14:38 by nchow-yu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,8 @@ static t_coord	first_point_ray(t_data *data, double rad)
 		hor.x = (data->pos.x * SIZE) + \
 			(((hor.y + 1) - (data->pos.y * SIZE)) / tan(rad));
 	}
-	if (hor.x >= ((data->max_len - 1) * SIZE)
-		|| hor.y >= ((data->nb_line - 1) * SIZE)
+	if (hor.x >= ((maplenmax(data->map) - 1) * SIZE)
+		|| hor.y >= ((mapline(data->map) - 1) * SIZE)
 		|| hor.x <= 0 || hor.y <= 0)
 		hor = set_hor_at_neg(hor);
 	return (hor);
@@ -80,8 +80,8 @@ t_coord	find_h_intersection(t_data *data, double rad)
 		[(int)(hor.x / SIZE)] != ' ')
 	{
 		hor = next_intersection_hor(hor, rad);
-		if (hor.x >= ((data->max_len - 1) * SIZE)
-			|| hor.y >= ((data->nb_line - 1) * SIZE)
+		if (hor.x >= ((maplenmax(data->map) - 1) * SIZE)
+			|| hor.y >= ((mapline(data->map) - 1) * SIZE)
 			|| hor.x < 0 || hor.y < 0)
 			break ;
 	}
