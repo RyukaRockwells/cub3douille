@@ -6,7 +6,7 @@
 /*   By: nchow-yu <nchow-yu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 16:44:37 by nchow-yu          #+#    #+#             */
-/*   Updated: 2023/03/02 16:37:21 by nchow-yu         ###   ########.fr       */
+/*   Updated: 2023/03/02 16:38:34 by nchow-yu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ t_fov	fill_the_struct_for_render(double rad, double d, char i, t_coord *coord, t
 	fov.degrees = rad * (180 / M_PI);
 	fov.dist = d;
 	fov.x = coord->x;
-	fov.y = corrd->y;
+	fov.y = coord->y;
 	fov.wall_orientation = '\0';
 	if (i == 'H')
 	{
