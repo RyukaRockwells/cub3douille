@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nchow-yu <nchow-yu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sanauth <sanauth@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 10:43:09 by nchow-yu          #+#    #+#             */
-/*   Updated: 2023/03/02 15:55:38 by nchow-yu         ###   ########.fr       */
+/*   Updated: 2023/03/03 17:45:23 by sanauth          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ void	init_pos_player(t_data *data)
 void	init_rad(t_data *data)
 {
 	if (data->map[(int)data->pos.y][(int)data->pos.x] == 'N')
-		data->rad = (M_PI * 1.5);
+		data->rad = (M_PI * 1.75);
 	else if (data->map[(int)data->pos.y][(int)data->pos.x] == 'S')
 		data->rad = M_PI / 2;
 	else if (data->map[(int)data->pos.y][(int)data->pos.x] == 'W')
