@@ -6,7 +6,7 @@
 /*   By: sanauth <sanauth@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 11:21:16 by sanauth           #+#    #+#             */
-/*   Updated: 2023/03/02 13:06:41 by sanauth          ###   ########.fr       */
+/*   Updated: 2023/03/03 13:49:36 by sanauth          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ void	ft_write_floor(t_data *data, int x, int y)
 	ft_free(tab);
 }
 
-void	ft_write_wall(t_data *data, double pixel_start, double nb_pixel, int column)
+void	ft_write_wall(t_data *data, t_fov *fov, double pixel_start, double nb_pixel, int column)
 {
 	double	wall_pixel_end;
 	char	*txt_data;
@@ -91,8 +91,9 @@ void	ft_write_wall(t_data *data, double pixel_start, double nb_pixel, int column
 	float	wall_height_ratio;
 	int		txt_column;
 
+	printf("column2 = %d\n", column);
 	//wall_pixel_end = pixel_start + nb_pixel;
-	txt_data = load_texture("./textures/debug_north.xpm", data);
+	txt_data = load_texture(data, fov, column);
 	wall_pixel_end = nb_pixel / 2 + HEIGTH / 2;
 	if (wall_pixel_end >= HEIGTH)
 	{
@@ -111,10 +112,14 @@ void	ft_write_wall(t_data *data, double pixel_start, double nb_pixel, int column
 	}
 }
 
-char	*load_texture(char *filename, t_data *data)
+char	*load_texture(t_data *data, t_fov *fov, int column)
 {
 	char	*texture_data;
+	char	*filename;
 
+
+	printf("column1 = %d\n", column);
+	filename = ft_choose_texture(data, fov, column);
 	data->texture.img = NULL;
 	data->texture.img = mlx_xpm_file_to_image(data->mlx, \
 	filename, &data->texture.txt_width, &data->texture.txt_height);
@@ -129,4 +134,23 @@ char	*load_texture(char *filename, t_data *data)
 		return (NULL);
 	}
 	return (texture_data);
+}
+
+char	*ft_choose_texture(t_data *data, t_fov *fov, int column)
+{
+	char	*filename = NULL;
+
+	printf("column = %d\n", column);
+	printf("column = %d , fov[column].wall_orientation = %c\n", column, fov[column].wall_orientation);
+
+	if (fov[column].wall_orientation == 'N')
+		filename = data->params.north;
+	else if (fov[column].wall_orientation== 'S')
+		filename = data->params.south;
+	else if (fov[column].wall_orientation == 'E')
+		filename = data->params.east;
+	else if (fov[column].wall_orientation == 'W')
+		filename = data->params.west;
+	printf("filename = %s\n", filename);
+	return (filename);
 }

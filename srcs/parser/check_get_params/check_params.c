@@ -6,7 +6,7 @@
 /*   By: sanauth <sanauth@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 08:40:45 by nchow-yu          #+#    #+#             */
-/*   Updated: 2023/02/13 11:58:41 by sanauth          ###   ########.fr       */
+/*   Updated: 2023/03/02 17:39:49 by sanauth          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,10 @@ static int	check_color_rgb(char *color)
 
 void	check_params(t_data *data)
 {
+	printf("data->params.north = %s\n", data->params.north);
+	printf("data->params.south = %s\n", data->params.south);
+	printf("data->params.west = %s\n", data->params.west);
+	printf("data->params.east = %s\n", data->params.east);
 	if (ft_is_param(data) == 1)
 		ft_map_error(data, "Error\nParam error\n");
 	if (data->params.north == NULL || data->params.south == NULL

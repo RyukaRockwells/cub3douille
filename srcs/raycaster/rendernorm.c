@@ -6,7 +6,7 @@
 /*   By: sanauth <sanauth@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 11:21:20 by sanauth           #+#    #+#             */
-/*   Updated: 2023/03/02 16:00:15 by sanauth          ###   ########.fr       */
+/*   Updated: 2023/03/03 13:41:40 by sanauth          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,8 @@ void	ft_start_draw(t_data *data, t_fov *fov)
 		wall_height = ft_calculate_wall_heigth(fov[i].dist, fov[i].degrees, i);
 		wall_pixel_start = \
 		ft_define_wall_pixel_start(wall_height);
-		ft_write_wall(data, wall_pixel_start, wall_height, i);
+		printf("i =%d\n", i);
+		ft_write_wall(data, fov, wall_pixel_start, wall_height, i);
 		i++;
 	}
 	free(fov);
@@ -65,6 +66,7 @@ double	ft_define_wall_pixel_start(double wall_height)
 	wall_pixel_start = (HEIGTH / 2) - (wall_height / 2);
 	if (wall_pixel_start < 0)
 		wall_pixel_start = 0;
+	
 	return (wall_pixel_start);
 }
 
