@@ -6,9 +6,11 @@
 /*   By: nchow-yu <nchow-yu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 00:55:10 by nicole            #+#    #+#             */
-/*   Updated: 2023/03/03 15:18:54 by nchow-yu         ###   ########.fr       */
+/*   Updated: 2023/03/04 14:30:33 by nchow-yu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+
 
 #ifndef CUB3D_H
 # define CUB3D_H
@@ -74,8 +76,11 @@ void	error_xpm(char *path);
 void	error_rgb(void);
 void	error_missing_params(t_data *data);
 void	ft_map_error(t_data *data, char *str);
-void	error_xpm_to_img(t_data *data);
 void	ft_close_error(t_data *data);
+
+//ft_error_utils.c
+void	error_xpm_to_img(t_data *data);
+void	error_choose_textures(t_data *data);
 
 //***********//
 //**TEXTURE**//
@@ -106,18 +111,23 @@ t_coord	finding_v_intersection(t_data *data, double rad);
 //fov_player.c
 t_fov	*ft_fov(t_data *data);
 void	ft_put_3d(t_data *data);
-void	ft_write_sky(t_data *data, int x, int y);
-void	ft_write_floor(t_data *data, int x, int y);
 
 //fill_the_struct_for_render.c
 t_fov	fill_the_struct_for_render(double rad, double d, char i, t_coord *coord, t_data *data);
 
 //void	ft_printwall(t_data *data);
-int		ft_calculate_wall_heigth(int wall_dist, int wall_height, int column);
-int		ft_define_wall_pixel_start(int wall_height, int pixel_start);
-void	ft_write_wall(t_data *data, int wall_pixel_start, \
-		int nb_pixel, int column);
-void	ft_start_draw(t_data *data);
-char	*load_texture(char *filename, t_data *data);
+double	ft_calculate_wall_heigth(double wall_dist, double degree, int column);
+double	ft_define_wall_pixel_start(double wall_height);
+void	ft_start_draw(t_data *data, t_fov *fov);
+char	*load_texture(t_data *data,t_fov *fov, int column);
+char	*ft_choose_texture(t_data *data, t_fov *fov, int column);
+
+//*************//
+//***RENDER***//
+//************//
+void	ft_write_sky(t_data *data, int x, int y);
+void	ft_write_floor(t_data *data, int x, int y);
+void	ft_write_wall(t_data *data, t_fov *fov, double wall_pixel_start, \
+		double nb_pixel, int column);
 
 #endif

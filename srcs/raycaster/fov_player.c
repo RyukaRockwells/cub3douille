@@ -6,7 +6,7 @@
 /*   By: nchow-yu <nchow-yu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/18 18:05:02 by nchow-yu          #+#    #+#             */
-/*   Updated: 2023/03/02 16:36:55 by nchow-yu         ###   ########.fr       */
+/*   Updated: 2023/03/04 19:47:15 by nchow-yu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ static t_fov	*check_all_left_intersect(t_data *data, t_fov *fov)
 	}
 	while (tmp_rad > res)
 	{
-		fov[i] = call_ft_for_dist(data, tmp_rad);
+		fov[i] = call_ft_for_dist(data, fmod(tmp_rad, M_PI * 2));
 		tmp_rad -= 0.00163625;
 		i--;
 	}
@@ -79,7 +79,7 @@ t_fov	*ft_fov(t_data *data)
 	t_fov	*fov;
 	int		i;
 
-	fov = malloc(sizeof(t_fov) * 640);
+	fov = malloc(sizeof(t_fov) * WIDTH);
 	fov = check_all_left_intersect(data, fov);
 	tmp_rad = data->rad;
 	result = (data->rad + 0.523599);
@@ -91,7 +91,7 @@ t_fov	*ft_fov(t_data *data)
 	i = 320;
 	while (tmp_rad < result)
 	{
-		fov[i] = call_ft_for_dist(data, tmp_rad);
+		fov[i] = call_ft_for_dist(data, fmod(tmp_rad, M_PI * 2));
 		tmp_rad += 0.00163625;
 		i++;
 	}

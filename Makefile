@@ -6,7 +6,7 @@
 #    By: nchow-yu <nchow-yu@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/21 00:48:03 by nicole            #+#    #+#              #
-#    Updated: 2023/03/03 15:02:56 by nchow-yu         ###   ########.fr        #
+#    Updated: 2023/03/04 14:46:35 by nchow-yu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,17 +25,18 @@ PARSER	= 	$(addprefix srcs/parser/, parser.c) ${C_FILE} ${C_MAP} ${C_PARAMS}
 TEXTURE	=	$(addprefix srcs/textures/, init_textures.c)
 M_MAP	=	$(addprefix srcs/mini_map/, mini_map.c)
 RAYCAS	=	$(addprefix srcs/raycaster/, find_horizontal_intersections.c find_vertical_intersections.c\
-			fov_player.c fill_the_struct_for_render.c rendernorm.c rendernorm2.c)
+			fov_player.c fill_the_struct_for_render.c)
+RENDER	=	$(addprefix srcs/raycaster/render/, rendernorm.c rendernorm2.c write_elmt.c)
 SRCS	=	$(addprefix srcs/, main.c init.c draw_ft.c) ${GNL} ${ERROR} ${FREE} ${UTILS} ${PARSER} ${MLX_FT}\
-			${TEXTURE} ${M_MAP} ${RAYCAS}
+			${TEXTURE} ${M_MAP} ${RAYCAS} ${RENDER}
 OBJS	=	${SRCS:.c=.o}
 CC		=	clang
-CFLAGS	=	-Wall -Werror -Wextra -g3 -fsanitize=address
+CFLAGS	=	-Wall -Werror -Wextra #-g3 -fsanitize=address
 HEADER	=	includes/cub3d.h
 NAME	=	cub3D
 
 %.o:	%.c
-	${CC} ${CFLAGS} -g3 -I/usr/include -Imlx_linux -c $< -o ${<:.c=.o}
+	${CC} ${CFLAGS} -I/usr/include -Imlx_linux -c $< -o ${<:.c=.o}
 
 all:	${OBJS} ${NAME}
 

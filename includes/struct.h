@@ -6,7 +6,7 @@
 /*   By: nchow-yu <nchow-yu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 13:39:32 by nchow-yu          #+#    #+#             */
-/*   Updated: 2023/03/03 15:19:42 by nchow-yu         ###   ########.fr       */
+/*   Updated: 2023/03/04 14:13:07 by nchow-yu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,18 @@
 
 # define WIDTH 640
 # define HEIGTH 400
-# define SIZE 32
+# define SIZE 64
+# define FOV 60
 
 typedef struct s_imge
 {
 	void	*img;
-	int		x;
-	int		y;
+	char	*addr;
+	int		width;
+	int		height;
+	int		bpp;
+	int		line_size;
+	int		endian;
 }	t_imge;
 
 typedef struct s_pos
@@ -58,16 +63,25 @@ typedef struct s_params
 	char	*ceiling;
 }	t_params;
 
-typedef struct s_texture
+typedef struct s_buff
 {
-	void	*img;
-	int		*addr;
-	int		txt_bpp;
-	int		txt_width;
-	int		txt_height;
-	int		txt_line_size;
-	int		txt_endian;
-}	t_texture;
+	void	*img_buff;
+	int		bpp;
+	int		line_size;
+	int		endian;
+	char	*buff;
+}	t_buff;
+
+// typedef struct s_texture
+// {
+// 	void	*img;
+// 	int		*addr;
+// 	int		txt_bpp;
+// 	int		txt_width;
+// 	int		txt_height;
+// 	int		txt_line_size;
+// 	int		txt_endian;
+// }	t_texture;
 
 typedef struct s_data
 {
@@ -76,17 +90,18 @@ typedef struct s_data
 	void		*mlx;
 	void		*win;
 	double		rad;
-	void		*new_img;
-	int			nb_line_map;
-	int			bpp;
-	int			endian;
-	char		*buffer;
 	t_fov		*fov;
-	t_texture	texture;
 	t_params	params;
 	t_pos		pos;
-	t_imge		img;
+	t_imge		render;
 	t_imge		textures[4];
+	// char		*render;
+	// int			line_size;
+	// int			bpp;
+	// int			endian;
+	// void		*new_img;
+	// t_buff		*win;
+	// t_texture	texture;
 }	t_data;
 
 #endif

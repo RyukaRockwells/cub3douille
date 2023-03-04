@@ -6,7 +6,7 @@
 /*   By: nchow-yu <nchow-yu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 14:10:40 by nchow-yu          #+#    #+#             */
-/*   Updated: 2023/03/03 15:14:38 by nchow-yu         ###   ########.fr       */
+/*   Updated: 2023/03/04 19:46:21 by nchow-yu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ t_coord	find_h_intersection(t_data *data, double rad)
 {
 	t_coord	hor;
 
-	if (rad == 0.0 || rad == M_PI)
+	if (fmod(rad, M_PI * 2) == 0.0 || fmod(rad, M_PI * 2) == M_PI)
 	{
 		hor.x = -1;
 		hor.y = -1;

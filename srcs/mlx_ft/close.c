@@ -6,7 +6,7 @@
 /*   By: nchow-yu <nchow-yu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 12:27:52 by nchow-yu          #+#    #+#             */
-/*   Updated: 2023/03/03 16:54:19 by nchow-yu         ###   ########.fr       */
+/*   Updated: 2023/03/04 13:58:53 by nchow-yu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 
 static void	ft_destroy_all_img(t_data *data)
 {
-	if (data->img.img != NULL)
-		mlx_destroy_image(data->mlx, data->img.img);
 	if (data->textures[0].img != NULL)
 		mlx_destroy_image(data->mlx, data->textures[0].img);
 	if (data->textures[1].img != NULL)
@@ -24,12 +22,14 @@ static void	ft_destroy_all_img(t_data *data)
 		mlx_destroy_image(data->mlx, data->textures[2].img);
 	if (data->textures[3].img != NULL)
 		mlx_destroy_image(data->mlx, data->textures[3].img);
+	if (data->render.img != NULL)
+		mlx_destroy_image(data->mlx, data->render.img);
 }
 
 void	ft_close(t_data *data)
 {
-	ft_free_str(data->map);
 	free(data->fov);
+	ft_free_str(data->map);
 	ft_destroy_all_img(data);
 	mlx_clear_window(data->mlx, data->win);
 	mlx_destroy_window(data->mlx, data->win);
