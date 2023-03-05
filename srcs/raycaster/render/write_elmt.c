@@ -6,7 +6,7 @@
 /*   By: nchow-yu <nchow-yu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/04 14:28:55 by nchow-yu          #+#    #+#             */
-/*   Updated: 2023/03/05 11:41:26 by nchow-yu         ###   ########.fr       */
+/*   Updated: 2023/03/05 11:58:34 by nchow-yu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,27 @@ void	ft_write_sky(t_data *data, int x, int y)
 	ft_free(tab);
 }
 
+static float	find_begin_wall(float x_point, float y_point, t_fov *fov, int i)
+{
+	float	wall_start;
+	float	wall_end;
+	float	wall_diff;
+
+	if (fov[i].wall_orientation == 'N' || fov[i].wall_orientation == 'S')
+	{
+		wall_start = floor(x_point / SIZE);
+		wall_end = ceil(x_point / SIZE);
+		wall_diff = ((x_point - (wall_start * SIZE)) / SIZE);
+	}
+	else
+	{
+		wall_start = floor(y_point / SIZE);
+		wall_end = ceil(y_point / SIZE);
+		wall_diff = ((y_point - (wall_start * SIZE)) / SIZE);
+	}
+	return (wall_diff);
+}
+
 void	ft_write_floor(t_data *data, int x, int y)
 {
 	char	**tab;
@@ -79,55 +100,32 @@ void	ft_write_floor(t_data *data, int x, int y)
 	ft_free(tab);
 }
 
-
-static float	find_begin_wall(float x_point, float y_point, t_fov *fov, int i)
-{
-	float wall_start;
-	float wall_end;
-	float wall_diff;
-
-	if (fov[i].wall_orientation == 'N' || fov[i].wall_orientation == 'S')
-	{
-		wall_start = floor(x_point / SIZE);
-		wall_end = ceil(x_point / SIZE);
-		wall_diff = ((x_point - (wall_start * SIZE)) / SIZE);
-	}
-	else
-	{
-		wall_start = floor(y_point / SIZE);
-		wall_end = ceil(y_point /  SIZE);
-		wall_diff = ((y_point - (wall_start * SIZE)) / SIZE);
-	}
-	//printf("wall_start= %f, wall_diff = %f\n", wall_start, wall_diff);
-	return (wall_diff);
-}
-
-void	ft_write_wall(t_data *data, t_fov *fov, double pixel_start, double nb_pixel, int column)
+void	ft_write_wall(t_data *data, t_fov *fov, double pxl_start, double nb_pxl, int col)
 {
 	double	wall_pixel_end;
 	t_imge	*text_choose;
 	int		txt_index;
 	double	wall_height_ratio;
-	int		txt_column;
+	int		text_col;
 	float	percent_wall;
 
 	wall_height_ratio = 0.0;
-	percent_wall = find_begin_wall(fov[column].x, fov[column].y, fov, column);
-	text_choose = choose_and_get_textures(data, fov, column);
+	percent_wall = find_begin_wall(fov[col].x, fov[col].y, fov, col);
+	text_choose = choose_and_get_textures(data, fov, col);
 	if (text_choose == NULL)
 		error_choose_textures(data);
-	wall_pixel_end = (nb_pixel / 2) + (HEIGTH / 2);
+	wall_pixel_end = (nb_pxl / 2) + (HEIGTH / 2);
 	if (wall_pixel_end >= HEIGTH)
 		wall_pixel_end = HEIGTH - 1;
-	while (pixel_start < wall_pixel_end)
+	while (pxl_start < wall_pixel_end)
 	{
-		wall_height_ratio = (wall_pixel_end - pixel_start) / nb_pixel;
-		txt_column = (int)((1 - wall_height_ratio) * text_choose->height);
-		txt_index = txt_column * text_choose->width + (percent_wall * (text_choose->width));//choix de la colonne de pixel de la texture
-		data->render.addr[((int)pixel_start * data->render.line_size) + (column * 4)] = text_choose->addr[(txt_index * text_choose->bpp) / 8];
-		data->render.addr[((int)pixel_start * data->render.line_size) + (column * 4) + 1] = text_choose->addr[(txt_index * text_choose->bpp) / 8 + 1];
-		data->render.addr[((int)pixel_start * data->render.line_size) + (column * 4) + 2] = text_choose->addr[(txt_index * text_choose->bpp) / 8 + 2];
-		data->render.addr[((int)pixel_start * data->render.line_size) + (column * 4) + 3] = (char)0;
-		pixel_start++;
+		wall_height_ratio = (wall_pixel_end - pxl_start) / nb_pxl;
+		text_col = (int)((1 - wall_height_ratio) * text_choose->height);
+		txt_index = text_col * text_choose->width + (percent_wall * (text_choose->width));
+		data->render.addr[((int)pxl_start * data->render.line_size) + (col * 4)] = text_choose->addr[(txt_index * text_choose->bpp) / 8];
+		data->render.addr[((int)pxl_start * data->render.line_size) + (col * 4) + 1] = text_choose->addr[(txt_index * text_choose->bpp) / 8 + 1];
+		data->render.addr[((int)pxl_start * data->render.line_size) + (col * 4) + 2] = text_choose->addr[(txt_index * text_choose->bpp) / 8 + 2];
+		data->render.addr[((int)pxl_start * data->render.line_size) + (col * 4) + 3] = (char)0;
+		pxl_start++;
 	}
 }

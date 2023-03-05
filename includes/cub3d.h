@@ -6,7 +6,7 @@
 /*   By: nchow-yu <nchow-yu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 00:55:10 by nicole            #+#    #+#             */
-/*   Updated: 2023/03/04 14:30:33 by nchow-yu         ###   ########.fr       */
+/*   Updated: 2023/03/05 11:50:13 by nchow-yu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,11 +113,9 @@ t_fov	*ft_fov(t_data *data);
 void	ft_put_3d(t_data *data);
 
 //fill_the_struct_for_render.c
-t_fov	fill_the_struct_for_render(double rad, double d, char i, t_coord *coord, t_data *data);
+t_fov	fill_the_struct_for_render(double rad, double d, char i, t_coord *coord);
 
-//void	ft_printwall(t_data *data);
-double	ft_calculate_wall_heigth(double wall_dist, double degree, int column);
-double	ft_define_wall_pixel_start(double wall_height);
+//render/rendernorm.c
 void	ft_start_draw(t_data *data, t_fov *fov);
 char	*load_texture(t_data *data,t_fov *fov, int column);
 char	*ft_choose_texture(t_data *data, t_fov *fov, int column);
