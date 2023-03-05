@@ -6,7 +6,7 @@
 /*   By: sanauth <sanauth@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 13:39:32 by nchow-yu          #+#    #+#             */
-/*   Updated: 2023/03/03 16:08:07 by sanauth          ###   ########.fr       */
+/*   Updated: 2023/03/04 16:03:14 by sanauth          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # define WIDTH 640
 # define HEIGTH 400
-# define SIZE 32
+# define SIZE 64
 # define FOV 60
 
 typedef struct s_imge

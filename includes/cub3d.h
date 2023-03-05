@@ -6,7 +6,7 @@
 /*   By: sanauth <sanauth@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 16:46:12 by sanauth           #+#    #+#             */
-/*   Updated: 2023/03/02 17:59:07 by sanauth          ###   ########.fr       */
+/*   Updated: 2023/03/04 17:40:16 by sanauth          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,5 +117,6 @@ void	ft_write_wall(t_data *data, t_fov *fov, double wall_pixel_start, \
 void	ft_start_draw(t_data *data, t_fov *fov);
 char	*load_texture(t_data *data,t_fov *fov, int column);
 char	*ft_choose_texture(t_data *data, t_fov *fov, int column);
+float ft_find_wall(t_data *data, float x_point, float y_point, t_fov *fov, int i);
 
 #endif

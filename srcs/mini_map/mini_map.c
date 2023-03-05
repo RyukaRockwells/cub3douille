@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mini_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nchow-yu <nchow-yu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sanauth <sanauth@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 19:13:21 by nchow-yu          #+#    #+#             */
-/*   Updated: 2023/02/24 13:01:32 by nchow-yu         ###   ########.fr       */
+/*   Updated: 2023/03/04 13:50:59 by sanauth          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,8 @@ static void	draw_other_elmt_map(t_data *data, int x, int y)
 		mlx_pixel_put(data->mlx, data->win, x, y, 0x00FF6800);
 		x++;
 	}
+
+	//mlx_pixel_put(data->mlx, data->win, 933.716674, 63.000000, 0x00FF6800);
 }
 
 void	draw_mini_map(t_data *data)

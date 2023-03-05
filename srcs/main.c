@@ -6,7 +6,7 @@
 /*   By: sanauth <sanauth@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 00:53:40 by nicole            #+#    #+#             */
-/*   Updated: 2023/03/03 16:08:17 by sanauth          ###   ########.fr       */
+/*   Updated: 2023/03/04 15:39:15 by sanauth          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 static void	refresh_window(t_data *data)
 {
 	mlx_clear_window(data->mlx, data->win);
-	//draw_mini_map(data);
-	//p_mini_map(data);
+	draw_mini_map(data);
+	p_mini_map(data);
 	ft_fov(data);
 	//ft_start_draw(data, fov);
 }
@@ -51,17 +51,21 @@ int	main(int nb, char **argv)
 {
 	t_data	data;
 	t_fov	*fov;
-
+	float	number = 25.067508062;
+	float	floornb = floor(25.067508062);
+	float	ceilnb = ceil(25.067508062);
 	data.max_len = 0;
 	data.rad = 0.0;
+	printf("number = %f, floornb = %f, roundnb = %f\n", number, floornb, ceilnb);
 	ft_parsing(&data, nb, argv);
 	init_pos_player(&data);
 	init_rad(&data);
 	init_window(&data);
 	init_textures(&data);
-	//draw_mini_map(&data);
-	//p_mini_map(&data);
+	draw_mini_map(&data);
+	p_mini_map(&data);
 	fov = ft_fov(&data);
+	printf("data->maxlen = %d, nb_line = %d\n", data.max_len, data.nb_line);
 	ft_start_draw(&data, fov);
 	mlx_hook(data.win, 2, 1L << 0, ft_key_catch, &data);
 	mlx_hook(data.win, 17, 0, ft_close_cursor, &data);

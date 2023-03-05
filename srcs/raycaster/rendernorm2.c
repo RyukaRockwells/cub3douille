@@ -6,7 +6,7 @@
 /*   By: sanauth <sanauth@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 11:21:16 by sanauth           #+#    #+#             */
-/*   Updated: 2023/03/03 17:50:27 by sanauth          ###   ########.fr       */
+/*   Updated: 2023/03/05 11:04:17 by sanauth          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,10 @@ void	ft_write_wall(t_data *data, t_fov *fov, double pixel_start, double nb_pixel
 	int		txt_index;
 	float	wall_height_ratio;
 	int		txt_column;
+	float	test;
 
+	test = ft_find_wall(data, fov[column].x, fov[column].y, fov, column);
+	//printf("test = %f\n", test);
 	//wall_pixel_end = pixel_start + nb_pixel;
 	txt_data = load_texture(data, fov, column);
 	wall_pixel_end = nb_pixel / 2 + HEIGTH / 2;
@@ -101,15 +104,17 @@ void	ft_write_wall(t_data *data, t_fov *fov, double pixel_start, double nb_pixel
 	while (pixel_start < wall_pixel_end)
 	{
 		wall_height_ratio = (float)(wall_pixel_end - pixel_start) / nb_pixel;
-		//txt_column = (int)((1 - wall_height_ratio) * data->texture.txt_height);	if (fov[column].wall_orientation = 'N' || fov[column].wall_orientation = 'S')
-		if (fov[column].wall_orientation == 'N' || fov[column].wall_orientation == 'S')
-		{
-			txt_column = fov[column].x /64;
-		}
-		else
-			txt_column = fov[column].y / 64;
-		printf("txt_column = %d\n", txt_column);
-		txt_index = txt_column * data->texture.txt_width + (column % (data->texture.txt_width));
+		//printf("wall_height_ratio = %f\n", wall_height_ratio);
+		txt_column = (int)((1 - wall_height_ratio) * data->texture.txt_height);// txt_y
+		//if (fov[column].wall_orientation == 'N' || fov[column].wall_orientation == 'S')
+		//{
+		//	txt_column = fov[column].x / 29.085343533;
+		//}
+		//else
+		//	txt_column = fov[column].y / 29.085343533;
+		//printf("txt_column = %d\n", txt_column);
+		txt_index = txt_column * data->texture.txt_width + (test * (data->texture.txt_width));//txt(x,y)
+		printf("txt_index = %d\n", txt_index);
 		data->buffer[((int)pixel_start * data->nb_line_map) + (column * 4)] = txt_data[(txt_index * data->texture.txt_bpp) / 8];
 		data->buffer[((int)pixel_start * data->nb_line_map) + (column * 4) + 1] = txt_data[(txt_index * data->texture.txt_bpp) / 8 + 1];
 		data->buffer[((int)pixel_start * data->nb_line_map) + (column * 4) + 2] = txt_data[(txt_index * data->texture.txt_bpp) / 8 + 2];
