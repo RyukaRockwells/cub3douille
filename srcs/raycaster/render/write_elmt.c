@@ -6,7 +6,7 @@
 /*   By: sanauth <sanauth@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/04 14:28:55 by nchow-yu          #+#    #+#             */
-/*   Updated: 2023/03/06 11:18:27 by sanauth          ###   ########.fr       */
+/*   Updated: 2023/03/06 11:41:09 by sanauth          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,4 +126,6 @@ void ft_write_wall(t_data *data, t_fov *fov, double pxl_start, double wall_heigh
         pxl_start++;
     }
 }
+
+
 
