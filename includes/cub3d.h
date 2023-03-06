@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nchow-yu <nchow-yu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sanauth <sanauth@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 00:55:10 by nicole            #+#    #+#             */
-/*   Updated: 2023/03/05 11:50:13 by nchow-yu         ###   ########.fr       */
+/*   Updated: 2023/03/06 13:40:12 by sanauth          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,7 +125,7 @@ char	*ft_choose_texture(t_data *data, t_fov *fov, int column);
 //************//
 void	ft_write_sky(t_data *data, int x, int y);
 void	ft_write_floor(t_data *data, int x, int y);
-void	ft_write_wall(t_data *data, t_fov *fov, double wall_pixel_start, \
-		double nb_pixel, int column);
+void	ft_write_wall(t_data *data, t_fov *fov);
+void	ft_fill_buffer(t_data *data, int txt_index, t_imge *text_choose);
 
 #endif
