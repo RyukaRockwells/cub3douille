@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rendernorm2.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nchow-yu <nchow-yu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sanauth <sanauth@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 11:21:16 by sanauth           #+#    #+#             */
-/*   Updated: 2023/03/04 17:21:15 by nchow-yu         ###   ########.fr       */
+/*   Updated: 2023/03/06 14:46:17 by sanauth          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ void	ft_put_3d(t_data *data)
 
 	x = 0;
 	y = 0;
+	if (data->render.img != NULL)
+		mlx_destroy_image(data->mlx, data->render.img);
 	data->render.img = mlx_new_image(data->mlx, WIDTH, HEIGTH);
 	data->render.addr = mlx_get_data_addr(data->render.img, &data->render.bpp, \
 	&data->render.line_size, &data->render.endian);
