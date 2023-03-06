@@ -6,7 +6,7 @@
 /*   By: sanauth <sanauth@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/04 14:28:55 by nchow-yu          #+#    #+#             */
-/*   Updated: 2023/03/06 11:41:09 by sanauth          ###   ########.fr       */
+/*   Updated: 2023/03/06 13:16:40 by sanauth          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,32 +100,41 @@ void	ft_write_floor(t_data *data, int x, int y)
 	ft_free(tab);
 }
 
-void ft_write_wall(t_data *data, t_fov *fov, double pxl_start, double wall_height, int col)
+static void	ft_fill_buffer(t_data *data, double pxl_start, int txt_index, int col, t_imge *text_choose)
 {
-    double wall_pixel_end;
-    t_imge *text_choose;
-    int txt_index;
-    int text_col;
-    float percent_wall;
-
-    percent_wall = find_begin_wall(fov[col].x, fov[col].y, fov, col);
-    text_choose = choose_and_get_textures(data, fov, col);
-    if (text_choose == NULL)
-        error_choose_textures(data);
-    wall_pixel_end = pxl_start + wall_height;
-    while (pxl_start < wall_pixel_end && pxl_start < HEIGTH)
-    {
-        text_col = (int)(((pxl_start - HEIGTH / 2.0 + wall_height / 2.0) / wall_height) * text_choose->height);
-        txt_index = text_col * text_choose->width + (percent_wall * (text_choose->width));
-        if (txt_index >= 0 && txt_index < (text_choose->width * text_choose->height)) {
-            data->render.addr[((int)pxl_start * data->render.line_size) + (col * 4)] = text_choose->addr[(txt_index * text_choose->bpp) / 8];
-            data->render.addr[((int)pxl_start * data->render.line_size) + (col * 4) + 1] = text_choose->addr[(txt_index * text_choose->bpp) / 8 + 1];
-            data->render.addr[((int)pxl_start * data->render.line_size) + (col * 4) + 2] = text_choose->addr[(txt_index * text_choose->bpp) / 8 + 2];
-            data->render.addr[((int)pxl_start * data->render.line_size) + (col * 4) + 3] = (char)0;
-        }
-        pxl_start++;
-    }
+	data->render.addr[((int)pxl_start * data->render.line_size) + \
+	(col * 4)] = text_choose->addr[(txt_index * text_choose->bpp) / 8];
+	data->render.addr[((int)pxl_start * data->render.line_size) + \
+	(col * 4) + 1] = text_choose->addr[(txt_index * text_choose->bpp) / 8 + 1];
+	data->render.addr[((int)pxl_start * data->render.line_size) + \
+	(col * 4) + 2] = text_choose->addr[(txt_index * text_choose->bpp) / 8 + 2];
+	data->render.addr[((int)pxl_start * data->render.line_size) + \
+	(col * 4) + 3] = (char)0;
 }
 
+void ft_write_wall(t_data *data, t_fov *fov, double pxl_start, double wall_height, int col)
+{
+	double	wall_pixel_end;
+	t_imge	*text_choose;
+	int		txt_index;
+	int		text_col;
+	float	percent_wall;
 
+	percent_wall = find_begin_wall(fov[col].x, fov[col].y, fov, col);
+	text_choose = choose_and_get_textures(data, fov, col);
+	if (text_choose == NULL)
+		error_choose_textures(data);
+	wall_pixel_end = pxl_start + wall_height;
+	while (pxl_start < wall_pixel_end && pxl_start < HEIGTH)
+	{
+		text_col = (int)(((pxl_start - HEIGTH / 2.0 + \
+		wall_height / 2.0) / wall_height) * text_choose->height);
+		txt_index = text_col * text_choose->width + \
+		(percent_wall * (text_choose->width));
+		if (txt_index >= 0 && \
+		txt_index < (text_choose->width * text_choose->height))
+			ft_fill_buffer(data, pxl_start, txt_index, col, text_choose);
+		pxl_start++;
+	}
+}
 
