@@ -6,7 +6,7 @@
 /*   By: nchow-yu <nchow-yu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 00:55:10 by nicole            #+#    #+#             */
-/*   Updated: 2023/03/05 18:32:47 by nchow-yu         ###   ########.fr       */
+/*   Updated: 2023/03/06 18:37:37 by nchow-yu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,7 +113,7 @@ t_fov	*ft_fov(t_data *data);
 void	ft_put_3d(t_data *data);
 
 //fill_the_struct_for_render.c
-t_fov	fill_the_struct_for_render(t_data *data, double rad, double d, char i, t_coord *coord);
+t_fov	fill_the_struct_for_render(double rad, double d, char i, t_coord *coord);
 
 //render/rendernorm.c
 void	ft_start_draw(t_data *data, t_fov *fov);
@@ -125,7 +125,7 @@ char	*ft_choose_texture(t_data *data, t_fov *fov, int column);
 //************//
 void	ft_write_sky(t_data *data, int x, int y);
 void	ft_write_floor(t_data *data, int x, int y);
-void	ft_write_wall(t_data *data, t_fov *fov, double wall_pixel_start, \
-		double nb_pixel, int column);
+void	ft_write_wall(t_data *data, t_fov *fov);
+void	ft_fill_buffer(t_data *data, int txt_index, t_imge *text_choose);
 
 #endif

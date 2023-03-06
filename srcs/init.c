@@ -6,7 +6,7 @@
 /*   By: nchow-yu <nchow-yu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 10:43:09 by nchow-yu          #+#    #+#             */
-/*   Updated: 2023/03/05 18:55:09 by nchow-yu         ###   ########.fr       */
+/*   Updated: 2023/03/06 18:35:55 by nchow-yu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,15 +23,12 @@ void	init_struct(t_data *data)
 	data->render.img = NULL;
 }
 
-
 void	init_window(t_data *data)
 {
 	data->mlx = mlx_init();
 	if (data->mlx == NULL)
 		ft_close(data);
 	data->win = mlx_new_window(data->mlx, WIDTH, HEIGTH, "Cub3D");
-	// data->win = mlx_new_window(data->mlx, maplenmax(data->map) * SIZE,
-	// 	mapline(data->map) * SIZE, "Cub3D");// Pour voir la minimap
 	if (data->win == NULL)
 	{
 		free(data->mlx);

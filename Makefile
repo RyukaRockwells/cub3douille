@@ -6,7 +6,7 @@
 #    By: nchow-yu <nchow-yu@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/21 00:48:03 by nicole            #+#    #+#              #
-#    Updated: 2023/03/05 18:44:17 by nchow-yu         ###   ########.fr        #
+#    Updated: 2023/03/06 19:23:10 by nchow-yu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,7 @@ M_MAP	=	$(addprefix srcs/mini_map/, mini_map.c)
 RAYCAS	=	$(addprefix srcs/raycaster/, find_horizontal_intersections.c find_vertical_intersections.c\
 			fov_player.c fill_the_struct_for_render.c)
 RENDER	=	$(addprefix srcs/raycaster/render/, rendernorm.c rendernorm2.c write_elmt.c)
-SRCS	=	$(addprefix srcs/, main.c init.c draw_ft.c) ${GNL} ${ERROR} ${FREE} ${UTILS} ${PARSER} ${MLX_FT}\
+SRCS	=	$(addprefix srcs/, main.c init.c) ${GNL} ${ERROR} ${FREE} ${UTILS} ${PARSER} ${MLX_FT}\
 			${TEXTURE} ${M_MAP} ${RAYCAS} ${RENDER}
 OBJS	=	${SRCS:.c=.o}
 CC		=	clang

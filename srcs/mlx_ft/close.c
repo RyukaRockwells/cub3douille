@@ -6,7 +6,7 @@
 /*   By: nchow-yu <nchow-yu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 12:27:52 by nchow-yu          #+#    #+#             */
-/*   Updated: 2023/03/04 13:58:53 by nchow-yu         ###   ########.fr       */
+/*   Updated: 2023/03/06 19:36:33 by nchow-yu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,8 @@ static void	ft_destroy_all_img(t_data *data)
 
 void	ft_close(t_data *data)
 {
-	free(data->fov);
+	if (data->fov != NULL)
+		free(data->fov);
 	ft_free_str(data->map);
 	ft_destroy_all_img(data);
 	mlx_clear_window(data->mlx, data->win);

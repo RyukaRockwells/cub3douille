@@ -6,7 +6,7 @@
 /*   By: nchow-yu <nchow-yu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/04 14:28:55 by nchow-yu          #+#    #+#             */
-/*   Updated: 2023/03/05 18:45:14 by nchow-yu         ###   ########.fr       */
+/*   Updated: 2023/03/06 18:36:49 by nchow-yu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,7 @@ static t_imge	*choose_and_get_textures(t_data *data, t_fov *fov, int column)
 	else if (fov[column].wall_orientation == 'E')
 		text_choose = &data->textures[3];
 	else
-	{
-		// fprintf(stderr, "orientation = %c\n", fov[column].wall_orientation);
 		return (NULL);
-	}
 	return (text_choose);
 }
 
@@ -103,32 +100,29 @@ void	ft_write_floor(t_data *data, int x, int y)
 	ft_free(tab);
 }
 
-void	ft_write_wall(t_data *data, t_fov *fov, double pxl_start, double nb_pxl, int col)
+void	ft_write_wall(t_data *data, t_fov *fov)
 {
 	double	wall_pixel_end;
 	t_imge	*text_choose;
 	int		txt_index;
-	double	wall_height_ratio;
 	int		text_col;
 	float	percent_wall;
 
-	wall_height_ratio = 0.0;
-	percent_wall = find_begin_wall(fov[col].x, fov[col].y, fov, col);
-	text_choose = choose_and_get_textures(data, fov, col);
+	percent_wall = find_begin_wall \
+	(fov[data->col].x, fov[data->col].y, fov, data->col);
+	text_choose = choose_and_get_textures(data, fov, data->col);
 	if (text_choose == NULL)
 		error_choose_textures(data);
-	wall_pixel_end = (nb_pxl / 2) + (HEIGTH / 2);
-	if (wall_pixel_end >= HEIGTH)
-		wall_pixel_end = HEIGTH - 1;
-	while (pxl_start < wall_pixel_end)
+	wall_pixel_end = data->pxl_start + data->wall_height;
+	while (data->pxl_start < wall_pixel_end && data->pxl_start < HEIGTH)
 	{
-		wall_height_ratio = (wall_pixel_end - pxl_start) / nb_pxl;
-		text_col = (int)((1 - wall_height_ratio) * text_choose->height);
-		txt_index = text_col * text_choose->width + (percent_wall * (text_choose->width));
-		data->render.addr[((int)pxl_start * data->render.line_size) + (col * 4)] = text_choose->addr[(txt_index * text_choose->bpp) / 8];
-		data->render.addr[((int)pxl_start * data->render.line_size) + (col * 4) + 1] = text_choose->addr[(txt_index * text_choose->bpp) / 8 + 1];
-		data->render.addr[((int)pxl_start * data->render.line_size) + (col * 4) + 2] = text_choose->addr[(txt_index * text_choose->bpp) / 8 + 2];
-		data->render.addr[((int)pxl_start * data->render.line_size) + (col * 4) + 3] = (char)0;
-		pxl_start++;
+		text_col = (int)(((data->pxl_start - HEIGTH / 2.0 + \
+		data->wall_height / 2.0) / data->wall_height) * text_choose->height);
+		txt_index = text_col * text_choose->width + \
+		(percent_wall * (text_choose->width));
+		if (txt_index >= 0 && \
+		txt_index < (text_choose->width * text_choose->height))
+			ft_fill_buffer(data, txt_index, text_choose);
+		data->pxl_start++;
 	}
 }

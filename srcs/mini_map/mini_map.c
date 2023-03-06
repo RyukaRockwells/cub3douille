@@ -6,7 +6,7 @@
 /*   By: nchow-yu <nchow-yu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 19:13:21 by nchow-yu          #+#    #+#             */
-/*   Updated: 2023/02/24 13:01:32 by nchow-yu         ###   ########.fr       */
+/*   Updated: 2023/03/06 20:17:20 by nchow-yu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,14 @@ void	p_mini_map(t_data *data)
 	int	i;
 	int	j;
 
-	i = (data->pos.x * SIZE);
-	while (i <= (data->pos.x * SIZE))
+	i = (data->pos.x * 5);
+	while (i <= (data->pos.x * 5))
 	{
-		j = (data->pos.y * SIZE);
-		while (j <= (data->pos.y * SIZE))
+		j = (data->pos.y * 5);
+		while (j <= (data->pos.y * 5))
 		{
 			mlx_pixel_put(data->mlx, data->win, \
-			i, j, 0x0000F0FF);
+			i, j, 0xff0000);
 			j++;
 		}
 		i++;
@@ -45,9 +45,9 @@ static void	draw_wall_mini_map(t_data *data, int x, int y)
 
 	initial_x = x;
 	initial_y = y;
-	while (y < (initial_y + SIZE))
+	while (y < (initial_y + 5))
 	{
-		while (x < (initial_x + SIZE))
+		while (x < (initial_x + 5))
 		{
 			mlx_pixel_put(data->mlx, data->win, x, y, 0x00FF6800);
 			x++;
@@ -64,13 +64,13 @@ static void	draw_other_elmt_map(t_data *data, int x, int y)
 
 	initial_x = x;
 	initial_y = y;
-	while (y < (initial_y + SIZE))
+	while (y < (initial_y + 5))
 	{
 		mlx_pixel_put(data->mlx, data->win, x, y, 0x00FF6800);
 		y++;
 	}
 	y = initial_y;
-	while (x < (initial_x + SIZE))
+	while (x < (initial_x + 5))
 	{
 		mlx_pixel_put(data->mlx, data->win, x, y, 0x00FF6800);
 		x++;
@@ -96,10 +96,10 @@ void	draw_mini_map(t_data *data)
 				draw_wall_mini_map(data, x, y);
 			if (data->map[i][j] == '0' || ft_is_player(data->map[i][j]) == 1)
 				draw_other_elmt_map(data, x, y);
-			x += SIZE;
+			x += 5;
 			j++;
 		}
-		y += SIZE;
+		y += 5;
 		i++;
 	}
 }

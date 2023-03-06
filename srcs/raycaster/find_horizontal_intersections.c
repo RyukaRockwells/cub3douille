@@ -6,7 +6,7 @@
 /*   By: nchow-yu <nchow-yu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 14:10:40 by nchow-yu          #+#    #+#             */
-/*   Updated: 2023/03/06 18:09:44 by nchow-yu         ###   ########.fr       */
+/*   Updated: 2023/03/06 19:19:22 by nchow-yu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ static t_coord	first_point_ray(t_data *data, double rad)
 		|| hor.y >= ((mapline(data->map) - 1) * SIZE)
 		|| hor.x <= 0 || hor.y <= 0)
 		hor = set_hor_at_neg(hor);
-	// fprintf(stderr, "hor 1st pt - x = %f | y = %f\n", hor.x, hor.y);
 	return (hor);
 }
 
@@ -53,14 +52,10 @@ static t_coord	next_intersection_hor(t_coord hor, double rad)
 	old_x = hor.x;
 	old_y = hor.y;
 	if (fmod(rad, M_PI * 2) > 0.0 && fmod(rad, M_PI * 2) < M_PI)
-	{
-		// fprintf(stderr, "Up\n");
 		delta_y = SIZE;
-	}
 	else
 		delta_y = -SIZE;
-	delta_x = (delta_y + 1) / tan(rad);
-	// fprintf(stderr, "delta = %f\n", delta_x);
+	delta_x = delta_y / tan(rad);
 	hor.x = old_x + delta_x;
 	hor.y = old_y + delta_y;
 	return (hor);
@@ -70,7 +65,6 @@ t_coord	find_h_intersection(t_data *data, double rad)
 {
 	t_coord	hor;
 
-	// fprintf(stderr, "hor - rad = %f\n", rad);
 	if (fmod(rad, M_PI * 2) == 0.0 || fmod(rad, M_PI * 2) == M_PI)
 	{
 		hor.x = -1;
@@ -90,8 +84,6 @@ t_coord	find_h_intersection(t_data *data, double rad)
 			|| hor.y >= ((mapline(data->map) - 1) * SIZE)
 			|| hor.x < 0 || hor.y < 0)
 			break ;
-		// fprintf(stderr, "hor next pt - x = %f | y = %f\n", hor.x, hor.y);
 	}
-	draw_point(data, hor.x, hor.y, 0x012cff);
 	return (hor);
 }

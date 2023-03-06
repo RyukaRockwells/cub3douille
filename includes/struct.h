@@ -6,7 +6,7 @@
 /*   By: nchow-yu <nchow-yu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 13:39:32 by nchow-yu          #+#    #+#             */
-/*   Updated: 2023/03/06 15:43:56 by nchow-yu         ###   ########.fr       */
+/*   Updated: 2023/03/06 18:15:44 by nchow-yu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,10 @@ typedef struct s_data
 	void		*mlx;
 	void		*win;
 	double		rad;
+	double		pxl_start;
+	int			txt_index;
+	double		wall_height;
+	int			col;
 	t_fov		*fov;
 	t_params	params;
 	t_pos		pos;
