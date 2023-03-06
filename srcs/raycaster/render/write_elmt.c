@@ -6,7 +6,7 @@
 /*   By: nchow-yu <nchow-yu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/04 14:28:55 by nchow-yu          #+#    #+#             */
-/*   Updated: 2023/03/05 11:58:34 by nchow-yu         ###   ########.fr       */
+/*   Updated: 2023/03/05 18:45:14 by nchow-yu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,10 @@ static t_imge	*choose_and_get_textures(t_data *data, t_fov *fov, int column)
 	else if (fov[column].wall_orientation == 'E')
 		text_choose = &data->textures[3];
 	else
+	{
+		// fprintf(stderr, "orientation = %c\n", fov[column].wall_orientation);
 		return (NULL);
+	}
 	return (text_choose);
 }
 

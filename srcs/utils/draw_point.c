@@ -6,7 +6,7 @@
 /*   By: nchow-yu <nchow-yu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 11:14:13 by nchow-yu          #+#    #+#             */
-/*   Updated: 2023/03/02 16:32:48 by nchow-yu         ###   ########.fr       */
+/*   Updated: 2023/03/05 18:35:03 by nchow-yu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,12 @@ void	draw_point(t_data *data, double i, double j, int color)
 
 	init_i = i;
 	init_j = j;
-	i -= 2;
-	j -= 2;
-	while (i <= init_i + 2)
+	// i -= 1;
+	// j -= 1;
+	while (i <= init_i)
 	{
-		j = init_j - 2;
-		while (j <= init_j + 2)
+		j = init_j;
+		while (j <= init_j)
 			mlx_pixel_put(data->mlx, data->win, i, j++, color);
 		i++;
 	}

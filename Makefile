@@ -6,7 +6,7 @@
 #    By: nchow-yu <nchow-yu@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/21 00:48:03 by nicole            #+#    #+#              #
-#    Updated: 2023/03/04 14:46:35 by nchow-yu         ###   ########.fr        #
+#    Updated: 2023/03/05 18:44:17 by nchow-yu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,7 @@ SRCS	=	$(addprefix srcs/, main.c init.c draw_ft.c) ${GNL} ${ERROR} ${FREE} ${UTI
 			${TEXTURE} ${M_MAP} ${RAYCAS} ${RENDER}
 OBJS	=	${SRCS:.c=.o}
 CC		=	clang
-CFLAGS	=	-Wall -Werror -Wextra #-g3 -fsanitize=address
+CFLAGS	=	-Wall -Werror -Wextra -g3 #-fsanitize=address
 HEADER	=	includes/cub3d.h
 NAME	=	cub3D
 

@@ -6,7 +6,7 @@
 /*   By: nchow-yu <nchow-yu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 22:51:21 by nicole            #+#    #+#             */
-/*   Updated: 2023/03/03 15:18:39 by nchow-yu         ###   ########.fr       */
+/*   Updated: 2023/03/05 13:20:42 by nchow-yu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ char	**get_map(t_data *data)
 		map[j] = malloc(sizeof(char) * (max_line(data->file) + 1));
 		if (map[j] == NULL)
 			exit(EXIT_FAILURE);
-		map[j] = ft_strcpy(map[j], data->file[i++]);
+		map[j] = ft_strcpy(map[j], data->file[i++], data);
 		j++;
 	}
 	map[j] = NULL;

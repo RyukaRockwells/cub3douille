@@ -6,7 +6,7 @@
 /*   By: nchow-yu <nchow-yu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 16:44:37 by nchow-yu          #+#    #+#             */
-/*   Updated: 2023/03/05 11:48:14 by nchow-yu         ###   ########.fr       */
+/*   Updated: 2023/03/06 17:15:45 by nchow-yu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,8 @@
 //Pour afficher la vision joueur
 //mettre en arg de la fonction t_data *data
 //et mettre avant return :
-// draw_point(data, coord->x, coord->y, 0xffffff);
 
-t_fov	fill_the_struct_for_render(double rad, double d, char i, t_coord *coord)
+t_fov	fill_the_struct_for_render(t_data *data, double rad, double d, char i, t_coord *coord)
 {
 	t_fov	fov;
 
@@ -28,7 +27,7 @@ t_fov	fill_the_struct_for_render(double rad, double d, char i, t_coord *coord)
 	fov.wall_orientation = '\0';
 	if (i == 'H')
 	{
-		if (rad > 0.0 && rad < M_PI)
+		if (fmod(rad, M_PI * 2) > 0.0 && fmod(rad, M_PI * 2) < M_PI)
 			fov.wall_orientation = 'S';
 		else
 			fov.wall_orientation = 'N';
@@ -40,5 +39,8 @@ t_fov	fill_the_struct_for_render(double rad, double d, char i, t_coord *coord)
 		else
 			fov.wall_orientation = 'W';
 	}
+	// fprintf(stderr, "orientation = %c\n", fov.wall_orientation);
+	(void)data;
+	// draw_point(data, coord->x, coord->y, 0xffffff);
 	return (fov);
 }

@@ -6,11 +6,30 @@
 /*   By: nchow-yu <nchow-yu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/18 18:05:02 by nchow-yu          #+#    #+#             */
-/*   Updated: 2023/03/05 11:53:29 by nchow-yu         ###   ########.fr       */
+/*   Updated: 2023/03/06 17:51:11 by nchow-yu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
+
+// static	void	exception_intersect(t_fov *fov)
+// {
+// 	int	i;
+
+// 	i = 0;
+// 	fprintf(stderr, "\n\n");
+// 	while (i < WIDTH)
+// 	{
+// 		// if (i + 1 == WIDTH)
+// 		// 	break ;
+// 		// if ((fov[i - 1].wall_orientation == fov[i + 1].wall_orientation)
+// 		// 	&& fov[i].wall_orientation != fov[i - 1].wall_orientation)
+// 		// 	fprintf(stderr, "Coucou\n");
+// 		fprintf(stderr, "i = %d | dist = %f | orientation = %c\n", i, fov[i].dist, fov[i].wall_orientation);
+// 		i++;
+// 	}
+// 	fprintf(stderr, "\n\n");
+// }
 
 //for norme remove line 61
 static t_fov	choose_dist(t_data *data, t_coord *v, t_coord *h, double rad)
@@ -24,16 +43,20 @@ static t_fov	choose_dist(t_data *data, t_coord *v, t_coord *h, double rad)
 	fov.x = 0.0;
 	fov.y = 0.0;
 	fov.wall_orientation = '\0';
+	// fprintf(stderr, "rad = %f | degrees = %f\n", rad, rad * (180 / M_PI));
+	// fprintf(stderr, "pos - x = %f | y = %f\n", data->pos.x * SIZE, data->pos.y * SIZE);
+	// fprintf(stderr, "ver - x = %f | y = %f\n", v->x, v->y);
+	// fprintf(stderr, "hor - x = %f | y = %f\n", h->x, h->y);
 	d_h = sqrt(pow(((data->pos.x * SIZE) - h->x), 2) \
 		+ pow(((data->pos.y * SIZE) - h->y), 2));
 	d_v = sqrt(pow(((data->pos.x * SIZE) - v->x), 2) \
 		+ pow(((data->pos.y * SIZE) - v->y), 2));
-	if ((v->x != -1 && v->y != -1)
-		&& (d_h >= d_v || (h->x == -1 && h->y == -1)))
-		fov = fill_the_struct_for_render(rad, d_v, 'V', v);
-	else if ((h->x != -1 && h->y != -1)
-		&& (d_v >= d_h || (v->x == -1 && v->y == -1)))
-		fov = fill_the_struct_for_render(rad, d_h, 'H', h);
+	if ((h->x != -1 && h->y != -1)
+		&& (d_v > d_h || (v->x == -1 && v->y == -1)))
+		fov = fill_the_struct_for_render(data, rad, d_h, 'H', h);
+	else if ((v->x != -1 && v->y != -1)
+		&& (d_h > d_v || (h->x == -1 && h->y == -1)))
+		fov = fill_the_struct_for_render(data, rad, d_v, 'V', v);
 	return (fov);
 }
 
@@ -91,9 +114,10 @@ t_fov	*ft_fov(t_data *data)
 	i = 320;
 	while (tmp_rad < result)
 	{
-		fov[i] = call_ft_for_dist(data, fmod(tmp_rad, M_PI * 2));
+		fov[i] = call_ft_for_dist(data, tmp_rad);
 		tmp_rad += 0.00163625;
 		i++;
 	}
+	// exception_intersect(fov);
 	return (fov);
 }

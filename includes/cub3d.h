@@ -6,7 +6,7 @@
 /*   By: nchow-yu <nchow-yu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 00:55:10 by nicole            #+#    #+#             */
-/*   Updated: 2023/03/05 11:50:13 by nchow-yu         ###   ########.fr       */
+/*   Updated: 2023/03/05 18:32:47 by nchow-yu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	ft_close(t_data *win);
 int		ft_strcmp(const char *s1, const char *s2);
 
 //ft_strcpy.c
-char	*ft_strcpy(char *dest, char *str);
+char	*ft_strcpy(char *dest, char *str, t_data *data);
 //ft_is_space.c
 int		ft_is_space(char c);
 
@@ -113,7 +113,7 @@ t_fov	*ft_fov(t_data *data);
 void	ft_put_3d(t_data *data);
 
 //fill_the_struct_for_render.c
-t_fov	fill_the_struct_for_render(double rad, double d, char i, t_coord *coord);
+t_fov	fill_the_struct_for_render(t_data *data, double rad, double d, char i, t_coord *coord);
 
 //render/rendernorm.c
 void	ft_start_draw(t_data *data, t_fov *fov);

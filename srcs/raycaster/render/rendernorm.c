@@ -6,7 +6,7 @@
 /*   By: nchow-yu <nchow-yu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 11:21:20 by sanauth           #+#    #+#             */
-/*   Updated: 2023/03/05 11:50:59 by nchow-yu         ###   ########.fr       */
+/*   Updated: 2023/03/05 15:30:14 by nchow-yu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,9 @@ void	ft_start_draw(t_data *data, t_fov *fov)
 	double	wall_pixel_start;
 	int		i;
 
-	i = 1;
-	(void)fov;
+	i = 0;
 	ft_put_3d(data);
-	while (i < 640)
+	while (i < WIDTH)
 	{
 		fov[i].dist = fov[i].dist * cos((fov[i].degrees - \
 			(data->rad * (180 / M_PI))) * (M_PI / 180));

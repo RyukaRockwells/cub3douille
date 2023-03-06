@@ -6,7 +6,7 @@
 /*   By: nchow-yu <nchow-yu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 13:39:32 by nchow-yu          #+#    #+#             */
-/*   Updated: 2023/03/04 14:13:07 by nchow-yu         ###   ########.fr       */
+/*   Updated: 2023/03/06 15:43:56 by nchow-yu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,26 +63,6 @@ typedef struct s_params
 	char	*ceiling;
 }	t_params;
 
-typedef struct s_buff
-{
-	void	*img_buff;
-	int		bpp;
-	int		line_size;
-	int		endian;
-	char	*buff;
-}	t_buff;
-
-// typedef struct s_texture
-// {
-// 	void	*img;
-// 	int		*addr;
-// 	int		txt_bpp;
-// 	int		txt_width;
-// 	int		txt_height;
-// 	int		txt_line_size;
-// 	int		txt_endian;
-// }	t_texture;
-
 typedef struct s_data
 {
 	char		**file;
@@ -95,16 +75,6 @@ typedef struct s_data
 	t_pos		pos;
 	t_imge		render;
 	t_imge		textures[4];
-	// char		*render;
-	// int			line_size;
-	// int			bpp;
-	// int			endian;
-	// void		*new_img;
-	// t_buff		*win;
-	// t_texture	texture;
 }	t_data;
 
 #endif
-
-//On peut extraire max_len et nb_line mais faut faire des fonctions int qui
-//retourne ces valeurs pour pouvoir quand même les utiliser sans tout casser

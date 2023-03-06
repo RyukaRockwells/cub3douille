@@ -6,7 +6,7 @@
 /*   By: nchow-yu <nchow-yu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 11:21:16 by sanauth           #+#    #+#             */
-/*   Updated: 2023/03/05 11:43:23 by nchow-yu         ###   ########.fr       */
+/*   Updated: 2023/03/06 15:43:44 by nchow-yu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,17 +17,12 @@ void	ft_put_3d(t_data *data)
 {
 	int	x;
 	int	y;
-	int	color;
-	int	color2;
 
 	x = 0;
 	y = 0;
-	color = 0x87CEEB;
-	color2 = 0x484473;
-	data->buffer = NULL;
-	data->new_img = mlx_new_image(data->mlx, WIDTH, HEIGTH);
-	data->buffer = mlx_get_data_addr(data->new_img, &data->bpp, \
-	&data->nb_line_map, &data->endian);
+	data->render.img = mlx_new_image(data->mlx, WIDTH, HEIGTH);
+	data->render.addr = mlx_get_data_addr(data->render.img, &data->render.bpp, \
+	&data->render.line_size, &data->render.endian);
 	ft_write_sky(data, x, y);
-	ft_write_floor(data, x, y);
+	ft_write_floor(data, x, HEIGTH / 2);
 }
