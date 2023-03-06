@@ -6,7 +6,7 @@
 /*   By: nchow-yu <nchow-yu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 16:44:37 by nchow-yu          #+#    #+#             */
-/*   Updated: 2023/03/06 18:41:39 by nchow-yu         ###   ########.fr       */
+/*   Updated: 2023/03/06 22:27:00 by nchow-yu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 //mettre en arg de la fonction t_data *data
 //et mettre avant return :
 
-t_fov	fill_the_struct_for_render(double rad, double d, char i, t_coord *coord)
+t_fov	fill_the_struct_for_render(t_data *data, double rad, double d, char i, t_coord *coord)
 {
 	t_fov	fov;
 
@@ -39,5 +39,6 @@ t_fov	fill_the_struct_for_render(double rad, double d, char i, t_coord *coord)
 		else
 			fov.wall_orientation = 'W';
 	}
+	draw_point(data, (coord->x / SIZE) * 5, (coord->y / SIZE) * 5, 0x000000);
 	return (fov);
 }

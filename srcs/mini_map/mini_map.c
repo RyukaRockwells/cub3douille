@@ -6,7 +6,7 @@
 /*   By: nchow-yu <nchow-yu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 19:13:21 by nchow-yu          #+#    #+#             */
-/*   Updated: 2023/03/06 20:17:20 by nchow-yu         ###   ########.fr       */
+/*   Updated: 2023/03/06 22:31:03 by nchow-yu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ static void	draw_wall_mini_map(t_data *data, int x, int y)
 	{
 		while (x < (initial_x + 5))
 		{
-			mlx_pixel_put(data->mlx, data->win, x, y, 0x00FF6800);
+			mlx_pixel_put(data->mlx, data->win, x, y, 0xFF6800);
 			x++;
 		}
 		x = initial_x;
@@ -66,13 +66,13 @@ static void	draw_other_elmt_map(t_data *data, int x, int y)
 	initial_y = y;
 	while (y < (initial_y + 5))
 	{
-		mlx_pixel_put(data->mlx, data->win, x, y, 0x00FF6800);
+		mlx_pixel_put(data->mlx, data->win, x, y, 0xFF6800);
 		y++;
 	}
 	y = initial_y;
 	while (x < (initial_x + 5))
 	{
-		mlx_pixel_put(data->mlx, data->win, x, y, 0x00FF6800);
+		mlx_pixel_put(data->mlx, data->win, x, y, 0xFF6800);
 		x++;
 	}
 }
