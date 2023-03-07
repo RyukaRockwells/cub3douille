@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: sanauth <sanauth@student.42.fr>            +#+  +:+       +#+         #
+#    By: nchow-yu <nchow-yu@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/21 00:48:03 by nicole            #+#    #+#              #
-#    Updated: 2023/03/07 08:26:44 by sanauth          ###   ########.fr        #
+#    Updated: 2023/03/07 14:10:03 by nchow-yu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,7 @@ SRCS	=	$(addprefix srcs/, main.c init.c) ${GNL} ${ERROR} ${FREE} ${UTILS} ${PARS
 			${TEXTURE} ${M_MAP} ${RAYCAS} ${RENDER}
 OBJS	=	${SRCS:.c=.o}
 CC		=	clang
-CFLAGS	=	-Wall -Werror -Wextra #-g3 -fsanitize=address
+CFLAGS	=	-Wall -Werror -Wextra -g3 #-fsanitize=address
 HEADER	=	includes/cub3d.h
 NAME	=	cub3D
 
