@@ -6,7 +6,7 @@
 /*   By: sanauth <sanauth@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 08:40:45 by nchow-yu          #+#    #+#             */
-/*   Updated: 2023/03/07 08:50:53 by sanauth          ###   ########.fr       */
+/*   Updated: 2023/03/07 14:07:11 by sanauth          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,6 +97,8 @@ int	ft_is_param(t_data *data)
 	int	i;
 
 	i = 0;
+	if (data->params.ceiling == NULL || data->params.floor == NULL)
+		return (1);
 	while (data->params.ceiling[i])
 	{
 		if (ft_isdigit(data->params.ceiling[i]) == 1

@@ -7,3 +7,4 @@ error_valgrind.log
 error.log
 *.
 push.sh
+error copy 2.log
