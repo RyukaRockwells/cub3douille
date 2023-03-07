@@ -1,5 +1,6 @@
 map/invalid_maps
 map/valid_maps
+map/unvalid
 test.sh
 error_copy.log
 error_valgrind.log
