@@ -6,7 +6,7 @@
 /*   By: nchow-yu <nchow-yu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 10:43:09 by nchow-yu          #+#    #+#             */
-/*   Updated: 2023/03/07 15:55:29 by nchow-yu         ###   ########.fr       */
+/*   Updated: 2023/03/07 16:36:32 by nchow-yu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@ void	init_pos_player(t_data *data)
 {
 	int	i;
 	int	j;
-	int	count;
 
 	i = 0;
 	while (data->map[i] != NULL)
@@ -59,7 +58,6 @@ void	init_pos_player(t_data *data)
 		}
 		i++;
 	}
-	count = i;
 }
 
 void	init_rad(t_data *data)
