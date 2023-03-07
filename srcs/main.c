@@ -6,7 +6,7 @@
 /*   By: nchow-yu <nchow-yu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 00:53:40 by nicole            #+#    #+#             */
-/*   Updated: 2023/03/07 12:57:32 by nchow-yu         ###   ########.fr       */
+/*   Updated: 2023/03/07 16:00:00 by nchow-yu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,10 +48,12 @@ static int	ft_key_catch(int key, t_data *data)
 	return (1);
 }
 
-int	main(int nb, char **argv)
+int	main(int nb, char **argv, char **envp)
 {
 	t_data	data;
 
+	if (envp[0] == NULL || envp[5] == NULL)
+		error_env();
 	data.rad = 0.0;
 	ft_parsing(&data, nb, argv);
 	init_pos_player(&data);

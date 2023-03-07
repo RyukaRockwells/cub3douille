@@ -6,7 +6,7 @@
 /*   By: nchow-yu <nchow-yu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 00:55:10 by nicole            #+#    #+#             */
-/*   Updated: 2023/03/07 13:31:45 by nchow-yu         ###   ########.fr       */
+/*   Updated: 2023/03/07 15:56:43 by nchow-yu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,7 @@ void	ft_close_error(t_data *data);
 //ft_error_utils.c
 void	error_xpm_to_img(t_data *data);
 void	error_choose_textures(t_data *data);
+void	error_env(void);
 
 //***********//
 //**TEXTURE**//
