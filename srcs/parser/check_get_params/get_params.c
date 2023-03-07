@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_params.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sanauth <sanauth@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nchow-yu <nchow-yu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/22 17:18:04 by nchow-yu          #+#    #+#             */
-/*   Updated: 2023/03/07 14:21:18 by sanauth          ###   ########.fr       */
+/*   Updated: 2023/03/07 15:30:05 by nchow-yu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,8 @@ static char	*get_str_params(char *str)
 	while (ft_is_space(str[i]) == 1)
 		i++;
 	start = i;
-	while (str[i] != '\0')
+	while (str[i] != '\n')
 	{
-		if (ft_is_space(str[i]) == 1)
-			break ;
 		len++;
 		i++;
 	}

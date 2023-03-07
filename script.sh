@@ -293,74 +293,74 @@
 
 
 
-valgrind -s --leak-check=full --show-leak-kinds=all ./cub3D map/parsing_map/unvalid/empty.cub 2>> error.log
-valgrind -s --leak-check=full --show-leak-kinds=all ./cub3D map/parsing_map/unvalid/emptylines.cub 2>> error.log
-valgrind -s --leak-check=full --show-leak-kinds=all ./cub3D map/parsing_map/unvalid/emptywithspaces.cub 2>> error.log #SEGFAULT
-valgrind -s --leak-check=full --show-leak-kinds=all ./cub3D map/parsing_map/unvalid/emptywithspaces.cub 2>> error.log
-# valgrind -s --leak-check=full --show-leak-kinds=all ./cub3D map/parsing_map/unvalid/invalid_map_area_000.cub
-# valgrind -s --leak-check=full --show-leak-kinds=all ./cub3D map/parsing_map/unvalid/invalid_map_area_001.cub
-# valgrind -s --leak-check=full --show-leak-kinds=all ./cub3D map/parsing_map/unvalid/invalid_map_area_002.cub
-# valgrind -s --leak-check=full --show-leak-kinds=all ./cub3D map/parsing_map/unvalid/invalid_map_area_003.cub
-# valgrind -s --leak-check=full --show-leak-kinds=all ./cub3D map/parsing_map/unvalid/invalid_map_area_004.cub
-# valgrind -s --leak-check=full --show-leak-kinds=all ./cub3D map/parsing_map/unvalid/invalid_map_area_005.cub
-# valgrind -s --leak-check=full --show-leak-kinds=all ./cub3D map/parsing_map/unvalid/invalid_map_area_006.cub
-# valgrind -s --leak-check=full --show-leak-kinds=all ./cub3D map/parsing_map/unvalid/invalid_map_area_012.cub
-# valgrind -s --leak-check=full --show-leak-kinds=all ./cub3D map/parsing_map/unvalid/invalid_map_area_013.cub
-# valgrind -s --leak-check=full --show-leak-kinds=all ./cub3D map/parsing_map/unvalid/invalid_map_area_014.cub
-# valgrind -s --leak-check=full --show-leak-kinds=all ./cub3D map/parsing_map/unvalid/invalid_map_area_015.cub
-# valgrind -s --leak-check=full --show-leak-kinds=all ./cub3D map/parsing_map/unvalid/invalid_map_area_016.cub
-# valgrind -s --leak-check=full --show-leak-kinds=all ./cub3D map/parsing_map/unvalid/invalid_map_area_017.cub
-# valgrind -s --leak-check=full --show-leak-kinds=all ./cub3D map/parsing_map/unvalid/invalid_map_area_018.cub
-# valgrind -s --leak-check=full --show-leak-kinds=all ./cub3D map/parsing_map/unvalid/invalid_map_area_019.cub
-# valgrind -s --leak-check=full --show-leak-kinds=all ./cub3D map/parsing_map/unvalid/invalid_map_area_020.cub
-# valgrind -s --leak-check=full --show-leak-kinds=all ./cub3D map/parsing_map/unvalid/invalid_map_area_021.cub
-# valgrind -s --leak-check=full --show-leak-kinds=all ./cub3D map/parsing_map/unvalid/invalid_map_area_022.cub 
-# valgrind -s --leak-check=full --show-leak-kinds=all ./cub3D map/parsing_map/unvalid/invalid_map_area_023.cub
-# valgrind -s --leak-check=full --show-leak-kinds=all ./cub3D map/parsing_map/unvalid/invalid_map_area_026.cub
-# valgrind -s --leak-check=full --show-leak-kinds=all ./cub3D map/parsing_map/unvalid/invalid_map_area_027.cub
-#valgrind -s --leak-check=full --show-leak-kinds=all ./cub3D map/parsing_map/unvalid/invalid_RGB_000.cub
-#valgrind -s --leak-check=full --show-leak-kinds=all ./cub3D map/parsing_map/unvalid/invalid_RGB_001.cub
-#valgrind -s --leak-check=full --show-leak-kinds=all ./cub3D map/parsing_map/unvalid/invalid_RGB_002.cub
-#valgrind -s --leak-check=full --show-leak-kinds=all ./cub3D map/parsing_map/unvalid/invalid_RGB_003.cub
-#valgrind -s --leak-check=full --show-leak-kinds=all ./cub3D map/parsing_map/unvalid/invalid_RGB_004.cub
-#valgrind -s --leak-check=full --show-leak-kinds=all ./cub3D map/parsing_map/unvalid/invalid_RGB_005.cub
-#valgrind -s --leak-check=full --show-leak-kinds=all ./cub3D map/parsing_map/unvalid/invalid_RGB_006.cub
-#valgrind -s --leak-check=full --show-leak-kinds=all ./cub3D map/parsing_map/unvalid/invalid_RGB_007.cub
-#valgrind -s --leak-check=full --show-leak-kinds=all ./cub3D map/parsing_map/unvalid/invalid_RGB_008.cub
-#valgrind -s --leak-check=full --show-leak-kinds=all ./cub3D map/parsing_map/unvalid/invalid_RGB_009.cub
-#valgrind -s --leak-check=full --show-leak-kinds=all ./cub3D map/parsing_map/unvalid/invalid_RGB_010.cub
-#valgrind -s --leak-check=full --show-leak-kinds=all ./cub3D map/parsing_map/unvalid/invalid_RGB_011.cub
-#valgrind -s --leak-check=full --show-leak-kinds=all ./cub3D map/parsing_map/unvalid/invalid_RGB_012.cub
-#valgrind -s --leak-check=full --show-leak-kinds=all ./cub3D map/parsing_map/unvalid/invalid_RGB_013.cub
-#valgrind -s --leak-check=full --show-leak-kinds=all ./cub3D map/parsing_map/unvalid/invalid_RGB_014.cub
-##valgrind -s --leak-check=full --show-leak-kinds=all ./cub3D map/parsing_map/unvalid/invalid_RGB_015.cub
-##valgrind -s --leak-check=full --show-leak-kinds=all ./cub3D map/parsing_map/unvalid/invalid_RGB_016.cub
-##valgrind -s --leak-check=full --show-leak-kinds=all ./cub3D map/parsing_map/unvalid/invalid_RGB_017.cub
-# valgrind -s --leak-check=full --show-leak-kinds=all ./cub3D map/parsing_map/unvalid/invalid_RGB_018.cub
-# valgrind -s --leak-check=full --show-leak-kinds=all ./cub3D map/parsing_map/unvalid/invalid_RGB_019.cub
-# valgrind -s --leak-check=full --show-leak-kinds=all ./cub3D map/parsing_map/unvalid/invalid_RGB_020.cub
-# valgrind -s --leak-check=full --show-leak-kinds=all ./cub3D map/parsing_map/unvalid/invalid_RGB_021.cub
-# valgrind -s --leak-check=full --show-leak-kinds=all ./cub3D map/parsing_map/unvalid/invalid_RGB_022.cub
-# valgrind -s --leak-check=full --show-leak-kinds=all ./cub3D map/parsing_map/unvalid/invalid_RGB_023.cub
-# valgrind -s --leak-check=full --show-leak-kinds=all ./cub3D map/parsing_map/unvalid/invalid_RGB_024.cub
-# valgrind -s --leak-check=full --show-leak-kinds=all ./cub3D map/parsing_map/unvalid/invalid_RGB_025.cub
-##valgrind -s --leak-check=full --show-leak-kinds=all ./cub3D map/parsing_map/unvalid/invalid_RGB_026.cub
-##valgrind -s --leak-check=full --show-leak-kinds=all ./cub3D map/parsing_map/unvalid/invalid_RGB_027.cub
-#valgrind -s --leak-check=full --show-leak-kinds=all ./cub3D map/parsing_map/unvalid/invalid_RGB_028.cub
-#valgrind -s --leak-check=full --show-leak-kinds=all ./cub3D map/parsing_map/unvalid/invalid_RGB_029.cub
-#valgrind -s --leak-check=full --show-leak-kinds=all ./cub3D map/parsing_map/unvalid/invalid_RGB_030.cub
-##valgrind -s --leak-check=full --show-leak-kinds=all ./cub3D map/parsing_map/unvalid/invalid_RGB_031.cub
-##valgrind -s --leak-check=full --show-leak-kinds=all ./cub3D map/parsing_map/unvalid/invalid_RGB_032.cub
-# valgrind -s --leak-check=full --show-leak-kinds=all ./cub3D map/parsing_map/unvalid/invalid_RGB_033.cub
-# valgrind -s --leak-check=full --show-leak-kinds=all ./cub3D map/parsing_map/unvalid/invalid_RGB_034.cub
-# valgrind -s --leak-check=full --show-leak-kinds=all ./cub3D map/parsing_map/unvalid/invalid_RGB_035.cub
-# valgrind -s --leak-check=full --show-leak-kinds=all ./cub3D map/parsing_map/unvalid/invalid_RGB_036.cub
-# valgrind -s --leak-check=full --show-leak-kinds=all ./cub3D map/parsing_map/unvalid/invalid_RGB_037.cub
-#valgrind -s --leak-check=full --show-leak-kinds=all ./cub3D map/parsing_map/unvalid/invalid_RGB_038.cub
-#valgrind -s --leak-check=full --show-leak-kinds=all ./cub3D map/parsing_map/unvalid/invalid_RGB_039.cub
-#valgrind -s --leak-check=full --show-leak-kinds=all ./cub3D map/parsing_map/unvalid/invalid_RGB_040.cub
-##valgrind -s --leak-check=full --show-leak-kinds=all ./cub3D map/parsing_map/unvalid/invalid_RGB_041.cub
-##valgrind -s --leak-check=full --show-leak-kinds=all ./cub3D map/parsing_map/unvalid/invalid_RGB_042.cub
+# valgrind -s --leak-check=full --show-leak-kinds=all ./cub3D map/parsing_map/unvalid/empty.cub 2>> error.log
+# valgrind -s --leak-check=full --show-leak-kinds=all ./cub3D map/parsing_map/unvalid/emptylines.cub 2>> error.log
+# valgrind -s --leak-check=full --show-leak-kinds=all ./cub3D map/parsing_map/unvalid/emptywithspaces.cub 2>> error.log #SEGFAULT
+# valgrind -s --leak-check=full --show-leak-kinds=all ./cub3D map/parsing_map/unvalid/emptywithspaces.cub 2>> error.log
+# valgrind -s --leak-check=full --show-leak-kinds=all ./cub3D map/parsing_map/unvalid/invalid_map_area_000.cub 2>> error.log
+# valgrind -s --leak-check=full --show-leak-kinds=all ./cub3D map/parsing_map/unvalid/invalid_map_area_001.cub 2>> error.log
+# valgrind -s --leak-check=full --show-leak-kinds=all ./cub3D map/parsing_map/unvalid/invalid_map_area_002.cub 2>> error.log
+# valgrind -s --leak-check=full --show-leak-kinds=all ./cub3D map/parsing_map/unvalid/invalid_map_area_003.cub 2>> error.log
+# valgrind -s --leak-check=full --show-leak-kinds=all ./cub3D map/parsing_map/unvalid/invalid_map_area_004.cub 2>> error.log
+# valgrind -s --leak-check=full --show-leak-kinds=all ./cub3D map/parsing_map/unvalid/invalid_map_area_005.cub 2>> error.log
+# valgrind -s --leak-check=full --show-leak-kinds=all ./cub3D map/parsing_map/unvalid/invalid_map_area_006.cub 2>> error.log
+# valgrind -s --leak-check=full --show-leak-kinds=all ./cub3D map/parsing_map/unvalid/invalid_map_area_012.cub 2>> error.log
+# valgrind -s --leak-check=full --show-leak-kinds=all ./cub3D map/parsing_map/unvalid/invalid_map_area_013.cub 2>> error.log
+# valgrind -s --leak-check=full --show-leak-kinds=all ./cub3D map/parsing_map/unvalid/invalid_map_area_014.cub 2>> error.log
+# valgrind -s --leak-check=full --show-leak-kinds=all ./cub3D map/parsing_map/unvalid/invalid_map_area_015.cub 2>> error.log
+# valgrind -s --leak-check=full --show-leak-kinds=all ./cub3D map/parsing_map/unvalid/invalid_map_area_016.cub 2>> error.log
+# valgrind -s --leak-check=full --show-leak-kinds=all ./cub3D map/parsing_map/unvalid/invalid_map_area_017.cub 2>> error.log
+# valgrind -s --leak-check=full --show-leak-kinds=all ./cub3D map/parsing_map/unvalid/invalid_map_area_018.cub 2>> error.log
+# valgrind -s --leak-check=full --show-leak-kinds=all ./cub3D map/parsing_map/unvalid/invalid_map_area_019.cub 2>> error.log
+# valgrind -s --leak-check=full --show-leak-kinds=all ./cub3D map/parsing_map/unvalid/invalid_map_area_020.cub 2>> error.log
+# valgrind -s --leak-check=full --show-leak-kinds=all ./cub3D map/parsing_map/unvalid/invalid_map_area_021.cub 2>> error.log
+# valgrind -s --leak-check=full --show-leak-kinds=all ./cub3D map/parsing_map/unvalid/invalid_map_area_022.cub 2>> error.log
+# valgrind -s --leak-check=full --show-leak-kinds=all ./cub3D map/parsing_map/unvalid/invalid_map_area_023.cub 2>> error.log
+# valgrind -s --leak-check=full --show-leak-kinds=all ./cub3D map/parsing_map/unvalid/invalid_map_area_026.cub 2>> error.log
+# valgrind -s --leak-check=full --show-leak-kinds=all ./cub3D map/parsing_map/unvalid/invalid_map_area_027.cub 2>> error.log
+# valgrind -s --leak-check=full --show-leak-kinds=all ./cub3D map/parsing_map/unvalid/invalid_RGB_000.cub 2>> error.log
+# valgrind -s --leak-check=full --show-leak-kinds=all ./cub3D map/parsing_map/unvalid/invalid_RGB_001.cub 2>> error.log
+# valgrind -s --leak-check=full --show-leak-kinds=all ./cub3D map/parsing_map/unvalid/invalid_RGB_002.cub 2>> error.log
+# valgrind -s --leak-check=full --show-leak-kinds=all ./cub3D map/parsing_map/unvalid/invalid_RGB_003.cub 2>> error.log
+# valgrind -s --leak-check=full --show-leak-kinds=all ./cub3D map/parsing_map/unvalid/invalid_RGB_004.cub 2>> error.log
+# valgrind -s --leak-check=full --show-leak-kinds=all ./cub3D map/parsing_map/unvalid/invalid_RGB_005.cub 2>> error.log
+# valgrind -s --leak-check=full --show-leak-kinds=all ./cub3D map/parsing_map/unvalid/invalid_RGB_006.cub 2>> error.log
+# valgrind -s --leak-check=full --show-leak-kinds=all ./cub3D map/parsing_map/unvalid/invalid_RGB_007.cub 2>> error.log
+# valgrind -s --leak-check=full --show-leak-kinds=all ./cub3D map/parsing_map/unvalid/invalid_RGB_008.cub 2>> error.log
+# valgrind -s --leak-check=full --show-leak-kinds=all ./cub3D map/parsing_map/unvalid/invalid_RGB_009.cub 2>> error.log
+# valgrind -s --leak-check=full --show-leak-kinds=all ./cub3D map/parsing_map/unvalid/invalid_RGB_010.cub 2>> error.log
+# valgrind -s --leak-check=full --show-leak-kinds=all ./cub3D map/parsing_map/unvalid/invalid_RGB_011.cub 2>> error.log
+# valgrind -s --leak-check=full --show-leak-kinds=all ./cub3D map/parsing_map/unvalid/invalid_RGB_012.cub 2>> error.log
+# valgrind -s --leak-check=full --show-leak-kinds=all ./cub3D map/parsing_map/unvalid/invalid_RGB_013.cub 2>> error.log
+# valgrind -s --leak-check=full --show-leak-kinds=all ./cub3D map/parsing_map/unvalid/invalid_RGB_014.cub 2>> error.log
+# valgrind -s --leak-check=full --show-leak-kinds=all ./cub3D map/parsing_map/unvalid/invalid_RGB_015.cub 2>> error.log
+# valgrind -s --leak-check=full --show-leak-kinds=all ./cub3D map/parsing_map/unvalid/invalid_RGB_016.cub 2>> error.log
+# valgrind -s --leak-check=full --show-leak-kinds=all ./cub3D map/parsing_map/unvalid/invalid_RGB_017.cub 2>> error.log
+# valgrind -s --leak-check=full --show-leak-kinds=all ./cub3D map/parsing_map/unvalid/invalid_RGB_018.cub 2>> error.log
+# valgrind -s --leak-check=full --show-leak-kinds=all ./cub3D map/parsing_map/unvalid/invalid_RGB_019.cub 2>> error.log
+# valgrind -s --leak-check=full --show-leak-kinds=all ./cub3D map/parsing_map/unvalid/invalid_RGB_020.cub 2>> error.log
+# valgrind -s --leak-check=full --show-leak-kinds=all ./cub3D map/parsing_map/unvalid/invalid_RGB_021.cub 2>> error.log
+# valgrind -s --leak-check=full --show-leak-kinds=all ./cub3D map/parsing_map/unvalid/invalid_RGB_022.cub 2>> error.log
+# valgrind -s --leak-check=full --show-leak-kinds=all ./cub3D map/parsing_map/unvalid/invalid_RGB_023.cub 2>> error.log
+# valgrind -s --leak-check=full --show-leak-kinds=all ./cub3D map/parsing_map/unvalid/invalid_RGB_024.cub 2>> error.log
+# valgrind -s --leak-check=full --show-leak-kinds=all ./cub3D map/parsing_map/unvalid/invalid_RGB_025.cub 2>> error.log
+# valgrind -s --leak-check=full --show-leak-kinds=all ./cub3D map/parsing_map/unvalid/invalid_RGB_026.cub 2>> error.log
+# valgrind -s --leak-check=full --show-leak-kinds=all ./cub3D map/parsing_map/unvalid/invalid_RGB_027.cub 2>> error.log
+# valgrind -s --leak-check=full --show-leak-kinds=all ./cub3D map/parsing_map/unvalid/invalid_RGB_028.cub 2>> error.log
+# valgrind -s --leak-check=full --show-leak-kinds=all ./cub3D map/parsing_map/unvalid/invalid_RGB_029.cub 2>> error.log
+# valgrind -s --leak-check=full --show-leak-kinds=all ./cub3D map/parsing_map/unvalid/invalid_RGB_030.cub 2>> error.log
+# valgrind -s --leak-check=full --show-leak-kinds=all ./cub3D map/parsing_map/unvalid/invalid_RGB_031.cub 2>> error.log
+# valgrind -s --leak-check=full --show-leak-kinds=all ./cub3D map/parsing_map/unvalid/invalid_RGB_032.cub 2>> error.log
+# valgrind -s --leak-check=full --show-leak-kinds=all ./cub3D map/parsing_map/unvalid/invalid_RGB_033.cub 2>> error.log
+# valgrind -s --leak-check=full --show-leak-kinds=all ./cub3D map/parsing_map/unvalid/invalid_RGB_034.cub 2>> error.log
+# valgrind -s --leak-check=full --show-leak-kinds=all ./cub3D map/parsing_map/unvalid/invalid_RGB_035.cub 2>> error.log
+# valgrind -s --leak-check=full --show-leak-kinds=all ./cub3D map/parsing_map/unvalid/invalid_RGB_036.cub 2>> error.log
+# valgrind -s --leak-check=full --show-leak-kinds=all ./cub3D map/parsing_map/unvalid/invalid_RGB_037.cub 2>> error.log
+# valgrind -s --leak-check=full --show-leak-kinds=all ./cub3D map/parsing_map/unvalid/invalid_RGB_038.cub 2>> error.log
+# valgrind -s --leak-check=full --show-leak-kinds=all ./cub3D map/parsing_map/unvalid/invalid_RGB_039.cub 2>> error.log
+# valgrind -s --leak-check=full --show-leak-kinds=all ./cub3D map/parsing_map/unvalid/invalid_RGB_040.cub 2>> error.log
+# valgrind -s --leak-check=full --show-leak-kinds=all ./cub3D map/parsing_map/unvalid/invalid_RGB_041.cub 2>> error.log
+# valgrind -s --leak-check=full --show-leak-kinds=all ./cub3D map/parsing_map/unvalid/invalid_RGB_042.cub 2>> error.log
 
 # valgrind -s --leak-check=full --show-leak-kinds=all ./cub3D map/parsing_map/unvalid/invalid_tex_EA_000.cub 2>> error.log
 # valgrind -s --leak-check=full --show-leak-kinds=all ./cub3D map/parsing_map/unvalid/invalid_tex_EA_001.cub 2>> error.log
