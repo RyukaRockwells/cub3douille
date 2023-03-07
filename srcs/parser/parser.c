@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nchow-yu <nchow-yu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sanauth <sanauth@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 12:54:31 by nchow-yu          #+#    #+#             */
-/*   Updated: 2023/03/03 15:15:22 by nchow-yu         ###   ########.fr       */
+/*   Updated: 2023/03/07 15:00:31 by sanauth          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	ft_parsing(t_data *data, int nb, char **argv)
 void	ft_parse_2(t_data *data)
 {
 	if (ft_count_rgb(data) == 1 || ft_count_directions(data) == 1)
-		ft_map_error(data, "Error\nToo much parameters\n");
+		ft_map_error(data, "Error\nWrong parameters\n");
 	if (ft_is_file_clear(data) == 1 || ft_no_upmap(data) == 1)
 		ft_map_error(data, "Error\nFile error\n");
 }

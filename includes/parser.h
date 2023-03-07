@@ -6,7 +6,7 @@
 /*   By: sanauth <sanauth@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 11:48:19 by nchow-yu          #+#    #+#             */
-/*   Updated: 2023/03/07 14:27:18 by sanauth          ###   ########.fr       */
+/*   Updated: 2023/03/07 14:28:07 by sanauth          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int		ft_empty_line(t_data *data, int i);
 
 //check_get_params/count_params_2.c
 int		ft_no_upmap(t_data *data);
-int	ft_check_param_length(t_data *data);
+int		ft_check_param_length(t_data *data);
 
 //parser.c
 void	ft_parsing(t_data *data, int nb, char **argv);
