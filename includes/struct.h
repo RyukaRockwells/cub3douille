@@ -6,7 +6,7 @@
 /*   By: nchow-yu <nchow-yu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 13:39:32 by nchow-yu          #+#    #+#             */
-/*   Updated: 2023/03/06 18:15:44 by nchow-yu         ###   ########.fr       */
+/*   Updated: 2023/03/07 18:24:39 by nchow-yu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # define HEIGTH 400
 # define SIZE 64
 # define FOV 60
+# define HITBOX_LEN 0.05
 
 typedef struct s_imge
 {

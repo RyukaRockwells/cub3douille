@@ -1,7 +1,7 @@
 NO ./textures/BRICK_3D.xpm
 SO ./textures/BRICK_3E.xpm
 WE ./textures/BRICK_3E.xpm
-EA ./textures/debug_east.xpm
+EA ./textures/Wood_Red.xpm
 
 F 100,125,21
 C 245,74,011
