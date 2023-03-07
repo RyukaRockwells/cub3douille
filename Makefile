@@ -6,11 +6,10 @@
 #    By: nchow-yu <nchow-yu@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/21 00:48:03 by nicole            #+#    #+#              #
-#    Updated: 2023/03/07 17:28:54 by nchow-yu         ###   ########.fr        #
+#    Updated: 2023/03/07 18:57:13 by nchow-yu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-# PRINTF	=	ft_printf/libftprintf.a
 LIBFT	=	srcs/lib/libft/libft.a
 GNL		=	$(addprefix srcs/lib/get_next_line/, get_next_line.c get_next_line_utils.c)
 ERROR	=	$(addprefix srcs/error/, ft_error.c ft_error_utils.c ft_error_params.c)
