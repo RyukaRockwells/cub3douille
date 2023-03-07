@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   count_params.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nchow-yu <nchow-yu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sanauth <sanauth@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 15:41:13 by nicole            #+#    #+#             */
-/*   Updated: 2023/03/03 15:12:14 by nchow-yu         ###   ########.fr       */
+/*   Updated: 2023/03/07 14:58:44 by sanauth          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,13 @@ int	ft_count_rgb(t_data *data)
 	countc = 0;
 	while (data->file[i] && countf < 3 && countc < 3)
 	{
-		if (data->file[i][0] == 'F')
+		if (data->file[i][0] == 'F' && data->file[i][1] == ' ')
 			countf++;
-		if (data->file[i][0] == 'C')
+		if (data->file[i][0] == 'C' && data->file[i][1] == ' ')
 			countc++;
 		i++;
 	}
-	if (countf > 1 || countc > 1)
+	if (countf != 1 || countc != 1)
 		return (1);
 	return (0);
 }
