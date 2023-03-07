@@ -6,7 +6,7 @@
 /*   By: nchow-yu <nchow-yu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 11:48:19 by nchow-yu          #+#    #+#             */
-/*   Updated: 2023/02/28 11:49:03 by nchow-yu         ###   ########.fr       */
+/*   Updated: 2023/03/07 13:31:34 by nchow-yu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,5 @@ int		ft_no_upmap(t_data *data);
 void	ft_parsing(t_data *data, int nb, char **argv);
 void	ft_parse_2(t_data *data);
 void	ft_print_map(t_data *data);
-
 
 #endif

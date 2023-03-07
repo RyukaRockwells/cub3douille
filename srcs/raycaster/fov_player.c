@@ -6,7 +6,7 @@
 /*   By: nchow-yu <nchow-yu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/18 18:05:02 by nchow-yu          #+#    #+#             */
-/*   Updated: 2023/03/06 22:25:34 by nchow-yu         ###   ########.fr       */
+/*   Updated: 2023/03/07 13:32:02 by nchow-yu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,11 @@ static t_fov	choose_dist(t_data *data, t_coord *v, t_coord *h, double rad)
 		+ pow(((data->pos.y * SIZE) - v->y), 2));
 	if ((h->x != -1 && h->y != -1)
 		&& (d_v > d_h || (v->x == -1 && v->y == -1)))
-		fov = fill_the_struct_for_render(data, rad, d_h, 'H', h);
+		fov = fill_the_struct_for_render(rad, d_h, 'H', h);
 	else if ((v->x != -1 && v->y != -1)
 		&& (d_h > d_v || (h->x == -1 && h->y == -1)))
-		fov = fill_the_struct_for_render(data, rad, d_v, 'V', v);
+		fov = fill_the_struct_for_render(rad, d_v, 'V', v);
+	draw_point(data, (fov.x / SIZE) * 5, (fov.y / SIZE) * 5, 0xf0ff2a);
 	return (fov);
 }
 
