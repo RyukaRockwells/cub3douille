@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   count_params_2.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nchow-yu <nchow-yu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sanauth <sanauth@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 15:41:13 by nicole            #+#    #+#             */
-/*   Updated: 2023/03/03 15:11:55 by nchow-yu         ###   ########.fr       */
+/*   Updated: 2023/03/07 14:23:46 by sanauth          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,18 @@ int	ft_no_upmap(t_data *data)
 			i--;
 		else
 			return (1);
+	}
+	return (0);
+}
+
+int	ft_check_param_length(t_data *data)
+{
+	if (ft_strlen(data->params.ceiling) > 11 \
+	|| ft_strlen(data->params.floor) > 11)
+	{
+		ft_free_all_params(data);
+		ft_free_str(data->map);
+		return (1);
 	}
 	return (0);
 }

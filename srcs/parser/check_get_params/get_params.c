@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_params.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nchow-yu <nchow-yu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sanauth <sanauth@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/22 17:18:04 by nchow-yu          #+#    #+#             */
-/*   Updated: 2023/03/04 13:35:43 by nchow-yu         ###   ########.fr       */
+/*   Updated: 2023/03/07 14:21:18 by sanauth          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,4 +81,6 @@ void	get_params(t_data *data)
 			data->params.ceiling = get_str_params(data->file[i] + (j + 1));
 		i++;
 	}
+	if (ft_check_param_length(data) == 1)
+		file_invalid(data);
 }
