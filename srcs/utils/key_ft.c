@@ -6,7 +6,7 @@
 /*   By: nchow-yu <nchow-yu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 10:44:24 by nchow-yu          #+#    #+#             */
-/*   Updated: 2023/03/07 18:24:57 by nchow-yu         ###   ########.fr       */
+/*   Updated: 2023/03/07 19:48:25 by nchow-yu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,13 +27,13 @@ static int	check_hit_move(t_data *data, double x, double y)
 	hit_box3[1] = y + HITBOX_LEN;
 	hit_box4[0] = x - HITBOX_LEN;
 	hit_box4[1] = y + HITBOX_LEN;
-	if (data->map[(int)floor(hit_box1[0])][(int)floor(hit_box1[1])] == '1')
+	if (data->map[(int)floor(hit_box1[1])][(int)floor(hit_box1[0])] == '1')
 		return (1);
-	if (data->map[(int)floor(hit_box2[0])][(int)floor(hit_box2[1])] == '1')
+	if (data->map[(int)floor(hit_box2[1])][(int)floor(hit_box2[0])] == '1')
 		return (1);
-	if (data->map[(int)floor(hit_box3[0])][(int)floor(hit_box3[1])] == '1')
+	if (data->map[(int)floor(hit_box3[1])][(int)floor(hit_box3[0])] == '1')
 		return (1);
-	if (data->map[(int)floor(hit_box4[0])][(int)floor(hit_box4[1])] == '1')
+	if (data->map[(int)floor(hit_box4[1])][(int)floor(hit_box4[0])] == '1')
 		return (1);
 	return (0);
 }
