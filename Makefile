@@ -6,7 +6,7 @@
 #    By: nchow-yu <nchow-yu@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/21 00:48:03 by nicole            #+#    #+#              #
-#    Updated: 2023/03/07 16:38:47 by nchow-yu         ###   ########.fr        #
+#    Updated: 2023/03/07 16:42:43 by nchow-yu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,7 @@ RENDER	=	$(addprefix srcs/raycaster/render/, rendernorm.c rendernorm2.c write_el
 SRCS	=	$(addprefix srcs/, main.c init.c) ${GNL} ${ERROR} ${FREE} ${UTILS} ${PARSER} ${MLX_FT}\
 			${TEXTURE} ${M_MAP} ${RAYCAS} ${RENDER}
 OBJS	=	${SRCS:.c=.o}
-CC		=	cc
+CC		=	gcc
 CFLAGS	=	-Wall -Werror -Wextra -g3 -fsanitize=address
 HEADER	=	includes/cub3d.h
 NAME	=	cub3D

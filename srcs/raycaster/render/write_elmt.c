@@ -6,7 +6,7 @@
 /*   By: nchow-yu <nchow-yu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/04 14:28:55 by nchow-yu          #+#    #+#             */
-/*   Updated: 2023/03/06 18:36:49 by nchow-yu         ###   ########.fr       */
+/*   Updated: 2023/03/07 16:43:45 by nchow-yu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,19 +57,16 @@ void	ft_write_sky(t_data *data, int x, int y)
 static float	find_begin_wall(float x_point, float y_point, t_fov *fov, int i)
 {
 	float	wall_start;
-	float	wall_end;
 	float	wall_diff;
 
 	if (fov[i].wall_orientation == 'N' || fov[i].wall_orientation == 'S')
 	{
 		wall_start = floor(x_point / SIZE);
-		wall_end = ceil(x_point / SIZE);
 		wall_diff = ((x_point - (wall_start * SIZE)) / SIZE);
 	}
 	else
 	{
 		wall_start = floor(y_point / SIZE);
-		wall_end = ceil(y_point / SIZE);
 		wall_diff = ((y_point - (wall_start * SIZE)) / SIZE);
 	}
 	return (wall_diff);
