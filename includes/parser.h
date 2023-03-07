@@ -6,7 +6,7 @@
 /*   By: sanauth <sanauth@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 11:48:19 by nchow-yu          #+#    #+#             */
-/*   Updated: 2023/03/07 14:03:27 by sanauth          ###   ########.fr       */
+/*   Updated: 2023/03/07 14:27:18 by sanauth          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,5 @@ int	ft_check_param_length(t_data *data);
 void	ft_parsing(t_data *data, int nb, char **argv);
 void	ft_parse_2(t_data *data);
 void	ft_print_map(t_data *data);
-
 
 #endif

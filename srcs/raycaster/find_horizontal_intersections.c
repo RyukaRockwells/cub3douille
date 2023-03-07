@@ -6,18 +6,11 @@
 /*   By: nchow-yu <nchow-yu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 14:10:40 by nchow-yu          #+#    #+#             */
-/*   Updated: 2023/03/06 19:19:22 by nchow-yu         ###   ########.fr       */
+/*   Updated: 2023/03/07 12:52:38 by nchow-yu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
-
-static t_coord	set_hor_at_neg(t_coord hor)
-{
-	hor.x = -1;
-	hor.y = -1;
-	return (hor);
-}
 
 static t_coord	first_point_ray(t_data *data, double rad)
 {
@@ -35,10 +28,13 @@ static t_coord	first_point_ray(t_data *data, double rad)
 		hor.x = (data->pos.x * SIZE) + \
 			(((hor.y + 0.0001) - (data->pos.y * SIZE)) / tan(rad));
 	}
-	if (hor.x >= ((maplenmax(data->map) - 1) * SIZE)
-		|| hor.y >= ((mapline(data->map) - 1) * SIZE)
+	if (hor.x > ((maplenmax(data->map) - 1) * SIZE)
+		|| hor.y > ((mapline(data->map) - 1) * SIZE)
 		|| hor.x <= 0 || hor.y <= 0)
-		hor = set_hor_at_neg(hor);
+	{
+		hor.x = -1;
+		hor.y = -1;
+	}
 	return (hor);
 }
 

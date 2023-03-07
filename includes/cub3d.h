@@ -6,11 +6,9 @@
 /*   By: nchow-yu <nchow-yu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 00:55:10 by nicole            #+#    #+#             */
-/*   Updated: 2023/03/06 22:24:58 by nchow-yu         ###   ########.fr       */
+/*   Updated: 2023/03/07 13:31:45 by nchow-yu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-
 
 #ifndef CUB3D_H
 # define CUB3D_H
@@ -113,11 +111,12 @@ t_fov	*ft_fov(t_data *data);
 void	ft_put_3d(t_data *data);
 
 //fill_the_struct_for_render.c
-t_fov	fill_the_struct_for_render(t_data *data, double rad, double d, char i, t_coord *coord);
+t_fov	fill_the_struct_for_render( double rad, double d, \
+	char i, t_coord *coord);
 
 //render/rendernorm.c
 void	ft_start_draw(t_data *data, t_fov *fov);
-char	*load_texture(t_data *data,t_fov *fov, int column);
+char	*load_texture(t_data *data, t_fov *fov, int column);
 char	*ft_choose_texture(t_data *data, t_fov *fov, int column);
 
 //*************//
